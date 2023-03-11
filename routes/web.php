@@ -20,9 +20,10 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified','authadmin'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admindashboard');
 });
+

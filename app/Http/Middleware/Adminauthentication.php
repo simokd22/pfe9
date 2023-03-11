@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class Adminauthentication
@@ -15,7 +16,12 @@ class Adminauthentication
      */
     public function handle(Request $request, Closure $next): Response
     {
-        
+        if(Auth::user()->role_id === '1'){
+            return $next($request);
+        }else{
+            session()->flush();
+            return redirect()->route('login');
+        }
         return $next($request);
     }
 }
