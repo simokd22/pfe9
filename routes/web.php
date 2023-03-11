@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\SearchController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-
+//admin
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -25,5 +26,16 @@ Route::middleware([
     Route::get('admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('admindashboard');
+});
+//user
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified','authuser'
+])->group(function () {
+    Route::get('user/search', function () {
+        return view('user.search');
+    })->name('usersearch');
+    Route::get('user/store', [SearchController::class ,'send'])->name('userstore');
 });
 
