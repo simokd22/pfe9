@@ -36,6 +36,9 @@ Route::middleware([
     Route::get('user/search', function () {
         return view('user.search');
     })->name('usersearch');
-    Route::get('user/store', [SearchController::class ,'send'])->name('userstore');
+    
+    Route::get('/user/search', [SearchController::class ,'search'])->name('user.search');
+    
+
 });
 

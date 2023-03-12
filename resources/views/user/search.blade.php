@@ -343,7 +343,7 @@ button:hover:active:before{
           <body>
     
         <div class="container">
-        <form  action="{{route('userstore')}}" method="GET" >
+        <form  action="{{route('user.search')}}" method="post" >
             @csrf
             <div class="input-box">
               <input type="text" placeholder="Search..." name="keyword" id="query" >
@@ -414,11 +414,22 @@ button:hover:active:before{
                   <button class="reset-btn" type="reset">Reset</button>
                 </div>
               </form>
-              @if (session('value'))
-              {{ session('value') }}
-              @endif
             </form>
-          
+            @if (!empty($keyword))
+            <p>Keyword: {{ $keyword }}</p>
+        @endif
+        @if (!empty($category))
+            <p>Category: {{ $category }}</p>
+        @endif
+        @if (!empty($language))
+            <p>Language: {{ $language }}</p>
+        @endif
+        @if (!empty($name_site))
+            <p>Name of Site: {{ $name_site }}</p>
+        @endif
+        @if (!empty($start_date) && !empty($end_date))
+            <p>Date Range: {{ $start_date }} - {{ $end_date }}</p>
+        @endif
             <footer>
               <p>copyright 2023-2024</p>
             </footer>
