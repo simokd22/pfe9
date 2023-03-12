@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\NewsinfoController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,10 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified','authadmin'
 ])->group(function () {
-    Route::get('admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admindashboard');
+    
+        Route::get('admin/dashboard', [NewsinfoController::class, 'index'])
+    ->name('admindashboard');
+    
 });
 //user
 Route::middleware([
@@ -36,7 +38,7 @@ Route::middleware([
     Route::get('user/search', function () {
         return view('user.search');
     })->name('usersearch');
-    
+
     Route::get('/user/search', [SearchController::class ,'search'])->name('user.search');
     
 
