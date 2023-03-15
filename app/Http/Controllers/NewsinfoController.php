@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use App\Models\Newsinfo;
 use Illuminate\Http\Request;
 
@@ -51,10 +51,18 @@ class NewsinfoController extends Controller
         ]);
         //
     }
+                 //logout 
+    public function logout(Request $request)
+        {
+        $request->session()->forget('admin');
+        return view('auth.login');
+
+        }
+
     public function add(Request $request)
         {
       
-        //return view('admin.add');
+        return view('admin.add');
         $UpdateNews= new Newsinfo;
         $UpdateNews->News_name=$request->input('News_name');
         $UpdateNews->News_url=$request->input('News_url');
@@ -62,7 +70,7 @@ class NewsinfoController extends Controller
         $UpdateNews->id_langue=$request->input('id_langue');
         $UpdateNews->save();
         $UpdateNews = Newsinfo::all();
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admindashboard');
 
     }
 
@@ -78,7 +86,7 @@ class NewsinfoController extends Controller
         $UpdateNews->id_langue=$request->input('id_langue');
         $UpdateNews->save();
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admindashboard');
     }
 
     /**

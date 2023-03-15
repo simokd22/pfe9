@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('newsinfos', function (Blueprint $table) {
             $table->id();
-            $table->id();
             $table->String('News_name');
             $table->String('News_url');
             $table->String('News_category');
@@ -45,5 +44,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('newsinfos');
+        
     }
 };

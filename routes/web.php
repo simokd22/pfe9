@@ -18,17 +18,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+
 //admin
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified','authadmin'
 ])->group(function () {
-    
+    //admindashboard
         Route::get('admin/dashboard', [NewsinfoController::class, 'index'])
     ->name('admindashboard');
-    
+    //adminedit
+        Route::get('admin/edit/{id}', [NewsinfoController::class, 'edit'])
+    ->name('adminedit');
+    //adminadd
+    Route::get('admin/add', [NewsinfoController::class, 'add'])
+    ->name('adminadd');
+    //logout
+Route::post('admin/logout', [NewsinfoController::class, 'logout'])
+->name('adminlogout');
+
 });
+
 //user
 Route::middleware([
     'auth:sanctum',

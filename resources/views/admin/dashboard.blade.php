@@ -233,6 +233,10 @@ header{
    </head>
    <header>
     <p>Admin page</p>
+    <form method="POST" action="{{ route('adminlogout') }}">
+      @csrf
+      <button type="submit">Logout</button>
+   </form>
    </header>
    <nav>
     <input type="checkbox" id="click">
@@ -250,7 +254,7 @@ header{
       <div class="tab-content">
         <div class="tab-pane" id="tab1-content">
           <!-- Tab 1 content here -->
-          <a  class="plus-button" id="addButton" >
+          <a  href="{{route('adminadd')}}" class="plus-button" id="addButton" >
             <i class="fas fa-plus"></i>
             Add
             </a>
@@ -275,7 +279,7 @@ header{
                   <td>{{$item['News_url']}}</td>
                   <td>{{$item['News_category']}}</td>
                   <td>{{$item['id_langue']}}</td>
-                 <td><a href="{{route('admin.edit',$item['id'])}}" class = "edit" type="submit" name="edit" >Edit</a></td>  
+                 <td><a href="{{route('adminedit',$item['id'])}}" class = "edit" type="submit" name="edit" >Edit</a></td>  
                   <td> <button class = "delete" type="submit" name="delete">Delete</button></td> 
                 </tr>
                   @endforeach
