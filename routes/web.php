@@ -26,17 +26,11 @@ Route::middleware([
     'verified','authadmin'
 ])->group(function () {
     //admindashboard
-        Route::get('admin/dashboard', [NewsinfoController::class, 'index'])
+        Route::get('admin/dashboard', function (){return view ('admin.dashboard');})
     ->name('admindashboard');
-    //adminedit
-        Route::get('admin/edit/{id}', [NewsinfoController::class, 'edit'])
-    ->name('adminedit');
-    //adminadd
-    Route::get('admin/add', [NewsinfoController::class, 'add'])
-    ->name('adminadd');
-    //logout
-Route::post('admin/logout', [NewsinfoController::class, 'logout'])
-->name('adminlogout');
+    
+    Route::resource('news' , NewsinfoController::class)->name('news');
+
 
 });
 

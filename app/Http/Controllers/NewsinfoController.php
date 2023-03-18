@@ -13,7 +13,7 @@ class NewsinfoController extends Controller
     public function index()
     {
         $data = Newsinfo::all();
-        return view('admin.dashboard', compact('data'));
+        return view('admin.news', compact('data'));
         //
     }
 
@@ -22,7 +22,7 @@ class NewsinfoController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.add');
     }
 
     /**
@@ -30,7 +30,13 @@ class NewsinfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $StoreNews= new Newsinfo;
+        $StoreNews->News_name=$request->input('News_name');
+        $StoreNews->News_url=$request->input('News_url');
+        $StoreNews->News_category=$request->input('News_category');
+        $StoreNews->id_langue=$request->input('id_langue');
+        $StoreNews->save();
+        return redirect()->route('news.index');
     }
 
     /**
@@ -51,33 +57,11 @@ class NewsinfoController extends Controller
         ]);
         //
     }
-                 //logout 
-    public function logout(Request $request)
-        {
-        $request->session()->forget('admin');
-        return view('auth.login');
-
-        }
-
-    public function add(Request $request)
-        {
-      
-        return view('admin.add');
-        $UpdateNews= new Newsinfo;
-        $UpdateNews->News_name=$request->input('News_name');
-        $UpdateNews->News_url=$request->input('News_url');
-        $UpdateNews->News_category=$request->input('News_category');
-        $UpdateNews->id_langue=$request->input('id_langue');
-        $UpdateNews->save();
-        $UpdateNews = Newsinfo::all();
-        return redirect()->route('admindashboard');
-
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$id)
+    public function update(Request $request , $id)
     {
         $UpdateNews=Newsinfo::findOrFail($id);
         $UpdateNews->News_name=$request->input('News_name');
@@ -86,14 +70,16 @@ class NewsinfoController extends Controller
         $UpdateNews->id_langue=$request->input('id_langue');
         $UpdateNews->save();
 
-        return redirect()->route('admindashboard');
+        return redirect()->route('news.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Newsinfo $newsinfo)
+    public function destroy($id)
     {
-        //
+        $DeleteNews=Newsinfo::findOrFail($id);
+        $DeleteNews->delete();
+        return redirect()->route('news.index');
     }
 }
