@@ -5,20 +5,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
   } 
-  nav{
-  display: flex;
-  height: 80px;
-  width: 100%;
-  background: #ffffff;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 80px;
-  margin-right: 500px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-  float: right;
   
-  }
   nav .logo{
     color: #fff;
     font-size: 35px;
@@ -144,7 +131,7 @@
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: #23507c;
+      background-color: #0d1e34;
       color: white;
     }
   

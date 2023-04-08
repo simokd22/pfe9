@@ -6,22 +6,11 @@
 @section('content')
 <header>
     <p>Admin page</p>
-    <form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <button type="submit">Logout</button>
-   </form>
+    
    </header>
    <nav>
-    <input type="checkbox" id="click">
-    <label for="click" class="menu-btn">
-    <i class="fas fa-bars"></i>
-    </label>
-    <ul>
-       <li class="tab" id="tab1" ><a href="#">Table 1</a></li>
-       <li class="tab" id="tab2" ><a href="#">Table 2</a></li>
-       <li class="tab" id="tab3" ><a href="#">Table 3</a></li>
-       <div class="line"></div>
-    </ul>
+   
+    
  </nav>
 
       <div class="tab-content">
@@ -66,26 +55,14 @@
                   @endif
                   </form>
 
-                
-            
               </table>
 
         </div>
-        <div class="tab-pane" id="tab2-content">
-          
-          <!-- Tab 2 content here -->
-        </div>
-        <div class="tab-pane" id="tab3-content">
-          
-          <!-- Tab 3 content here -->
-        </div>
+        
+       
       </div>
 
-      <!--<div class="content">
-         <div>
-            Responsive Navigation Menu Bar Design
-         </div>
-      </div>-->
+      
 
       <script>
         const tabs = document.querySelectorAll(".tab");
@@ -106,8 +83,6 @@
             document.getElementById(tabId + "-content").style.display = "block";
           });
         });
-
-        
 
       </script>
 @endsection

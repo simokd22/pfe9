@@ -1,29 +1,71 @@
-.menu{
+.menu {
     width: 100%;
-    background-color: lightblue;
-    display:flex;
-    align-items: center;
-    justify-content:space-between;
-}
-.links{
+    background-color: #ffffff;
     display: flex;
-}
-.link{
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .links {
+    display: flex;
+    border-left: 2px solid #e5e5e5;
+    border-right: 2px solid #e5e5e5;
+  }
+  
+  .link {
     padding: 1.2rem;
-}
-.link a{
+    color: #333333;
+    font-weight: bold;
+    text-transform: uppercase;
     text-decoration: none;
-    color: #4d4747;
-}
-.logout button{
-    background:rgb(228, 228, 228);
-    margin-right: 1.2rem;
-    padding: 0.7rem 2rem;
-    border-radius: 0.8rem;
-    border:none;
-    cursor:pointer;
-    transition: 0.5s ease;
-}
-.logout button:hover{
-    background:rgb(201, 201, 201);
-}
+    transition: color 0.3s ease;
+    border-radius: 8px;
+  }
+  
+  .link:first-child {
+    border-right: 2px solid #222222;
+    border-left: 2px solid #222222;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .link:last-child {
+    border-left: 2px solid #222222;
+    border-right: 2px solid #222222;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  .link:hover {
+    color: #000000;
+    background-color: #f5f5f5;
+  }
+  
+  .logout button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 16px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout button:hover {
+    background-color: #333333;
+  }
+  
+  .logout button i {
+    margin-right: 10px;
+  }
+  */
+  /*CSS page*/
+/*New Css Project*/
+/*@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');*/

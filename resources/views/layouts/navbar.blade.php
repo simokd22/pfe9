@@ -12,9 +12,7 @@
 <body>
     <div class="menu">
         <div class="links">
-            <div class="link">
-                <img src="" alt="">
-            </div>
+                
             <div class="link">
                 <a href="{{route('admindashboard')}}">Home</a>
             </div>
