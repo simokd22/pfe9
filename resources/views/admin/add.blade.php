@@ -21,6 +21,22 @@
                 <label>News_category</label>
              </div>
              <div class="input-field">
+               <input type="text" name="News_title" id="News_title" required>
+               <label>News_title</label>
+            </div>
+            <div class="input-field">
+               <input type="text" name="News_image" id="News_image"  required>
+               <label>News_image</label>
+            </div>
+            <div class="input-field">
+               <input type="text" name="News_content" id="News_content" required>
+               <label>News_content</label>
+            </div>
+            <div class="input-field">
+               <input type="text" name="News_date" id="News_date" required>
+               <label>News_date</label>
+            </div>
+             <div class="input-field">
                 <input type="text" name="id_langue" id="id_langue" required>
                 <label>id_langue</label>
              </div>
