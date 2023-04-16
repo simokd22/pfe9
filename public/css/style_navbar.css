@@ -31,16 +31,26 @@
   }
   
   .link:first-child {
+<<<<<<< HEAD
  
   }
   
   .link:last-child {
  
+=======
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .link:last-child {
+   
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+>>>>>>> 3555c197e5e0af7bbe46ab540ce22db1e401db7b
   }
   
   .link:hover {
-    color: #000000;
-    background-color: #f5f5f5;
+     background-color: #f5f5f5;
   }
   
   .logout button {
@@ -51,8 +61,8 @@
     height: 30px;
     padding: 0 20px;
     font-size: 16px;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #070707;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -61,10 +71,14 @@
   }
   
   .logout button:hover {
-    background-color: #333333;
+    background-color: #f2f2f2;
   }
   
   .logout button i {
     margin-right: 10px;
   }
+<<<<<<< HEAD
  
+=======
+  
+>>>>>>> 3555c197e5e0af7bbe46ab540ce22db1e401db7b

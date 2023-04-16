@@ -34,6 +34,10 @@ class NewsinfoController extends Controller
         $StoreNews->News_name=$request->input('News_name');
         $StoreNews->News_url=$request->input('News_url');
         $StoreNews->News_category=$request->input('News_category');
+        $StoreNews->News_image=$request->input('News_image');
+        $StoreNews->News_title=$request->input('News_title');
+        $StoreNews->News_content=$request->input('News_content');
+        $StoreNews->News_date=$request->input('News_date');
         $StoreNews->id_langue=$request->input('id_langue');
         $StoreNews->save();
         return redirect()->route('news.index');
@@ -67,6 +71,10 @@ class NewsinfoController extends Controller
         $UpdateNews->News_name=$request->input('News_name');
         $UpdateNews->News_url=$request->input('News_url');
         $UpdateNews->News_category=$request->input('News_category');
+        $UpdateNews->News_title=$request->input('News_title');
+        $UpdateNews->News_image=$request->input('News_image');
+        $UpdateNews->News_content=$request->input('News_content');
+        $UpdateNews->News_date=$request->input('News_date');
         $UpdateNews->id_langue=$request->input('id_langue');
         $UpdateNews->save();
 
