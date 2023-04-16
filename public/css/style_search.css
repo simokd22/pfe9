@@ -171,6 +171,7 @@
            border-radius: 7px;
            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
            position: fixed;  
+           z-index: 222;
          }
          .wrapper.active .content,.wrapper1.active .content1,.wrapper2.active .content2{
            display: block;
@@ -328,14 +329,17 @@
            display: flex;
            justify-content: center;
            align-items: center;
-           width: 120px; /* change this to adjust the button's width */
-           height: 50px; /* change this to adjust the button's height */
+           width: 90px;
+           height: 30px;
            padding: 0 20px;
            font-size: 16px;
-           background-color: #ffffff;
-           color: #333333;
-           border: 2px solid #333333;
+           background-color: #000000;
+           color: #ffffff;
+           border: none;
            border-radius: 8px;
+           cursor: pointer;
+           margin-right: 130px;
+           margin-top: 10px;
            }
            .logout-btn:hover {
              background-color: #555;
@@ -362,3 +366,82 @@
           margin-top: 5px;
                 
         }
+
+        input[type="date"] {
+          font-size: 14px;
+          height: 20px;
+         
+        }
+
+        .logo {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        
+        
+        
+
+
+
+
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+/* Style the custom checkbox */
+.checkbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  margin-right: 10px;
+}
+
+.checkbox:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* Style the checked custom checkbox */
+.checkbox input:checked + .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid #000;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Style the checkmark inside the custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+}
+
+/* Style the custom checkbox label */
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/*checkbox css*/
+

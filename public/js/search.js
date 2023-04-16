@@ -1,249 +1,265 @@
 
-            let inputBox = document.querySelector(".input-box"),
-                searchIcon = document.querySelector(".icon"),
-                closeIcon = document.querySelector(".close-icon");
 
-            searchIcon.addEventListener("click", () => inputBox.classList.add("open"));
-            closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
+//searchbar script
+/*----------------------------------------------------------------------------------------------------------------*/
+let inputBox = document.querySelector(".input-box"),
+searchIcon = document.querySelector(".icon"),
+closeIcon = document.querySelector(".close-icon");
 
-            /*----------------------------------------------------------------------------------*/
-            const wrapper3 = document.querySelector(".wrapper2"),
-            selectBtn3 = wrapper3.querySelector(".select-btn2"),
-            searchInp3 = wrapper3.querySelector("input"),
-            options3 = wrapper3.querySelector(".options2");
-
-let countriee = ["Hespress", "Al3omeq", "24h","Today","site2"];
+searchIcon.addEventListener("click", () => inputBox.classList.add("open"));
+closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
+/*----------------------------------------------------------------------------------------------------------------*/
 
 
-/*function addCountry3(selectedCountry3) {
-    options3.innerHTML = "";
-    countriee.forEach(country3 => {
-        let isChecked = country3 == selectedCountry3 ? "checked" : "";
-        let label = `<label><input type="checkbox" ${isChecked}>${country3}</label>`;
-        options3.insertAdjacentHTML("beforeend", label);
-    });
-}*/
-
-function addCountry3(selectedCountry3) {
-  options3.innerHTML = "";
-  countriee.forEach(country3 => {
-    let isChecked = country3 == selectedCountry3 ? "checked" : "";
-    let label = `<label><input type="checkbox" ${isChecked}>${country3}</label>`;
-    options3.insertAdjacentHTML("beforeend", label);
-  });
-
-  let checkboxes = options3.querySelectorAll("input[type='checkbox']");
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener("change", () => {
-      let selectedCountries = [];
-      checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-          selectedCountries.push(checkbox.nextSibling.textContent);
-        }
-      });
-      selectBtn3.firstElementChild.innerText = selectedCountries.join(", ");
-    });
-  });
-}
-
-addCountry3();
 
 
-function updateName3(selectedLi) {
-  searchInp3.value = "";
-  addCountry3(selectedLi.innerText);
-  wrapper3.classList.remove("active");
-  selectBtn3.firstElementChild.innerText = selectedLi.innerText;
-}
 
-document.addEventListener("click", function(event) {
-  const isClickInsideContent2 = wrapper3.contains(event.target) || selectBtn3.contains(event.target);
-  if (!isClickInsideContent2) {
-    wrapper3.classList.remove("active");
-  }
+//sites script
+/*----------------------------------------------------------------------------------------------------------------*/
+const wrapper3 = document.querySelector(".wrapper2"),
+selectBtn3 = wrapper3.querySelector(".select-btn2"),
+searchInp3 = wrapper3.querySelector("input"),
+options3 = wrapper3.querySelector(".options2");
+
+//checkbox
+const allSitesCheckbox = document.getElementById('all-sites');
+const siteCheckboxes = document.querySelectorAll('input[name="sites[]"]');
+
+allSitesCheckbox.addEventListener('change', (e) => {
+siteCheckboxes.forEach((checkbox) => {
+checkbox.checked = e.target.checked;
+});
 });
 
-
-searchInp3.addEventListener("keyup", () => {
-    let arr = [];
-    let searchWord = searchInp3.value.toLowerCase();
-    arr = countriee.filter(data => {
-        return data.toLowerCase().startsWith(searchWord);
-    }).map(data => {
-        let isSelected = data == selectBtn3.firstElementChild.innerText ? "selected" : "";
-        return `<li onclick="updateName3(this)" class="${isSelected}">${data}</li>`;
-    }).join("");
-    options3.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Oops! site not found</p>`;
+siteCheckboxes.forEach((checkbox) => {
+checkbox.addEventListener('change', (e) => {
+if (!e.target.checked) {
+allSitesCheckbox.checked = false;
+}
 });
+});
+//checkbox
 
 selectBtn3.addEventListener("click", () => wrapper3.classList.toggle("active")); 
-/*----------------------------------------------------------------------------------*/
-            const wrapper2 = document.querySelector(".wrapper1"),
-            selectBtn2 = wrapper2.querySelector(".select-btn1"),
-            searchInp2 = wrapper2.querySelector("input"),
-            options2 = wrapper2.querySelector(".options1");
-
-let countrie = ["sport", "politique", "societe"];
-
-/*function addCountry2(selectedCountry2) {
-    options2.innerHTML = "";
-    countrie.forEach(country2 => {
-        let isChecked = country2 == selectedCountry2 ? "checked" : "";
-        let label = `<label><input type="checkbox" ${isChecked}>${country2}</label>`
-        options2.insertAdjacentHTML("beforeend", label);
-    });
-}*/
-
-function addCountry2(selectedCountry2) {
-  options2.innerHTML = "";
-  countrie.forEach(country2 => {
-    let isChecked = country2 == selectedCountry2 ? "checked" : "";
-    let label = `<label><input type="checkbox" ${isChecked}>${country2}</label>`;
-    options2.insertAdjacentHTML("beforeend", label);
-  });
-
-  let checkboxes = options2.querySelectorAll("input[type='checkbox']");
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener("change", () => {
-      let selectedCountries2= [];
-      checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-          selectedCountries2.push(checkbox.nextSibling.textContent);
-        }
-      });
-      selectBtn2.firstElementChild.innerText = selectedCountries2.join(", ");
-    });
-  });
-}
+/*----------------------------------------------------------------------------------------------------------------*/
 
 
-addCountry2();
 
-function updateName2(selectedLi) {
-    searchInp2.value = "";
-    addCountry2(selectedLi.innerText);
-    wrapper2.classList.remove("active");
-    selectBtn2.firstElementChild.innerText = selectedLi.innerText;
-   
-}
+//categories script
+/*----------------------------------------------------------------------------------------------------------------*/
+const wrapper2 = document.querySelector(".wrapper1"),
+selectBtn2 = wrapper2.querySelector(".select-btn1"),
+searchInp2 = wrapper2.querySelector("input"),
+options2 = wrapper2.querySelector(".options1");
 
-document.addEventListener("click", function(event) {
-  const isClickInsideContent1 = wrapper2.contains(event.target) || selectBtn2.contains(event.target);
-  if (!isClickInsideContent1) {
-    wrapper2.classList.remove("active");
-  }
+// get the form element containing the category dropdown
+const selectcategory = document.querySelector('.divs');
+
+// get the span element inside the select-btn
+const span = selectBtn2.querySelector('span');
+
+// get the ul element inside the options
+const ul = options2;
+
+// get all the li elements inside the ul
+const li = ul.querySelectorAll('li');
+
+// loop through each li element
+li.forEach((el) => {
+// add a click event listener to each li element
+el.addEventListener('click', () => {
+// set the span text to the selected li text
+span.textContent = el.textContent;
+});
 });
 
-searchInp2.addEventListener("keyup", () => {
-    let arr = [];
-    let searchWord = searchInp2.value.toLowerCase();
-    arr = countrie.filter(data => {
-        return data.toLowerCase().startsWith(searchWord);
-    }).map(data => {
-        let isSelected = data == selectBtn2.firstElementChild.innerText ? "selected" : "";
-        return `<li onclick="updateName2(this)" class="${isSelected}">${data}</li>`;
-    }).join("");
-    options2.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Oops! Category not found</p>`;
-});
+selectBtn2.addEventListener("click", () => wrapper2.classList.toggle("active"));
+/*----------------------------------------------------------------------------------------------------------------*/
 
-selectBtn2.addEventListener("click", () => wrapper2.classList.toggle("active")); 
-/*----------------------------------------------------------------------------------*/
 
+
+
+
+
+//languages script
+/*----------------------------------------------------------------------------------------------------------------*/
 const wrapper = document.querySelector(".wrapper"),
-        selectBtn = wrapper.querySelector(".select-btn"),
-        searchInp = wrapper.querySelector("input"),
-        options = wrapper.querySelector(".options");
-  let countries = ["Arabic", "French", "English"];
+selectBtn = wrapper.querySelector(".select-btn"),
+searchInp = wrapper.querySelector("input"),
+options = wrapper.querySelector(".options");
 
-  /*function addCountry(selectedCountry) {
-    options.innerHTML = "";
-    countries.forEach(country => {
-        let isChecked = country == selectedCountry ? "checked" : "";
-        let label = `<label><input type="checkbox" ${isChecked}>${country}</label>`;
-        options.insertAdjacentHTML("beforeend", label);
-    });
-  }*/
+// get all select elements
+const selects = document.querySelectorAll('.selects');
 
-  function addCountry(selectedCountry) {
-  options.innerHTML = "";
-  countries.forEach(country => {
-    let isChecked = country == selectedCountry ? "checked" : "";
-    let label = `<label><input type="checkbox" ${isChecked}>${country}</label>`;
-    options.insertAdjacentHTML("beforeend", label);
-  });
+// loop through each select element
+selects.forEach((select) => {
+// get the span element inside the select-btn
+const span = select.querySelector('.select-btn span');
 
-  let checkboxes = options.querySelectorAll("input[type='checkbox']");
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener("change", () => {
-      let selectedCountries= [];
-      checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-          selectedCountries.push(checkbox.nextSibling.textContent);
-        }
-      });
-      selectBtn.firstElementChild.innerText = selectedCountries.join(", ");
-    });
-  });
-}
-  addCountry();
+// get the ul element inside the options
+const ul = select.querySelector('.options');
 
-  function updateName(selectedLi) {
-    searchInp.value = "";
-    addCountry(selectedLi.innerText);
-    wrapper.classList.remove("active");
-    selectBtn.firstElementChild.innerText = selectedLi.innerText;
-    
-    const wrapper2 = document.querySelector(".wrapper2"),
-    selectBtn2 = wrapper2.querySelector(".select-btn2"),
-    options2 = wrapper2.querySelector(".options2");
-    
-    options2.innerHTML = "";
-    
-    if (selectedLi.innerText === "Arabic") {
-      selectBtn2.firstElementChild.innerText = "Al3ome9";
-      options2.innerHTML = `<li onclick="updateSite(this)" class="selected">Al3ome9</li>`;
-    } else if (selectedLi.innerText === "French") {
-      selectBtn2.firstElementChild.innerText = "24h";
-      options2.innerHTML = `<li onclick="updateSite(this)" class="selected">24h</li>
-                            <li onclick="updateSite(this)">Today</li>
-                            <li onclick="updateSite(this)">site3</li>`;
-    } else if (selectedLi.innerText === "English") {
-      selectBtn2.firstElementChild.innerText = "Hespress";
-      options2.innerHTML = `<li onclick="updateSite(this)" class="selected">Hespress</li>`;
-    }
+// get all the li elements inside the ul
+const li = ul.querySelectorAll('li');
 
-    
-  }
-
-  function updateSite(selectedSite) {
-  const wrapper2 = document.querySelector(".wrapper2"),
-  selectBtn2 = wrapper2.querySelector(".select-btn2");
-  
-  selectBtn2.firstElementChild.innerText = selectedSite.innerText;
-  selectBtn2.firstElementChild.innerText = selectedSite.innerText;
-  wrapper2.classList.remove("active");
-}
-
-document.addEventListener("click", function(event) {
-  const isClickInsideContent = wrapper.contains(event.target) || selectBtn.contains(event.target);
-  if (!isClickInsideContent) {
-    wrapper.classList.remove("active");
-  }
+// loop through each li element
+li.forEach((el) => {
+// add a click event listener to each li element
+el.addEventListener('click', () => {
+// set the span text to the selected li text
+span.textContent = el.textContent;
+});
+});
 });
 
-  searchInp.addEventListener("keyup", () => {
-    let arr = [];
-    let searchWord = searchInp.value.toLowerCase();
-    arr = countries.filter(data => {
-        return data.toLowerCase().startsWith(searchWord);
-    }).map(data => {
-        let isSelected = data == selectBtn.firstElementChild.innerText ? "selected" : "";
-        return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
-    }).join("");
-    options.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Oops! No results found...</p>`;
-  });
+selectBtn.addEventListener("click", () => {
+wrapper.classList.toggle("active");
+});
+/*----------------------------------------------------------------------------------------------------------------*/
 
-  selectBtn.addEventListener("click", () => {
-    wrapper.classList.toggle("active");
-  });
 
+
+
+
+
+
+//change sites based on language
+/*----------------------------------------------------------------------------------------------------------------*/
+const sitesSelect = document.getElementById("sites-select");
+
+// Define the available sites for each language
+const languageSites = {
+english: ["Hespress", "Today"],
+french: ["24h", "Site2"],
+arabic: ["Al3omq"]
+};
+
+// Update the available sites when the language is changed
+document.querySelector(".options").addEventListener("click", (event) => {
+if (event.target.nodeName === "LI") {
+const selectedLanguage = event.target.getAttribute("value");
+const availableSites = languageSites[selectedLanguage] || ["Hespress", "Today"];
+sitesSelect.querySelector(".options2").innerHTML = "";
+availableSites.forEach((site) => {
+const li = document.createElement("li");
+li.innerHTML = `<input type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site}</label>`;
+sitesSelect.querySelector(".options2").appendChild(li);
+});
+}
+});
+/*----------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+//close the wrapper when the user clicks anywhere else
+/*----------------------------------------------------------------------------------------------------------------*/
+//for the langauge
+const selectWrappers = document.querySelectorAll(".wrapper");
+document.addEventListener("click", (event) => {
+let isInsideSelectWrapper = false;
+for (let i = 0; i < selectWrappers.length; i++) {
+if (selectWrappers[i].contains(event.target)) {
+isInsideSelectWrapper = true;
+break;
+}
+}
+if (!isInsideSelectWrapper) {
+for (let i = 0; i < selectWrappers.length; i++) {
+selectWrappers[i].classList.remove("active");
+}
+}
+});
+
+//for the category
+const selectWrapper1 = document.querySelectorAll(".wrapper1");
+document.addEventListener("click", (event) => {
+let isInsideSelectWrapper = false;
+for (let i = 0; i < selectWrapper1.length; i++) {
+if (selectWrapper1[i].contains(event.target)) {
+isInsideSelectWrapper = true;
+break;
+}
+}
+if (!isInsideSelectWrapper) {
+for (let i = 0; i < selectWrapper1.length; i++) {
+selectWrapper1[i].classList.remove("active");
+}
+}
+});
+
+
+
+//for the sites
+const selectWrapper2 = document.querySelectorAll(".wrapper2");
+document.addEventListener("click", (event) => {
+let isInsideSelectWrapper = false;
+for (let i = 0; i < selectWrapper2.length; i++) {
+if (selectWrapper2[i].contains(event.target)) {
+isInsideSelectWrapper = true;
+break;
+}
+}
+if (!isInsideSelectWrapper) {
+for (let i = 0; i < selectWrapper2.length; i++) {
+selectWrapper2[i].classList.remove("active");
+}
+}
+});
+/*----------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+//search box for the selects
+/*----------------------------------------------------------------------------------------------------------------*/
+//for language
+const searchBox = document.querySelector("#language-search");
+const languageList = document.querySelectorAll(".options li");
+
+searchBox.addEventListener("keyup", function(event) {
+const searchTerm = event.target.value.toLowerCase();
+languageList.forEach(function(language) {
+const text = language.textContent.toLowerCase();
+const match = text.includes(searchTerm);
+language.style.display = match ? "block" : "none";
+});
+});
+
+
+//for sites
+const searchInput = document.getElementById('site-search');
+const optionsList = document.querySelectorAll('#sites-select .options2 li');
+
+searchInput.addEventListener('input', () => {
+const searchTerm = searchInput.value.toLowerCase();
+
+optionsList.forEach((option) => {
+const label = option.querySelector('label').textContent.toLowerCase();
+if (label.includes(searchTerm)) {
+option.style.display = '';
+} else {
+option.style.display = 'none';
+}
+});
+});
+
+
+//for category
+const searchBox2 = document.querySelector("#category-search");
+const categorylist = document.querySelectorAll(".options1 li");
+
+searchBox2.addEventListener("keyup", function(event) {
+const searchTerm = event.target.value.toLowerCase();
+categorylist.forEach(function(category) {
+const text = category.textContent.toLowerCase();
+const match = text.includes(searchTerm);
+category.style.display = match ? "block" : "none";
+});
+});

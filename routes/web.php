@@ -29,7 +29,7 @@ Route::middleware([
         Route::get('admin/dashboard', function (){return view ('admin.dashboard');})
     ->name('admindashboard');
     
-    Route::resource('news' , NewsinfoController::class)->name('news');
+    Route::resource('news' , NewsinfoController::class)->names('news');
 
 
 });

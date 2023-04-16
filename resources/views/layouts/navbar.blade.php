@@ -14,16 +14,16 @@
         <div class="links">
                 
             <div class="link">
-                <a href="{{route('admindashboard')}}">Home</a>
+                <a style="color:black" href="{{route('admindashboard')}}" >Home</a>
             </div>
             <div class="link">
-                <a href="{{route('news.index')}}">News</a>
+                <a style="color:black" href="{{route('news.index')}}">News</a>
             </div>
         </div>
         <div class="logout">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit">Logout</button>
+                <button type="submit"  class="logout-btn"><i class="fas fa-sign-out-alt"></i>Logout</button>
             </form>
         </div>
     </div>
