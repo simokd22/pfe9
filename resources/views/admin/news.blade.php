@@ -1,13 +1,14 @@
 @extends('layouts/navbar')
 @section('style')
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
+<script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
 @endsection
 @section('title' , 'News')
 @section('content')
 <header>
     <p>Admin page</p>
     
-   </header>
+</header>
    <nav>
    
     
@@ -17,6 +18,7 @@
         <div class="tab-pane" id="tab1-content">
           <!-- Tab 1 content here -->
           <a  href="{{route('news.create')}}" class="plus-button" id="addButton" >
+            <i class="fas fa-plus"></i>
             Add
             </a>
             
@@ -48,12 +50,13 @@
                   <td>{{$item['News_content']}}</td>
                   <td>{{$item['News_date']}}</td>
                   <td>{{$item['id_langue']}}</td>
-                 <td><a href="{{route('news.edit',$item['id'])}}" class = "edit" type="submit" name="edit" >Edit</a></td>  
+                 <td><a href="{{route('news.edit',$item['id'])}}" class = "edit" type="submit" name="edit" ><i class="fa-solid fa-pen"></i></a></td>  
                   <td> 
                     <form action="{{route('news.destroy',$item['id'])}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class = "delete" type="submit" name="delete">Delete</button>
+                        <button class = "delete" type="submit" name="delete"><i class="fa-solid fa-trash"></i></button>
+                        
                     </form>
             
                 </td> 

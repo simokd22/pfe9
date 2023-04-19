@@ -7,6 +7,14 @@
     font-family: 'Poppins', sans-serif;
     
   } 
+<<<<<<< HEAD
+
+ 
+=======
+  body{
+    background-color: #f9f6f6;
+  }
+>>>>>>> 3555c197e5e0af7bbe46ab540ce22db1e401db7b
   
   nav .logo{
     color: #fff;
@@ -153,23 +161,21 @@
     }
   
     .edit{
-      background-color: #4285f4;
-      border-radius: 6px;
-      border-color: #4285f4;
-      color: white;
+      color: #4285f4;
       padding: 4px 18px;
+      background-color: transparent;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       border: none;
+      font-weight: bold;
     }
   
     .delete{
-      background-color: #ff5252;
-      border-radius: 6px;
-      border-color: #ff5252;
-      color: white;
-      padding: 4px 15px;
+      font-weight: bold;
+      color: #ff5252;
+      background-color: transparent;
+      padding: 4px 18px;
       height: 32px;
       border: none;
       cursor: pointer;

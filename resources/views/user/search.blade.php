@@ -26,6 +26,24 @@
             </form>
     <!--logout botton-->
 
+    <!--Profile icon-->
+    <div class="profile">
+      <a href="{{ route('profile.show') }}" class="profile-btn"><i class="fa fa-user"></i></a>
+    </div>
+   <!--Profile icon-->
+
+   <!--terms-->
+   <div class="terms">
+    <a href={{url('/terms')}} class="term-service">Terms</i></a>
+  </div>
+ <!--terms-->
+
+ <!--about-->
+ <div class="about">
+  <a href={{url('/about')}} class="about">about</i></a>
+</div>
+<!--about-->
+
    
 
         <form  action="{{route('user.search')}}" method="post" >
