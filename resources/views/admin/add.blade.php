@@ -10,35 +10,35 @@
             @csrf
             <div class="input-field">
                <input type="text" name="News_name" id="News_name"  required>
-               <label>News_name</label>
+               <label>News name</label>
             </div>
             <div class="input-field">
                 <input type="text"name="News_url" id="News_url" required>
-                <label>News_url</label>
+                <label>News url</label>
              </div>
              <div class="input-field">
                 <input type="text" name="News_category" id="News_category" required>
-                <label>News_category</label>
+                <label>News category</label>
              </div>
              <div class="input-field">
                <input type="text" name="News_title" id="News_title" required>
-               <label>News_title</label>
+               <label>News title</label>
             </div>
             <div class="input-field">
                <input type="text" name="News_image" id="News_image"  required>
-               <label>News_image</label>
+               <label>News image</label>
             </div>
             <div class="input-field">
                <input type="text" name="News_content" id="News_content" required>
-               <label>News_content</label>
+               <label>News content</label>
             </div>
             <div class="input-field">
                <input type="text" name="News_date" id="News_date" required>
-               <label>News_date</label>
+               <label>News date</label>
             </div>
              <div class="input-field">
                 <input type="text" name="id_langue" id="id_langue" required>
-                <label>id_langue</label>
+                <label>id langue</label>
              </div>
             
              <div class="button">

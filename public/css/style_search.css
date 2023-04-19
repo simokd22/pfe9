@@ -7,6 +7,7 @@
              box-sizing: border-box;
              font-family: 'Poppins', sans-serif;
          }
+<<<<<<< HEAD
          
          body {
              height: 100vh;
@@ -15,6 +16,15 @@
              justify-content: center;
              background: #f4f4f4;
              overflow: hidden;
+=======
+         body{
+           height: 100vh;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           background: whitesmoke;
+           overflow: hidden;
+>>>>>>> b833657f6a91eb73f60cda0ec050bbcd352e2ca5
          }
          
          .input-box {
@@ -95,6 +105,7 @@
          }
          
          .container {
+<<<<<<< HEAD
              position: relative;
              display: flex;
              flex-direction: column;
@@ -105,6 +116,18 @@
              width: 100%;
              display: flex;
              align-items: center;
+=======
+           position: relative;
+           display: flex;
+           flex-direction: column;
+           height: 100vh;
+           align-items: center;
+           justify-content: center;
+           background: whitesmoke;
+           width: 100%;
+           display: flex;
+           align-items: center;
+>>>>>>> b833657f6a91eb73f60cda0ec050bbcd352e2ca5
          }
          
          .form {
@@ -383,6 +406,7 @@
          }
          
          .logout-btn {
+<<<<<<< HEAD
              position: absolute;
              top: 0;
              right: 5px;
@@ -401,6 +425,123 @@
              margin-right: 130px;
              margin-top: 10px;
          }
+=======
+           position: absolute;
+           top: 0;
+           right: 5px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 90px;
+           height: 30px;
+           padding: 0 20px;
+           font-size: 16px;
+           background-color: #f4f4f4;
+           color: #000000;
+           border: none;
+           border-radius: 8px;
+           cursor: pointer;
+           margin-right: 130px;
+           margin-top: 10px;
+           }
+           .logout-btn:hover {
+             background-color: #e2e2e2;
+           }
+           .logout-btn i {
+           margin-right: 10px;
+         }
+
+         .profile-btn{
+          position: absolute;
+           top: 0;
+           right: 100px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 90px;
+           height: 30px;
+           padding: 0 20px;
+           font-size: 16px;
+           background-color: #f4f4f4;
+           color: #000000;
+           border: none;
+           border-radius: 8px;
+           cursor: pointer;
+           margin-right: 130px;
+           margin-top: 10px;
+        }
+        .profile-btn i {
+          margin-right: 10px;
+        }
+
+        
+        .terms .term-service{
+          position: absolute;
+          top: 0;
+          left: 0; 
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          width: 90px;
+          height: 30px;
+          padding: 0 20px;
+          font-size: 16px;
+          background-color: transparent;
+          color: #000000;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          margin-top: 10px;
+          margin-left: 130px;
+        }
+
+        .about .about{
+          position: absolute;
+          top: 0;
+          left: 0; 
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          width: 90px;
+          height: 30px;
+          padding: 0 20px;
+          font-size: 16px;
+          background-color: transparent;
+          color: #000000;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          margin-top: 10px;
+          margin-left: 200px;
+        }
+        
+       
+
+
+         @keyframes animate {
+           0% { background-position: 0 0; }
+           50% { background-position: 400% 0; }
+           100% { background-position: 0 0; }
+         }
+         .content2 label,.content1 label,.content label {
+          padding-right:10px ;
+          padding-left: 10px;
+          display: flex;
+          align-items: left;
+          margin-right: 100px;
+                
+        }
+        
+        .content2 label input,.content1 label input,.content label input  {
+          margin-right: 10px;
+          margin-top: 5px;
+                
+        }
+
+        input[type="date"] {
+          font-size: 14px;
+          height: 20px;
+>>>>>>> b833657f6a91eb73f60cda0ec050bbcd352e2ca5
          
          .logout-btn:hover {
              background-color: #555;

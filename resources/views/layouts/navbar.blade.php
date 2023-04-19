@@ -14,10 +14,10 @@
         <div class="links">
                 
             <div class="link">
-                <a style="color:black" href="{{route('admindashboard')}}" >Home</a>
+                <a  href="{{route('admindashboard')}}" >Users</a>
             </div>
             <div class="link">
-                <a style="color:black" href="{{route('news.index')}}">News</a>
+                <a  href="{{route('news.index')}}">News Table</a>
             </div>
         </div>
         <div class="logout">
