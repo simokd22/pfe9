@@ -390,6 +390,7 @@
           cursor: pointer;
           margin-top: 10px;
           margin-left: 130px;
+          text-decoration: none;
         }
 
         .about .about{
@@ -410,6 +411,7 @@
           cursor: pointer;
           margin-top: 10px;
           margin-left: 200px;
+          text-decoration: none;
         }
         
        
@@ -460,6 +462,7 @@ input[type="checkbox"] {
   width: 20px;
   height: 20px;
   margin-right: 10px;
+  
 }
 
 /* Style the custom checkbox */
@@ -509,7 +512,22 @@ input[type="checkbox"] {
 .checkbox-label {
   display: inline-block;
   vertical-align: middle;
+
 }
 
 /*checkbox css*/
+
+/* Make the "All Categories" checkbox the same size as other checkboxes */
+#all-categories input[type="checkbox"] {
+  margin-right: 18px;
+  width: 20px;
+  height: 20px;
+
+}
+
+#category_label {
+  font-size: 15px;
+  display: inline-block;
+
+}
 
