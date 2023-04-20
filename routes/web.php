@@ -58,7 +58,6 @@ Route::middleware([
     Route::get('user/search', function () {
         return view('user.search');
     })->name('usersearch');
-
     Route::post('/user/search', [SearchController::class ,'search'])->name('user.search');
     
     Route::get('/User/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');

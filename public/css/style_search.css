@@ -493,6 +493,7 @@
           cursor: pointer;
           margin-top: 10px;
           margin-left: 130px;
+          text-decoration: none;
         }
 
         .about .about{
@@ -513,6 +514,7 @@
           cursor: pointer;
           margin-top: 10px;
           margin-left: 200px;
+          text-decoration: none;
         }
         
        
@@ -543,6 +545,7 @@
           height: 20px;
 >>>>>>> b833657f6a91eb73f60cda0ec050bbcd352e2ca5
          
+<<<<<<< HEAD
          .logout-btn:hover {
              background-color: #555;
          }
@@ -652,3 +655,95 @@
              vertical-align: middle;
          }
          /*checkbox css*/
+=======
+        }
+
+        .logo {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        
+        
+        
+
+
+
+
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  
+}
+
+/* Style the custom checkbox */
+.checkbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  margin-right: 10px;
+}
+
+.checkbox:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* Style the checked custom checkbox */
+.checkbox input:checked + .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid #000;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Style the checkmark inside the custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+}
+
+/* Style the custom checkbox label */
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+/*checkbox css*/
+
+/* Make the "All Categories" checkbox the same size as other checkboxes */
+#all-categories input[type="checkbox"] {
+  margin-right: 18px;
+  width: 20px;
+  height: 20px;
+
+}
+
+#category_label {
+  font-size: 15px;
+  display: inline-block;
+
+}
+
+>>>>>>> 90ed122a4793cc6d6c5cb3d5995a58b35ab4ac40

@@ -73,6 +73,25 @@ span.textContent = el.textContent;
 });
 });
 
+//checkbox
+const allCategoriesCheckbox = document.getElementById('all-categories');
+const categoryCheckboxes = document.querySelectorAll('input[name="categories[]"]');
+
+allCategoriesCheckbox.addEventListener('change', (e) => {
+categoryCheckboxes.forEach((checkbox) => {
+checkbox.checked = e.target.checked;
+});
+});
+
+categoryCheckboxes.forEach((checkbox) => {
+ checkbox.addEventListener('change', (e) => {
+ if (!e.target.checked) {
+allCategoriesCheckbox.checked = false;
+}
+});
+});
+//checkbox
+
 selectBtn2.addEventListener("click", () => wrapper2.classList.toggle("active"));
 /*----------------------------------------------------------------------------------------------------------------*/
 
@@ -129,23 +148,21 @@ const sitesSelect = document.getElementById("sites-select");
 
 // Define the available sites for each language
 const languageSites = {
-english: ["Hespress", "Today"],
-french: ["24h", "Site2"],
-arabic: ["Al3omq"]
+  english: ["Hespress", "Today"],
+  french: ["24h", "Site 2"],
+  arabic: ["Al3omq"]
 };
 
 // Update the available sites when the language is changed
-document.querySelector(".options").addEventListener("click", (event) => {
-if (event.target.nodeName === "LI") {
-const selectedLanguage = event.target.getAttribute("value");
-const availableSites = languageSites[selectedLanguage] || ["Hespress", "Today"];
-sitesSelect.querySelector(".options2").innerHTML = "";
-availableSites.forEach((site) => {
-const li = document.createElement("li");
-li.innerHTML = `<input type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site}</label>`;
-sitesSelect.querySelector(".options2").appendChild(li);
-});
-}
+document.querySelector(".options").addEventListener("change", (event) => {
+  const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
+  const availableSites = languageSites[selectedLanguage] || ["Hespress", "Today"];
+  sitesSelect.querySelector(".options2").innerHTML = "";
+  availableSites.forEach((site) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<input type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site}</label>`;
+    sitesSelect.querySelector(".options2").appendChild(li);
+  });
 });
 /*----------------------------------------------------------------------------------------------------------------*/
 
@@ -214,9 +231,6 @@ selectWrapper2[i].classList.remove("active");
 
 
 
-
-
-
 //search box for the selects
 /*----------------------------------------------------------------------------------------------------------------*/
 //for language
@@ -263,3 +277,19 @@ const match = text.includes(searchTerm);
 category.style.display = match ? "block" : "none";
 });
 });
+/*----------------------------------------------------------------------------------------------------------------*/
+
+
+
+// change the name of the span in language section
+/*----------------------------------------------------------------------------------------------------------------*/
+const languageRadioButtons = document.querySelectorAll('input[name="language"]');
+const languageSelectText = document.querySelector('.select-btn span');
+
+languageRadioButtons.forEach((button) => {
+  button.addEventListener('change', () => {
+    const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
+    languageSelectText.textContent = selectedLanguage.toUpperCase();
+  });
+});
+/*----------------------------------------------------------------------------------------------------------------*/

@@ -15,7 +15,7 @@ class SearchController extends Controller
     }
     public function search(Request $request)
     {
-      dd($request->all());
+      //dd($request->all());
         $key_word = $request->input('keyword');
         $date_start = $request->input('start_date');
         $date_end = $request->input('end_date');

@@ -203,7 +203,7 @@ cursor: pointer;
                           </tr>
                             <tr>
                                 @for ($i=1;$i<=$innerdata['PagesNumber'];$i++)
-                                <td><button class="page-num"> {{ $i }} </button> </td>
+                                <td><button class="page-num" data-number="{{ $i }}"> {{ $i }} </button> </td>
                                 @endfor
                             </tr>
                         </table>
@@ -220,7 +220,7 @@ cursor: pointer;
       $(document).ready(function() {
         //var now={{ json_encode(session()->get('now')) }};
         //console.log(now);
-        var activeTab={{ json_encode($activTab) }};
+       var  now=0;
   if (now == 0) {
     console.log('activeTab == 0');
     $('.tab-pane').hide();
