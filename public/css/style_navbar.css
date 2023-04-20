@@ -31,22 +31,13 @@
   }
   
   .link:first-child {
-<<<<<<< HEAD
- 
-  }
-  
-  .link:last-child {
- 
-=======
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
   
   .link:last-child {
-   
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
->>>>>>> 3555c197e5e0af7bbe46ab540ce22db1e401db7b
   }
   
   .links .link a:hover {
@@ -78,8 +69,3 @@
   .logout button i {
     margin-right: 10px;
   }
-<<<<<<< HEAD
- 
-=======
-  
->>>>>>> 3555c197e5e0af7bbe46ab540ce22db1e401db7b
