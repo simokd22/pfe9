@@ -169,21 +169,15 @@
               <div class="buttons">
                 <button class="search-btn" type="submit">Search</button>
                 <button class="reset-btn" type="reset">Reset</button>
+                </div>
+               
               </div>
-            </form>
             <!--save and reset botton--> 
-
-              
             </form>
-
-
-
             <footer>
               <p>copyright 2023-2024</p>
             </footer>
-             </div>
-        
-          
+             </div>  
           <script src="{{ asset('js/search.js') }}"></script>
 
     </body>
