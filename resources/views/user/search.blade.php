@@ -165,20 +165,12 @@
                 </div>
                
               </div>
-            
             <!--save and reset botton--> 
-
-              
             </form>
-
-
-
             <footer>
               <p>copyright 2023-2024</p>
             </footer>
-             </div>
-        
-          
+             </div>  
           <script src="{{ asset('js/search.js') }}"></script>
 
     </body>
