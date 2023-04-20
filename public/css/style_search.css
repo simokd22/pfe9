@@ -1,714 +1,533 @@
-                             /* Google Fonts - Poppins */
-                             
-                             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-                             * {
-                                 margin: 0;
-                                 padding: 0;
-                                 box-sizing: border-box;
-                                 font-family: 'Poppins', sans-serif;
-                             }
-                             
-                             body {
-                                 height: 100vh;
-                                 display: flex;
-                                 align-items: center;
-                                 justify-content: center;
-                                 background: whitesmoke;
-                                 overflow: hidden;
-                             }
-                             
-                             .input-box {
-                                 position: relative;
-                                 height: 55px;
-                                 max-width: 55px;
-                                 width: 100%;
-                                 margin: auto;
-                                 border-radius: 6px;
-                                 background-color: #fff;
-                                 transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                             }
-                             
-                             .input-box.open {
-                                 max-width: 640px;
-                                 margin-right: 60px;
-                             }
-                             
-                             input {
-                                 position: relative;
-                                 outline: none;
-                                 border: none;
-                                 height: 100%;
-                                 width: 100%;
-                                 border-radius: 6px;
-                                 font-size: 16px;
-                                 font-weight: 400;
-                                 color: #333;
-                                 background-color: #fff;
-                             }
-                             
-                             .input-box.open {
-                                 padding: 0 15px 0 65px;
-                             }
-                             
-                             .icon {
-                                 position: absolute;
-                                 height: 100%;
-                                 top: 0;
-                                 left: 0;
-                                 width: 60px;
-                                 border-radius: 6px;
-                                 display: flex;
-                                 justify-content: center;
-                                 background-color: #fff;
-                             }
-                             
-                             .search-icon,
-                             .close-icon {
-                                 position: absolute;
-                                 top: 50%;
-                                 font-size: 30px;
-                                 transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                             }
-                             
-                             .search-icon {
-                                 color: #4070f4;
-                                 transform: translateY(-50%) rotate(90deg);
-                             }
-                             
-                             .input-box.open .search-icon {
-                                 transform: translateY(-50%) rotate(0);
-                             }
-                             
-                             .close-icon {
-                                 right: -45px;
-                                 color: #ff5252;
-                                 padding: 5px;
-                                 opacity: 0;
-                                 pointer-events: none;
-                                 transform: translateY(-50%);
-                             }
-                             
-                             .input-box.open .close-icon {
-                                 opacity: 1;
-                                 pointer-events: auto;
-                                 transform: translateY(-50%) rotate(180deg);
-                             }
-                             
-                             .container {
-                                 position: relative;
-                                 display: flex;
-                                 flex-direction: column;
-                                 height: 100vh;
-                                 align-items: center;
-                                 justify-content: center;
-                                 background: #f4f4f4;
-                                 width: 100%;
-                                 display: flex;
-                                 align-items: center;
-                                 position: relative;
-                                 display: flex;
-                                 flex-direction: column;
-                                 height: 100vh;
-                                 align-items: center;
-                                 justify-content: center;
-                                 background: whitesmoke;
-                                 width: 100%;
-                                 display: flex;
-                                 align-items: center;
-                             }
-                             
-                             .form {
-                                 margin: auto;
-                                 margin-top: 60px;
-                                 /* Changed from 5px */
-                                 padding-top: 20px;
-                             }
-                             
-                             .dates {
-                                 display: flex;
-                                 margin-top: 20px;
-                             }
-                             
-                             .select {
-                                 width: 20%;
-                                 padding: 12px 20px;
-                                 margin: 8px 0;
-                                 box-sizing: border-box;
-                                 border: 2px solid #ccc;
-                                 border-radius: 4px;
-                                 font-size: 16px;
-                             }
-                             
-                              ::selection {
-                                 color: #fff;
-                                 background: #4285f4;
-                             }
-                             
-                             .wrapper,
-                             .wrapper1,
-                             .wrapper2 {
-                                 width: 220px;
-                                 margin: 20px auto 0;
-                             }
-                             
-                             .select-btn span,
-                             .select-btn1 span,
-                             .select-btn2 span {
-                                 text-align: center;
-                             }
-                             
-                             .select-btn,
-                             .select-btn1,
-                             .select-btn2,
-                             li {
-                                 display: flex;
-                                 align-items: center;
-                                 cursor: pointer;
-                             }
-                             
-                             .select-btn,
-                             .select-btn1,
-                             .select-btn2 {
-                                 height: 40px;
-                                 /* decreased height */
-                                 width: 200px;
-                                 padding: 0 20px;
-                                 font-size: 16px;
-                                 /* decreased font size */
-                                 background: #fff;
-                                 border-radius: 7px;
-                                 justify-content: space-between;
-                                 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-                             }
-                             
-                             .select-btn i,
-                             .select-btn1 i,
-                             .select-btn2 i {
-                                 font-size: 20px;
-                                 /* decreased font size */
-                                 transition: transform 0.3s linear;
-                             }
-                             
-                             .wrapper.active .select-btn i,
-                             .wrapper1.active .select-btn1 i,
-                             .wrapper2.active .select-btn2 i {
-                                 transform: rotate(-180deg);
-                             }
-                             
-                             .content,
-                             .content1,
-                             .content2 {
-                                 display: none;
-                                 width: 200px;
-                                 padding: 20px;
-                                 margin-top: 15px;
-                                 background: #fff;
-                                 border-radius: 7px;
-                                 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-                                 position: fixed;
-                                 z-index: 222;
-                             }
-                             
-                             .wrapper.active .content,
-                             .wrapper1.active .content1,
-                             .wrapper2.active .content2 {
-                                 display: block;
-                             }
-                             
-                             .content .search,
-                             .content1 .search,
-                             .content2 .search {
-                                 position: relative;
-                             }
-                             
-                             .search i {
-                                 top: 50%;
-                                 left: 15px;
-                                 color: #999;
-                                 font-size: 20px;
-                                 pointer-events: none;
-                                 transform: translateY(-50%);
-                                 position: absolute;
-                             }
-                             
-                             .search input {
-                                 height: 50px;
-                                 width: 100%;
-                                 outline: none;
-                                 font-size: 17px;
-                                 border-radius: 5px;
-                                 padding: 0 20px 0 43px;
-                                 border: 1px solid #B3B3B3;
-                             }
-                             
-                             .search input:focus {
-                                 padding-left: 42px;
-                                 border: 2px solid #4285f4;
-                             }
-                             
-                             .search input::placeholder {
-                                 color: #bfbfbf;
-                             }
-                             
-                             .content .options,
-                             .content1 .options1,
-                             .content2 .options2 {
-                                 margin-top: 10px;
-                                 max-height: 100px;
-                                 overflow-y: auto;
-                                 padding-right: 7px;
-                             }
-                             
-                             .options::-webkit-scrollbar,
-                             .options1::-webkit-scrollbar,
-                             .options2::-webkit-scrollbar {
-                                 width: 7px;
-                             }
-                             
-                             .options::-webkit-scrollbar-track,
-                             .options1::-webkit-scrollbar-track,
-                             .options2::-webkit-scrollbar-track {
-                                 background: #f1f1f1;
-                                 border-radius: 25px;
-                             }
-                             
-                             .options::-webkit-scrollbar-thumb,
-                             .options1::-webkit-scrollbar-thumb,
-                             .options2::-webkit-scrollbar-thumb {
-                                 background: #ccc;
-                                 border-radius: 25px;
-                             }
-                             
-                             .options::-webkit-scrollbar-thumb:hover,
-                             .options1::-webkit-scrollbar-thumb:hover,
-                             .options2::-webkit-scrollbar-thumb:hover {
-                                 background: #b3b3b3;
-                             }
-                             
-                             .options li,
-                             .options1 li,
-                             .options2 li {
-                                 height: 50px;
-                                 padding: 0 13px;
-                                 font-size: 15px;
-                             }
-                             
-                             .options li:hover,
-                             .options1 li:hover,
-                             .options2 li:hover,
-                             li.selected {
-                                 border-radius: 5px;
-                                 background: #f2f2f2;
-                             }
-                             
-                             .selects {
-                                 display: flex;
-                                 align-items: center;
-                                 justify-content: center;
-                             }
-                             
-                             .wrapper3 {
-                                 margin-top: 20px;
-                                 display: flex;
-                                 align-items: center;
-                                 justify-content: center;
-                                 padding-bottom: 20px;
-                             }
-                             
-                             .wrapper3 input {
-                                 padding-left: 20px;
-                                 margin-right: 20px;
-                                 margin-left: 20px;
-                             }
-                             
-                             .label {
-                                 text-size-adjust: 10px;
-                             }
-                             
-                             .divs {
-                                 display: inline-block;
-                                 z-index: 2;
-                             }
-                             
-                             .divs3 {
-                                 display: inline-block;
-                                 z-index: 0;
-                             }
-                             
-                             footer {
-                                 position: fixed;
-                                 left: 0;
-                                 bottom: 0;
-                                 width: 100%;
-                                 /*background-color: rgb(0, 0, 0);*/
-                                 color: #2c2c2c;
-                                 text-align: center;
-                                 padding: 20px;
-                                 font-weight: lighter;
-                                 font-size: 12px;
-                             }
-                             
-                             button {
-                                 position: relative;
-                                 display: inline;
-                                 height: 30px;
-                                 width: 70px;
-                                 border: none;
-                                 outline: none;
-                                 color: white;
-                                 background: #2c2c2c;
-                                 cursor: pointer;
-                                 border-radius: 5px;
-                                 font-size: 14px;
-                                 font-family: 'Raleway', sans-serif;
-                                 margin: 10px;
-                             }
-                             
-                             button:before {
-                                 position: absolute;
-                                 content: '';
-                                 top: -2px;
-                                 left: -2px;
-                                 height: calc(100% + 4px);
-                                 width: calc(100% + 4px);
-                                 border-radius: 5px;
-                                 z-index: -1;
-                                 opacity: 0;
-                                 filter: blur(5px);
-                                 background-size: 400%;
-                                 transition: opacity .3s ease-in-out;
-                                 animation: animate 20s linear infinite;
-                             }
-                             
-                             button:hover:before {
-                                 opacity: 1;
-                             }
-                             
-                             button:hover:active {
-                                 background: none;
-                             }
-                             
-                             button:hover:active:before {
-                                 filter: blur(2px);
-                             }
-                             
-                             .logout-btn {
-                                 position: absolute;
-                                 top: 0;
-                                 right: 5px;
-                                 display: flex;
-                                 justify-content: center;
-                                 align-items: center;
-                                 width: 90px;
-                                 height: 30px;
-                                 padding: 0 20px;
-                                 font-size: 16px;
-                                 background-color: #f4f4f4;
-                                 color: #000000;
-                                 border: none;
-                                 border-radius: 8px;
-                                 cursor: pointer;
-                                 margin-right: 130px;
-                                 margin-top: 10px;
-                             }
-                             
-                             .logout-btn:hover {
-                                 background-color: #e2e2e2;
-                             }
-                             
-                             .logout-btn i {
-                                 margin-right: 10px;
-                             }
-                             
-                             .profile-btn {
-                                 position: absolute;
-                                 top: 0;
-                                 right: 100px;
-                                 display: flex;
-                                 justify-content: center;
-                                 align-items: center;
-                                 width: 90px;
-                                 height: 30px;
-                                 padding: 0 20px;
-                                 font-size: 16px;
-                                 background-color: #f4f4f4;
-                                 color: #000000;
-                                 border: none;
-                                 border-radius: 8px;
-                                 cursor: pointer;
-                                 margin-right: 130px;
-                                 margin-top: 10px;
-                             }
-                             
-                             .profile-btn i {
-                                 margin-right: 10px;
-                             }
-                             
-                             .terms .term-service {
-                                 position: absolute;
-                                 top: 0;
-                                 left: 0;
-                                 display: flex;
-                                 justify-content: left;
-                                 align-items: center;
-                                 width: 90px;
-                                 height: 30px;
-                                 padding: 0 20px;
-                                 font-size: 16px;
-                                 background-color: transparent;
-                                 color: #000000;
-                                 border: none;
-                                 border-radius: 8px;
-                                 cursor: pointer;
-                                 margin-top: 10px;
-                                 margin-left: 130px;
-                                 text-decoration: none;
-                             }
-                             
-                             .about .about {
-                                 position: absolute;
-                                 top: 0;
-                                 left: 0;
-                                 display: flex;
-                                 justify-content: left;
-                                 align-items: center;
-                                 width: 90px;
-                                 height: 30px;
-                                 padding: 0 20px;
-                                 font-size: 16px;
-                                 background-color: transparent;
-                                 color: #000000;
-                                 border: none;
-                                 border-radius: 8px;
-                                 cursor: pointer;
-                                 margin-top: 10px;
-                                 margin-left: 200px;
-                                 text-decoration: none;
-                             }
-                             
-                             @keyframes animate {
-                                 0% {
-                                     background-position: 0 0;
-                                 }
-                                 50% {
-                                     background-position: 400% 0;
-                                 }
-                                 100% {
-                                     background-position: 0 0;
-                                 }
-                             }
-                             
-                             .content2 label,
-                             .content1 label,
-                             .content label {
-                                 padding-right: 10px;
-                                 padding-left: 10px;
-                                 display: flex;
-                                 align-items: left;
-                                 margin-right: 100px;
-                             }
-                             
-                             .content2 label input,
-                             .content1 label input,
-                             .content label input {
-                                 margin-right: 10px;
-                                 margin-top: 5px;
-                             }
-                             
-                             input[type="date"] {
-                                 font-size: 18px;
-                                 font-weight: bold;
-                                 height: 20px;
-                                 padding: 18px 10px;
-                             }
-                             
-                             .logout-btn:hover {
-                                 background-color: #555;
-                             }
-                             
-                             .logout-btn i {
-                                 margin-right: 10px;
-                             }
-                             
-                             @keyframes animate {
-                                 0% {
-                                     background-position: 0 0;
-                                 }
-                                 50% {
-                                     background-position: 400% 0;
-                                 }
-                                 100% {
-                                     background-position: 0 0;
-                                 }
-                             }
-                             
-                             .content2 label,
-                             .content1 label,
-                             .content label {
-                                 padding-right: 10px;
-                                 padding-left: 10px;
-                                 display: flex;
-                                 align-items: left;
-                                 margin-right: 100px;
-                             }
-                             
-                             .content2 label input,
-                             .content1 label input,
-                             .content label input {
-                                 margin-right: 10px;
-                                 margin-top: 5px;
-                             }
-                             
-                             input[type="date"] {
-                                 font-size: 14px;
-                                 height: 20px;
-                             }
-                             
-                             .logo {
-                                 position: absolute;
-                                 top: 0;
-                                 left: 50%;
-                                 transform: translateX(-50%);
-                             }
-                             
-                             #all-sites {
-                                 font-size: 15px;
-                             }
-                             /* Hide the default checkbox */
-                             
-                             input[type="checkbox"] {
-                                 width: 20px;
-                                 height: 20px;
-                                 margin-right: 10px;
-                             }
-                             /* Style the custom checkbox */
-                             
-                             .checkbox {
-                                 display: inline-block;
-                                 position: relative;
-                                 cursor: pointer;
-                                 font-size: 16px;
-                                 line-height: 20px;
-                                 margin-right: 10px;
-                             }
-                             
-                             .checkbox:before {
-                                 content: "";
-                                 display: inline-block;
-                                 width: 20px;
-                                 height: 20px;
-                                 margin-right: 5px;
-                                 background-color: #fff;
-                                 border: 1px solid #ccc;
-                                 border-radius: 2px;
-                             }
-                             /* Style the checked custom checkbox */
-                             
-                             .checkbox input:checked+.checkmark:after {
-                                 content: "";
-                                 position: absolute;
-                                 left: 6px;
-                                 top: 3px;
-                                 width: 6px;
-                                 height: 12px;
-                                 border: solid #000;
-                                 border-width: 0 3px 3px 0;
-                                 transform: rotate(45deg);
-                             }
-                             /* Style the checkmark inside the custom checkbox */
-                             
-                             .checkmark {
-                                 position: absolute;
-                                 top: 0;
-                                 left: 0;
-                                 height: 20px;
-                                 width: 20px;
-                             }
-                             /* Style the custom checkbox label */
-                             
-                             .checkbox-label {
-                                 display: inline-block;
-                                 vertical-align: middle;
-                             }
-                             /*checkbox css*/
-                             
-                             .logo {
-                                 position: absolute;
-                                 top: 0;
-                                 left: 50%;
-                                 transform: translateX(-50%);
-                             }
-                             /* Hide the default checkbox */
-                             
-                             input[type="checkbox"] {
-                                 width: 20px;
-                                 height: 20px;
-                                 margin-right: 10px;
-                             }
-                             /* Style the custom checkbox */
-                             
-                             .checkbox {
-                                 display: inline-block;
-                                 position: relative;
-                                 cursor: pointer;
-                                 font-size: 16px;
-                                 line-height: 20px;
-                                 margin-right: 10px;
-                             }
-                             
-                             .checkbox:before {
-                                 content: "";
-                                 display: inline-block;
-                                 width: 20px;
-                                 height: 20px;
-                                 margin-right: 5px;
-                                 background-color: #fff;
-                                 border: 1px solid #ccc;
-                                 border-radius: 2px;
-                             }
-                             /* Style the checked custom checkbox */
-                             
-                             .checkbox input:checked+.checkmark:after {
-                                 content: "";
-                                 position: absolute;
-                                 left: 6px;
-                                 top: 3px;
-                                 width: 6px;
-                                 height: 12px;
-                                 border: solid #000;
-                                 border-width: 0 3px 3px 0;
-                                 transform: rotate(45deg);
-                             }
-                             /* Style the checkmark inside the custom checkbox */
-                             
-                             .checkmark {
-                                 position: absolute;
-                                 top: 0;
-                                 left: 0;
-                                 height: 20px;
-                                 width: 20px;
-                             }
-                             /* Style the custom checkbox label */
-                             
-                             .checkbox-label {
-                                 display: inline-block;
-                                 vertical-align: middle;
-                             }
-                             /*checkbox css*/
-                             /* Make the "All Categories" checkbox the same size as other checkboxes */
-                             
-                             #all-categories input[type="checkbox"] {
-                                 margin-right: 18px;
-                                 width: 20px;
-                                 height: 20px;
-                             }
-                             
-                             #category_label {
-                                 font-size: 15px;
-                                 display: inline-block;
-                             }
-                             
-                             .buttons {
-                                 display: grid;
-                                 place-items: center;
-                             }
+         /* Google Fonts - Poppins */
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+         *{
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+           font-family: 'Poppins', sans-serif;
+         }
+         body{
+           height: 100vh;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           background: whitesmoke;
+           overflow: hidden;
+         }
+         .input-box{
+           position: relative;
+           height: 55px;
+           max-width: 55px;
+           width: 100%;
+           margin: auto;
+           border-radius: 6px;
+           background-color: #fff;
+           transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+           
+         }
+         .input-box.open{
+           max-width: 640px;
+           margin-right: 60px;
+         }
+         input{
+           position: relative;
+           outline: none;
+           border: none;
+           height: 100%;
+           width: 100%;
+           border-radius: 6px;
+           font-size: 16px;
+           font-weight: 400;
+           color: #333;
+           background-color: #fff;
+         }
+         .input-box.open{
+           padding: 0 15px 0 65px;
+         }
+         .icon{
+           position: absolute;
+           height: 100%;
+           top: 0;
+           left: 0;
+           width: 60px;
+           border-radius: 6px;
+           display: flex;
+           justify-content: center;
+           background-color: #fff;
+           
+         }
+         .search-icon,
+         .close-icon{
+           position: absolute;
+           top: 50%;
+           font-size: 30px;
+           transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+         }
+         .search-icon{
+           color: #4070f4;
+           
+           transform: translateY(-50%) rotate(90deg);
+         }
+         .input-box.open .search-icon{
+           transform: translateY(-50%) rotate(0);
+         }
+         .close-icon{
+           right: -45px;
+           color: #ff5252;
+           padding: 5px;
+           opacity: 0;
+           pointer-events: none;
+           transform: translateY(-50%);
+         }
+         .input-box.open .close-icon{
+           opacity: 1;
+           pointer-events: auto;
+           transform: translateY(-50%) rotate(180deg);
+         }
+         
+         .container {
+           position: relative;
+           display: flex;
+           flex-direction: column;
+           height: 100vh;
+           align-items: center;
+           justify-content: center;
+           background: whitesmoke;
+           width: 100%;
+           display: flex;
+           align-items: center;
+         }
+         
+         .form {
+           margin: auto;
+           margin-top: 60px; /* Changed from 5px */
+           padding-top: 20px;
+         
+           }
+           
+         
+           .dates {
+             display: flex;
+             margin-top: 20px;
+           }
+           
+         
+         
+         
+         .select {
+           width: 20%;
+           padding: 12px 20px;
+           margin: 8px 0;
+           box-sizing: border-box;
+           border: 2px solid #ccc;
+           border-radius: 4px;
+           font-size: 16px;
+         }
+         
+         ::selection{
+           color: #fff;
+           background: #4285f4;
+         }
+         .wrapper,.wrapper1,.wrapper2{
+           width: 220px;
+           margin: 20px auto 0;
+          
+         }
+         
+         .select-btn span,.select-btn1 span,.select-btn2 span{
+           text-align: center;
+         }
+         .select-btn,.select-btn1,.select-btn2, li{
+           display: flex;
+           align-items: center;
+           cursor: pointer;
+           
+         }
+         .select-btn,.select-btn1,.select-btn2{
+           height: 40px; /* decreased height */
+           width: 200px;
+           padding: 0 20px;
+           font-size: 16px; /* decreased font size */
+           background: #fff;
+           border-radius: 7px;
+           justify-content: space-between;
+           box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+           
+         }
+         .select-btn i,.select-btn1 i,.select-btn2 i{
+           font-size: 20px; /* decreased font size */
+           transition: transform 0.3s linear;
+         }
+         .wrapper.active .select-btn i,.wrapper1.active .select-btn1 i,.wrapper2.active .select-btn2 i{
+           transform: rotate(-180deg);
+         }
+         .content,.content1,.content2{
+           display: none;
+           width: 200px;
+           padding: 20px;
+           margin-top: 15px;
+           background: #fff;
+           border-radius: 7px;
+           box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+           position: fixed;  
+           z-index: 222;
+         }
+         .wrapper.active .content,.wrapper1.active .content1,.wrapper2.active .content2{
+           display: block;
+         }
+         .content .search,.content1 .search,.content2 .search{
+           position: relative;
+         }
+         .search i{
+           top: 50%;
+           left: 15px;
+           color: #999;
+           font-size: 20px;
+           pointer-events: none;
+           transform: translateY(-50%);
+           position: absolute;
+         }
+         .search input{
+           height: 50px;
+           width: 100%;
+           outline: none;
+           font-size: 17px;
+           border-radius: 5px;
+           padding: 0 20px 0 43px;
+           border: 1px solid #B3B3B3;
+         }
+         .search input:focus{
+           padding-left: 42px;
+           border: 2px solid #4285f4;
+         }
+         .search input::placeholder{
+           color: #bfbfbf;
+         }
+         .content .options,.content1 .options1,.content2 .options2{
+           margin-top: 10px;
+           max-height: 100px;
+           overflow-y: auto;
+           padding-right: 7px;
+         }
+         .options::-webkit-scrollbar,.options1::-webkit-scrollbar,.options2::-webkit-scrollbar{
+           width: 7px;
+         }
+         .options::-webkit-scrollbar-track,.options1::-webkit-scrollbar-track,.options2::-webkit-scrollbar-track{
+           background: #f1f1f1;
+           border-radius: 25px;
+         }
+         .options::-webkit-scrollbar-thumb,.options1::-webkit-scrollbar-thumb,.options2::-webkit-scrollbar-thumb{
+           background: #ccc;
+           border-radius: 25px;
+         }
+         .options::-webkit-scrollbar-thumb:hover,.options1::-webkit-scrollbar-thumb:hover,.options2::-webkit-scrollbar-thumb:hover{
+           background: #b3b3b3;
+         }
+         .options li,.options1 li,.options2 li{
+           height: 50px;
+           padding: 0 13px;
+           font-size: 15px;
+         }
+         .options li:hover,.options1 li:hover,.options2 li:hover, li.selected{
+           border-radius: 5px;
+           background: #f2f2f2;
+         }
+         
+         .selects {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+         }
+         .wrapper3 {
+           margin-top: 20px;
+           display: flex;
+           align-items: center;
+           justify-content: center; 
+           padding-bottom: 20px;
+           
+         }
+         
+         .wrapper3 input {
+           padding-left: 20px; 
+           margin-right: 20px;
+           margin-left: 20px;
+           
+           }
+           
+         .label{
+           text-size-adjust: 10px;
+         }
+         .divs{
+           display: inline-block;
+           z-index: 2;
+           
+         }
+         
+         .divs3{
+           display: inline-block;
+           z-index: 0;
+         }
+         
+         footer {
+           position: fixed;
+           left: 0;
+           bottom: 0;
+           width: 100%;
+           /*background-color: rgb(0, 0, 0);*/
+           color: #2c2c2c;
+           text-align: center;
+           padding: 20px;
+           font-weight: lighter;
+           font-size: 12px;
+         }
+         
+         button{
+           position: relative;
+           display: inline;
+           height: 30px;
+           width: 70px;
+           border: none;
+           outline: none;
+           color: white;
+           background: #2c2c2c;
+           cursor: pointer;
+           border-radius: 5px;
+           font-size: 14px;
+           font-family: 'Raleway', sans-serif;
+           margin: 10px;
+          
+         }
+         button:before{
+           position: absolute;
+           content: '';
+           top: -2px;
+           left: -2px;
+           height: calc(100% + 4px);
+           width: calc(100% + 4px);
+           border-radius: 5px;
+           z-index: -1;
+           opacity: 0;
+           filter: blur(5px);
+           background-size: 400%;
+           transition: opacity .3s ease-in-out;
+           animation: animate 20s linear infinite;
+         }
+         button:hover:before{
+           opacity: 1;
+         }
+         button:hover:active{
+           background: none;
+         }
+         button:hover:active:before{
+           filter: blur(2px);
+         }
+         .logout-btn {
+           position: absolute;
+           top: 0;
+           right: 5px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 90px;
+           height: 30px;
+           padding: 0 20px;
+           font-size: 16px;
+           background-color: #f4f4f4;
+           color: #000000;
+           border: none;
+           border-radius: 8px;
+           cursor: pointer;
+           margin-right: 130px;
+           margin-top: 10px;
+           }
+           .logout-btn:hover {
+             background-color: #e2e2e2;
+           }
+           .logout-btn i {
+           margin-right: 10px;
+         }
+
+         .profile-btn{
+          position: absolute;
+           top: 0;
+           right: 100px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 90px;
+           height: 30px;
+           padding: 0 20px;
+           font-size: 16px;
+           background-color: #f4f4f4;
+           color: #000000;
+           border: none;
+           border-radius: 8px;
+           cursor: pointer;
+           margin-right: 130px;
+           margin-top: 10px;
+        }
+        .profile-btn i {
+          margin-right: 10px;
+        }
+
+        
+        .terms .term-service{
+          position: absolute;
+          top: 0;
+          left: 0; 
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          width: 90px;
+          height: 30px;
+          padding: 0 20px;
+          font-size: 16px;
+          background-color: transparent;
+          color: #000000;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          margin-top: 10px;
+          margin-left: 130px;
+          text-decoration: none;
+        }
+
+        .about .about{
+          position: absolute;
+          top: 0;
+          left: 0; 
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          width: 90px;
+          height: 30px;
+          padding: 0 20px;
+          font-size: 16px;
+          background-color: transparent;
+          color: #000000;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          margin-top: 10px;
+          margin-left: 200px;
+          text-decoration: none;
+        }
+        
+       
+
+
+         @keyframes animate {
+           0% { background-position: 0 0; }
+           50% { background-position: 400% 0; }
+           100% { background-position: 0 0; }
+         }
+         .content2 label,.content1 label,.content label {
+          padding-right:10px ;
+          padding-left: 10px;
+          display: flex;
+          align-items: left;
+          margin-right: 100px;
+                
+        }
+        
+        .content2 label input,.content1 label input,.content label input  {
+          margin-right: 10px;
+          margin-top: 5px;
+                
+        }
+
+        input[type="date"] {
+          font-size: 14px;
+          height: 20px;
+         
+        }
+
+        .logo {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        
+        
+        
+
+
+
+
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  
+}
+
+/* Style the custom checkbox */
+.checkbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  margin-right: 10px;
+}
+
+.checkbox:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* Style the checked custom checkbox */
+.checkbox input:checked + .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid #000;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Style the checkmark inside the custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+}
+
+/* Style the custom checkbox label */
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+/*checkbox css*/
+
+/* Make the "All Categories" checkbox the same size as other checkboxes */
+#all-categories input[type="checkbox"] {
+  margin-right: 18px;
+  width: 20px;
+  height: 20px;
+
+}
+
+#category_label {
+  font-size: 15px;
+  display: inline-block;
+
+}
+
