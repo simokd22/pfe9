@@ -409,12 +409,6 @@ else{
 }
 public static function handle(String $key_word,$date_start='',$date_end='',String $Category=''){
     $instance=new self;
-    //dd($instance->compare_category('أخبار سياسية',$Category));
-    /*$client=new Client([
-        
-    ]);
-    $res=$client->request('GET','https://alyaoum24.com/');
-    dd($res);*/
 
 $urls = [
     [

@@ -74,9 +74,9 @@
                     <!--That little search-box-->
                     <ul class="options1">
                       <li><input type="checkbox" id="all-categories" name="all-categories" value="all-categories"> <label id="category_label" for="all-categories"> <b>All Categories</b></label></li>
-                      <li value="sport"><input type="checkbox" id="sport" name="categories[]" value="sport"><label for="sport">Sport</label></li>
-                      <li value="politique"><input type="checkbox" id="politique" name="categories[]" value="politique"><label for="politique">Politique</label></li>
-                      <li value="societe"><input type="checkbox" id="societe" name="categories[]" value="societe"><label for="societe">Societe</label></li>
+                      <li value="sport"><input type="checkbox" id="sport" name="categories[]" value="رياضة"><label for="sport">رياضة</label></li>
+                      <li value="politique"><input type="checkbox" id="politique" name="categories[]" value="سياسة"><label for="politique">سياسة</label></li>
+                      <li value="societe"><input type="checkbox" id="societe" name="categories[]" value="مجتمع"><label for="societe">مجتمع</label></li>
                     </ul>
                   </div>
                 </div> 
@@ -159,8 +159,11 @@
            
               
               <div class="buttons">
-                <button class="search-btn" type="submit">Search</button>
+                <div class="button">
+                   <button class="search-btn" type="submit">Search</button>
                 <button class="reset-btn" type="reset">Reset</button>
+                </div>
+               
               </div>
             
             <!--save and reset botton--> 
