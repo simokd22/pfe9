@@ -10,7 +10,7 @@ class SearchController extends Controller
     {
         $data = $request->session()->get('data');
         //redirect('test/results');
-        return view('user.results',['data'=>$data]);
+        return view('user.results',['data'=>$data,'activeTab'=>0]);
 
     }
     public function search(Request $request)

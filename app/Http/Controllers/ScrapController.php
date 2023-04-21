@@ -611,7 +611,7 @@ $client = new Client([
         'Accept' => 'text/html',
         'Referer' => 'http://www.est-umi.ac.ma/'
     ],
-    'verify' => base_path('resources/cacert.pem')
+    'verify' => 'C:/Users/Sohayb/Desktop/laravel-test/resources/cacert.pem'
 ]);
 
 $requests = function ($urls){
