@@ -22,18 +22,6 @@ return new class extends Migration
                   ->on('langues')
                   ->onDelete('cascade');
 
-            /*$table->String('News_articles');
-            $table->String('News_title');
-            $table->String('News_title');
-            $table->String('News_content');
-            $table->String('News_search');
-            $table->String('News_Date_format');
-            $table->String('News_Date');
-
-            $table->String('date');
-
-            $table->date('end_date');
-            $table->String('name_site');*/
             $table->timestamps();
         });
     }

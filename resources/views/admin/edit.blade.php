@@ -22,6 +22,22 @@
                 <label>News category</label>
              </div>
              <div class="input-field">
+               <input type="text" value="{{$datafind->News_title}}" name="News_title" required>
+               <label>News title</label>
+            </div>
+            <div class="input-field">
+               <input type="text" value="{{$datafind->News_image}}" name="News_image" required>
+               <label>News image</label>
+            </div>
+            <div class="input-field">
+               <input type="text" value="{{$datafind->News_content}}" name="News_content" required>
+               <label>News content</label>
+            </div>
+            <div class="input-field">
+               <input type="text" value="{{$datafind->News_date}}" name="News_date" required>
+               <label>News date</label>
+            </div>
+             <div class="input-field">
                 <input type="text" value="{{$datafind->id_langue}}" name="id_langue" required>
                 <label>id langue</label>
              </div>

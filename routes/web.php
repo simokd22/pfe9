@@ -44,7 +44,7 @@ Route::middleware([
         return view('user.search');
     })->name('usersearch');
 
-    Route::get('/user/search', [SearchController::class ,'search'])->name('user.search');
+    Route::get('/user/search', [SearchController::class ,'search'])->names('user.search');
     
 
 });
