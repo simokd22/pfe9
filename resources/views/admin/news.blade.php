@@ -27,10 +27,6 @@
                   <th> News name </th>
                   <th> News url </th>
                   <th> News category </th>
-                  <th> News title </th>
-                  <th> News image </th>
-                  <th> News content </th>
-                  <th> News date </th>
                   <th> id langue </th>
                   <th colspan="2"> Action </th>
                  
@@ -45,10 +41,6 @@
                   <td>{{$item['News_name']}}</td>
                   <td>{{$item['News_url']}}</td>
                   <td>{{$item['News_category']}}</td>
-                  <td>{{$item['News_title']}}</td>
-                  <td>{{$item['News_image']}}</td>
-                  <td>{{$item['News_content']}}</td>
-                  <td>{{$item['News_date']}}</td>
                   <td>{{$item['id_langue']}}</td>
                  <td><a href="{{route('news.edit',$item['id'])}}" class = "edit" type="submit" name="edit" ><i class="fa-solid fa-pen"></i></a></td>  
                   <td> 

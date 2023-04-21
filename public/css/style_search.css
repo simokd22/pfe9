@@ -12,7 +12,7 @@
            display: flex;
            align-items: center;
            justify-content: center;
-           background: whitesmoke;
+           background: #f4f4f4;
            overflow: hidden;
          }
          .input-box{
@@ -93,7 +93,7 @@
            height: 100vh;
            align-items: center;
            justify-content: center;
-           background: whitesmoke;
+           background: #f4f4f4;
            width: 100%;
            display: flex;
            align-items: center;
@@ -376,7 +376,6 @@ input[type="checkbox"] {
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  
 }
 
 /* Style the custom checkbox */
@@ -426,7 +425,6 @@ input[type="checkbox"] {
 .checkbox-label {
   display: inline-block;
   vertical-align: middle;
-
 }
 
 /*checkbox css*/
