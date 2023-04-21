@@ -1,8 +1,22 @@
 <x-guest-layout>
+    <link rel="stylesheet" href="{{ asset('css/style_login.css') }}">
+    <!--about-->
+<div class="about">
+<a href={{url('/about')}} class="about">about</i></a>
+</div>
+<!--about-->
+ <!--terms-->
+ <div class="terms">
+    <a href={{url('/terms')}} class="term-service">Terms</i></a>
+  </div>
+  <!--terms-->
     <x-authentication-card>
         <x-slot name="logo">
-            <!--<x-authentication-card-logo />-->
+            <a href="{{ route('login') }}">
+                <img src="{{ asset('logo/blue_symbol.png') }}" alt="Logo" class="w-12 h-12 mr-2" />
+            </a>
         </x-slot>
+
 
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
@@ -13,6 +27,7 @@
                 {{ session('status') }}
             </div>
         @endif
+
 
         <x-validation-errors class="mb-4" />
 

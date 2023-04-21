@@ -9,7 +9,6 @@
         <title> Animated Search Bar </title>
     
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
  <link rel="stylesheet" href="{{ asset('css/style_search.css') }}">
 
@@ -17,32 +16,44 @@
 
           </head>
           <body>
-            
-    <!--logout botton-->
-        <div class="container">
-          <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit"  class="logout-btn"><i class="fas fa-sign-out-alt"></i>Logout</button>
-            </form>
-    <!--logout botton-->
+          
+<!-- Menu -->
 
-    <!--Profile icon-->
-    <div class="profile">
-      <a href="{{ route('profile.show') }}" class="profile-btn"><i class="fa fa-user"></i></a>
-    </div>
-   <!--Profile icon-->
+      <!--log out-->
+<div class="logout">
+  <form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <button type="submit"  class="logout-btn"><i class="fas fa-sign-out-alt"></i>Logout</button>
+  </form>
+  <!--log out-->
 
-   <!--terms-->
-   <div class="terms">
-    <a href={{url('/terms')}} class="term-service">Terms</i></a>
-  </div>
+
  <!--terms-->
-
- <!--about-->
- <div class="about">
-  <a href={{url('/about')}} class="about">about</i></a>
+<div class="terms">
+  <a href={{url('/terms')}} class="term-service">Terms</i></a>
 </div>
+<!--terms-->
+
 <!--about-->
+<div class="about">
+  <a href={{url('/about')}} class="about">about</i></a>
+  </div>
+  <!--about-->
+
+  <!--profile-->
+  <div class="profile">
+    <a href="{{ route('profile.show') }}" class="profile-btn"><i class="fa fa-user"></i></a>
+</div>
+<!--profile-->
+
+<!--logo icon-->
+<div class="logo_icon">
+  <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo">
+  </a>
+</div>
+<!--logo icon-->
+
+<!-- Menu -->
 
    
 
@@ -181,6 +192,7 @@
             <footer>
               <p>copyright 2023-2024</p>
             </footer>
+
              </div>
         
           
