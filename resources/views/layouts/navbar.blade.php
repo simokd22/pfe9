@@ -11,8 +11,13 @@
 </head>
 <body>
     <div class="menu">
-        <div class="links">
-                
+        <!--logo icon-->
+<div class="logo_icon">
+    <a  class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo">
+    </a>
+  </div>
+  <!--logo icon-->
+        <div class="links">    
             <div class="link">
                 <a  href="{{route('admindashboard')}}" >Users</a>
             </div>
