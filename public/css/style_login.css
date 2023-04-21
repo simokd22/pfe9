@@ -1,0 +1,43 @@
+.about .about{
+    position: absolute;
+    top: 0;
+    left: 0; 
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+    padding: 0 20px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-left: 200px;
+    text-decoration: none;
+   }
+
+   .terms .term-service{
+    position: absolute;
+    top: 0;
+    left: 0; 
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+    padding: 0 20px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-left: 130px;
+    text-decoration: none;
+   }
+
+ 
