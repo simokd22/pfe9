@@ -76,10 +76,9 @@
                     </div>
                     <!--That little search-box-->
                     <ul class="options1">
-                      <li><input type="checkbox" id="all-categories" name="all-categories" value="all-categories"> <label id="category_label" for="all-categories"> <b>All Categories</b></label></li>
-                      <li value="sport"><input type="checkbox" id="sport" name="categories[]" value="sport"><label for="sport">Sport</label></li>
-                      <li value="politique"><input type="checkbox" id="politique" name="categories[]" value="politique"><label for="politique">Politique</label></li>
-                      <li value="societe"><input type="checkbox" id="societe" name="categories[]" value="societe"><label for="societe">Societe</label></li>
+                      <li value="sport">Sport</li>
+                      <li value="politique">Politique</li>
+                      <li value="societe">Societe</li>
                     </ul>
                   </div>
                 </div> 
@@ -102,17 +101,11 @@
                 <input id="language-search" spellcheck="false" type="text" placeholder="Search">
               </div>
               <!--That little search-box-->
-              <div class="options">
-                <label> <input type="radio" name="language" value="english">English</label>
-                <label>
-                  <input type="radio" name="language" value="french">
-                  French
-                </label>
-                <label>
-                  <input type="radio" name="language" value="arabic">
-                  Arabic
-                </label>
-              </div>
+              <ul class="options">
+                <li value="english">English</li>
+                <li value="french">French</li>
+                <li value="arabic">Arabic</li>
+              </ul>
             </div>
           </div> 
         </form>
@@ -169,10 +162,8 @@
               <div class="buttons">
                 <button class="search-btn" type="submit">Search</button>
                 <button class="reset-btn" type="reset">Reset</button>
-                </div>
-               
               </div>
-            
+            </form>
             <!--save and reset botton--> 
 
               

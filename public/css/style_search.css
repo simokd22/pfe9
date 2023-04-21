@@ -12,7 +12,7 @@
            display: flex;
            align-items: center;
            justify-content: center;
-           background: whitesmoke;
+           background: #f4f4f4;
            overflow: hidden;
          }
          .input-box{
@@ -93,7 +93,7 @@
            height: 100vh;
            align-items: center;
            justify-content: center;
-           background: whitesmoke;
+           background: #f4f4f4;
            width: 100%;
            display: flex;
            align-items: center;
@@ -333,8 +333,8 @@
            height: 30px;
            padding: 0 20px;
            font-size: 16px;
-           background-color: #f4f4f4;
-           color: #000000;
+           background-color: #000000;
+           color: #ffffff;
            border: none;
            border-radius: 8px;
            cursor: pointer;
@@ -342,81 +342,11 @@
            margin-top: 10px;
            }
            .logout-btn:hover {
-             background-color: #e2e2e2;
+             background-color: #555;
            }
            .logout-btn i {
            margin-right: 10px;
          }
-
-         .profile-btn{
-          position: absolute;
-           top: 0;
-           right: 100px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           width: 90px;
-           height: 30px;
-           padding: 0 20px;
-           font-size: 16px;
-           background-color: #f4f4f4;
-           color: #000000;
-           border: none;
-           border-radius: 8px;
-           cursor: pointer;
-           margin-right: 130px;
-           margin-top: 10px;
-        }
-        .profile-btn i {
-          margin-right: 10px;
-        }
-
-        
-        .terms .term-service{
-          position: absolute;
-          top: 0;
-          left: 0; 
-          display: flex;
-          justify-content: left;
-          align-items: center;
-          width: 90px;
-          height: 30px;
-          padding: 0 20px;
-          font-size: 16px;
-          background-color: transparent;
-          color: #000000;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-          margin-top: 10px;
-          margin-left: 130px;
-          text-decoration: none;
-        }
-
-        .about .about{
-          position: absolute;
-          top: 0;
-          left: 0; 
-          display: flex;
-          justify-content: left;
-          align-items: center;
-          width: 90px;
-          height: 30px;
-          padding: 0 20px;
-          font-size: 16px;
-          background-color: transparent;
-          color: #000000;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-          margin-top: 10px;
-          margin-left: 200px;
-          text-decoration: none;
-        }
-        
-       
-
-
          @keyframes animate {
            0% { background-position: 0 0; }
            50% { background-position: 400% 0; }
@@ -462,7 +392,6 @@ input[type="checkbox"] {
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  
 }
 
 /* Style the custom checkbox */
@@ -512,22 +441,7 @@ input[type="checkbox"] {
 .checkbox-label {
   display: inline-block;
   vertical-align: middle;
-
 }
 
 /*checkbox css*/
-
-/* Make the "All Categories" checkbox the same size as other checkboxes */
-#all-categories input[type="checkbox"] {
-  margin-right: 18px;
-  width: 20px;
-  height: 20px;
-
-}
-
-#category_label {
-  font-size: 15px;
-  display: inline-block;
-
-}
 
