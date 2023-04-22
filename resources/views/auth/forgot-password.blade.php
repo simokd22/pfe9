@@ -1,15 +1,5 @@
 <x-guest-layout>
     <link rel="stylesheet" href="{{ asset('css/style_login.css') }}">
-    <!--about-->
-<div class="about">
-<a href={{url('/about')}} class="about">about</i></a>
-</div>
-<!--about-->
- <!--terms-->
- <div class="terms">
-    <a href={{url('/terms')}} class="term-service">Terms</i></a>
-  </div>
-  <!--terms-->
     <x-authentication-card>
         <x-slot name="logo">
             <a href="{{ route('login') }}">

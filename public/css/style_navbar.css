@@ -7,12 +7,13 @@
   align-items: center;
   justify-content: space-between;
   z-index: 999;
+  margin-top: 10px;
   
 }
   
   .links {
     display: flex;
-    margin-left: 110px;
+    margin-left: 130px;
   }
   a {
     text-decoration: none;
@@ -73,3 +74,26 @@
   .logout button i {
     margin-right: 10px;
   }
+
+
+    /*logo*/
+    .logo_icon {
+      width: 40px; 
+      height: auto; 
+      position: absolute; 
+      top: 7px; 
+      left: 10px;
+      display: flex; 
+      align-items: center; 
+      }
+      
+      .logo_icon img {
+      max-width: 100%; 
+      height: auto; 
+      margin-left: 70px; 
+      margin-right: 100px;
+      margin-bottom: 10px;
+      }
+
+  
+
