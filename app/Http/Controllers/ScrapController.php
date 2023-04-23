@@ -1,18 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Exceptions\InvalidFormatException;
-use DateTime;
 set_time_limit(0);
 
 
 use Carbon\Carbon;
 use Exception;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+
 use GuzzleHttp\Pool;
-use GuzzleHttp\Promise;
-use GuzzleHttp\Promise\Utils;
+
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
@@ -24,16 +21,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use IntlDateFormatter;
-
-
-use simplehtmldom_1_5\simple_html_dom;
 use Symfony\Component\DomCrawler\Crawler;
-use Jenssegers\Date\Date;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Handler\CurlHandler;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\Cookie\CookieJar;
-use GuzzleHttp\Cookie\SetCookie;
+
 class ScrapController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
