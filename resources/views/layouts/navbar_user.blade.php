@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @yield('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="{{asset('css/style_navbar.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/style_navbar_user.css')}}"/>
     <title>@yield('title')</title>
 </head>
 <body>
@@ -18,13 +18,20 @@
   </div>
   <!--logo icon-->
         <div class="links">    
-            <div class="link">
-                <a  href="{{route('admindashboard')}}" >Users</a>
+            <div class="profile">
+                <a href={{ route('profile') }} class="profile-btn"><i class="fa fa-user"></i></a>           
+             </div>
+             <div class="about">
+                    <a href={{route('about')}} class="about">about</i></a>
             </div>
-            <div class="link">
-                <a  href="{{route('news.index')}}">News Table</a>
+            <div class="terms">
+                <a href={{url('/terms')}} class="term-service">Terms</i></a>
             </div>
+            <div class="logo_icon">
+                <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo"></a>
+              </div>
         </div>
+        
         <div class="logout">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

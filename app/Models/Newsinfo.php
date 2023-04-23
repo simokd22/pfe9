@@ -12,10 +12,10 @@ class Newsinfo extends Model
     'News_name',
     'News_url',
     'News_category',
+    'id_langue',
     'News_title',
     'News_image',
     'News_content',
     'News_date',
-    'id_langue',
     ];
 }

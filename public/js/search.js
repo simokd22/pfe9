@@ -149,7 +149,7 @@ const sitesSelect = document.getElementById("sites-select");
 // Define the available sites for each language
 const languageSites = {
   english: ["Hespress", "Today"],
-  french: ["24h", "Site 2"],
+  french: ["24h", "Site2"],
   arabic: ["Al3omq"]
 };
 
