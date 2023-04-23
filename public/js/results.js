@@ -1,9 +1,8 @@
     $(document).ready(function() {
-        //var now={{ json_encode(session()->get('now')) }};
-        //console.log(now);
-        var now = 0;
-        if (now == 0) {
-            console.log('activeTab == 0');
+        var IsInArticle = localStorage.getItem('IsInArticle');
+        var activeTab = localStorage.getItem('activeTab');
+        console.log(activeTab);
+        if (IsInArticle == 0 || IsInArticle == null) {
             $('.tab-pane').hide();
             $('#1-content').addClass('active');
             $('#1-content').show();
@@ -14,20 +13,17 @@
             console.log('activeTab != 0');
 
             $('.tab-pane').hide();
-            $('#' + localStorage.getItem('activeTab') + '-content').addClass('active');
-            $('#' + localStorage.getItem('activeTab') + '-content').show();
-            $('#' + localStorage.getItem('activeTab')).css({
+            $('#' + activeTab + '-content').addClass('active');
+            $('#' + activeTab + '-content').show();
+            $('#' + activeTab).css({
                 'border-bottom': '4px solid #ddd',
             });
         }
-
         $('.tab').click(function() {
             //e.preventDefault();
             let id = $(this).attr("id");
             console.log(id);
             localStorage.setItem('activeTab', id);
-            //var now2={{ json_encode(session()->get('now')) }};
-            // console.log(now2);
             $('.tab-pane').hide();
             $('.tab-pane').removeClass('active');
             $('#' + id + '-content').addClass('active');
@@ -39,7 +35,7 @@
             $(this).css({
                 'border-bottom': '4px solid #ddd',
             });
-            // setSessionVariable('IsInArticle', 0);
         });
+        localStorage.setItem('IsInArticle', 0);
 
     });
