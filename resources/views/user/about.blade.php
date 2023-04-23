@@ -1,18 +1,23 @@
 
 
+@extends('layouts/navbar_user')
+@section('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<link rel="stylesheet" href="{{ asset('css/style_about.css') }}">
+<script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
+@endsection
+@section('title' , 'search')
+@section('content')
+    
+            <nav>
+   
+    
+            </nav>  
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>About Us</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="{{ asset('css/style_about.css') }}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-</head>
-<body>
-	<!-- Menu -->
+	<body>
+		
+	{{--<!-- Menu -->
 
       <!--log out-->
 <div class="logout">
@@ -48,7 +53,7 @@
   </div>
   <!--logo icon-->
   
-  <!-- Menu -->
+  <!-- Menu -->--}}
 
 	<header>
 		<h1>About Us</h1>
@@ -75,4 +80,4 @@
 		<p>Copyright © 2023-2024</p>
 	</footer>
 </body>
-</html>
+@endsection

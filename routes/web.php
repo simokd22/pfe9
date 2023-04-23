@@ -29,7 +29,7 @@ Route::middleware([
         Route::get('admin/dashboard', function (){return view ('admin.dashboard');})
     ->name('admindashboard');
     
-    Route::resource('news' , NewsinfoController::class)->name('news');
+    Route::resource('news' , NewsinfoController::class)->names('news');
 
 
 });
@@ -44,8 +44,15 @@ Route::middleware([
         return view('user.search');
     })->name('usersearch');
 
-    Route::get('/user/search', [SearchController::class ,'search'])->names('user.search');
-    
+    Route::get('/user/search', [SearchController::class ,'search'])->name('user.search');
 
+     Route::get('user/profile', function () {
+        return view('profile.show');
+    })->name('profile');
+    
+    Route::get('user/about', function () {
+        return view('user.about');
+    })->name('about');
+    
 });
 
