@@ -40,16 +40,17 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified','authuser'
 ])->group(function () {
-    Route::get('user/search', function () {
+    Route::get('/user/search', function () {
         return view('user.search');
-    })->name('usersearch');
-
-    Route::get('/user/search', [SearchController::class ,'search'])->name('user.search');
-
+    })->name('user.search');
+    Route::post('/user/search', [SearchController::class ,'search'])->name('user.search-post');
+    
+    Route::get('/User/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');
+    Route::get('/user/article/{news}/{id}', [SearchController::class,'show'])->name('user.article');
      Route::get('user/profile', function () {
         return view('profile.show');
     })->name('profile');
-    
+
     Route::get('user/about', function () {
         return view('user.about');
     })->name('about');
