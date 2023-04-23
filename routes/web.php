@@ -2,7 +2,6 @@
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\NewsinfoController;
 
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,22 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view ('auth.login');
+    return view('auth.login');
 });
-
-Route::get('/about', function () {
-    return view ('user.about');
-});
-
-Route::get('/terms', function () {
-    return view ('user.termsOfService');
-});
-
-Route::get('/profile', function () {
-    return view ('profile.show');
-});
-
-
 
 //admin
 Route::middleware([
@@ -44,7 +29,7 @@ Route::middleware([
         Route::get('admin/dashboard', function (){return view ('admin.dashboard');})
     ->name('admindashboard');
     
-    Route::resource('news' , NewsinfoController::class)->names('news');
+    Route::resource('news' , NewsinfoController::class)->name('news');
 
 
 });
@@ -58,9 +43,9 @@ Route::middleware([
     Route::get('user/search', function () {
         return view('user.search');
     })->name('usersearch');
-    Route::post('/user/search', [SearchController::class ,'search'])->name('user.search');
+
+    Route::get('/user/search', [SearchController::class ,'search'])->names('user.search');
     
-    Route::get('/User/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');
-    Route::get('/user/article/{news}/{id}', [SearchController::class,'show'])->name('user.article');
+
 });
 

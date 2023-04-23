@@ -1,11 +1,20 @@
+
+
 <x-guest-layout >
+    
     <x-authentication-card >
 
         <x-slot name="logo">
-          <!-- logo   <x-authentication-card-logo /> -->
+            <a href="{{ route('login') }}">
+                <img src="{{ asset('logo/blue_symbol.png') }}" alt="Logo" class="w-12 h-12 mr-2" />
+            </a>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
+        
+
+        <h1 style="font-size: 36px; text-align: center; margin-bottom:20px">Log in</h1>
+
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">

@@ -267,8 +267,17 @@
          .divs3{
            display: inline-block;
            z-index: 0;
+           display: flex;
+          justify-content: center;
+          align-items: center;
          }
-         
+         .buttons {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+      
          footer {
            position: fixed;
            left: 0;
@@ -281,6 +290,7 @@
            font-weight: lighter;
            font-size: 12px;
          }
+
          
          button{
            position: relative;
@@ -322,98 +332,7 @@
          button:hover:active:before{
            filter: blur(2px);
          }
-         .logout-btn {
-           position: absolute;
-           top: 0;
-           right: 5px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           width: 90px;
-           height: 30px;
-           padding: 0 20px;
-           font-size: 16px;
-           background-color: #f4f4f4;
-           color: #000000;
-           border: none;
-           border-radius: 8px;
-           cursor: pointer;
-           margin-right: 130px;
-           margin-top: 10px;
-           }
-           .logout-btn:hover {
-             background-color: #e2e2e2;
-           }
-           .logout-btn i {
-           margin-right: 10px;
-         }
-
-         .profile-btn{
-          position: absolute;
-           top: 0;
-           right: 100px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           width: 90px;
-           height: 30px;
-           padding: 0 20px;
-           font-size: 16px;
-           background-color: #f4f4f4;
-           color: #000000;
-           border: none;
-           border-radius: 8px;
-           cursor: pointer;
-           margin-right: 130px;
-           margin-top: 10px;
-        }
-        .profile-btn i {
-          margin-right: 10px;
-        }
-
-        
-        .terms .term-service{
-          position: absolute;
-          top: 0;
-          left: 0; 
-          display: flex;
-          justify-content: left;
-          align-items: center;
-          width: 90px;
-          height: 30px;
-          padding: 0 20px;
-          font-size: 16px;
-          background-color: transparent;
-          color: #000000;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-          margin-top: 10px;
-          margin-left: 130px;
-          text-decoration: none;
-        }
-
-        .about .about{
-          position: absolute;
-          top: 0;
-          left: 0; 
-          display: flex;
-          justify-content: left;
-          align-items: center;
-          width: 90px;
-          height: 30px;
-          padding: 0 20px;
-          font-size: 16px;
-          background-color: transparent;
-          color: #000000;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-          margin-top: 10px;
-          margin-left: 200px;
-          text-decoration: none;
-        }
-        
+         
        
 
 
@@ -451,11 +370,6 @@
         }
         
         
-        
-
-
-
-
 
 /* Hide the default checkbox */
 input[type="checkbox"] {
@@ -530,4 +444,122 @@ input[type="checkbox"] {
   display: inline-block;
 
 }
+
+
+.links {
+  display: flex;
+  margin-left: 110px;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 30px;
+  padding: 0 20px;
+  font-size: 16px;
+  background-color: #f4f4f4;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 130px;
+  margin-top: 25px;
+}
+  .logout-btn:hover {
+    background-color: #e2e2e2;
+  }
+  .logout-btn i {
+  margin-right: 10px;
+}
+
+.profile-btn{
+ position: absolute;
+  top: 0;
+  right: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 30px;
+  padding: 0 20px;
+  font-size: 16px;
+  background-color: #f4f4f4;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 130px;
+  margin-top: 25px;
+}
+.profile-btn i {
+ margin-right: 10px;
+}
+
+
+.terms .term-service{
+ position: absolute;
+ top: 0;
+ left: 0; 
+ display: flex;
+ justify-content: left;
+ align-items: center;
+ width: 90px;
+ height: 30px;
+ padding: 0 20px;
+ font-size: 16px;
+ background-color: transparent;
+ color: #000000;
+ border: none;
+ border-radius: 8px;
+ cursor: pointer;
+ margin-top: 25px;
+ margin-left: 130px;
+ text-decoration: none;
+}
+
+.about .about{
+ position: absolute;
+ top: 0;
+ left: 0; 
+ display: flex;
+ justify-content: left;
+ align-items: center;
+ width: 90px;
+ height: 30px;
+ padding: 0 20px;
+ font-size: 16px;
+ background-color: transparent;
+ color: #000000;
+ border: none;
+ border-radius: 8px;
+ cursor: pointer;
+ margin-top: 25px;
+ margin-left: 200px;
+ text-decoration: none;
+}
+
+/*logo*/
+.logo_icon {
+  width: 40px; 
+  height: auto; 
+  position: absolute; 
+  top: 10px; 
+  left: 10px;
+  display: flex; 
+  align-items: center; 
+}
+
+.logo_icon img {
+  max-width: 100%; 
+  height: auto; 
+  margin-left: 70px; 
+  margin-bottom: 100px;
+}
+
+
 
