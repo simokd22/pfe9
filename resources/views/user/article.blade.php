@@ -1,25 +1,16 @@
-@extends('layouts/navbar_user')
-@section('style')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
 <link rel="stylesheet" href="{{ asset('css/style_article.css') }}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
-@endsection
-@section('title' , 'article')
-@section('content')
-    
-            <nav>
-   
-    
-            </nav> 
+
     
 </head>
 
 
 
     <body>
+       
      <div class="blogpost">
         <h1 class="title"> {{ $data[$news][$id]['title'] }}</h1>
         <div class="image">

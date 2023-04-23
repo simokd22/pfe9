@@ -1,10 +1,13 @@
-* {
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+ *{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+   }
+   
 body {
     margin: 0 15%;
-    background-color: #f4f4f4;
+    background-color: white;
     font-family: 'Cairo';
 }
 
@@ -23,6 +26,7 @@ body {
     font-size: 40px;
     text-align: center;
     direction: rtl;
+    margin-top: 120px;
 }
 
 .date {
@@ -41,7 +45,7 @@ body {
 
 article p {
     color: rgb(20, 19, 19);
-    font-size: 25px;
+    font-size: 18px;
     font-family: 'Cairo';
     text-align: justify;
     line-height: 1.5;
@@ -61,6 +65,7 @@ i {
     justify-content: space-between;
     justify-items: right;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 .blog {
@@ -133,7 +138,9 @@ i {
 }
 
 .other-articles {
-    font-size: 40px;
+    font-size: 20px;
     margin: 80px 0 20px 0;
     direction: rtl;
+    font-weight: bold;
 }
+
