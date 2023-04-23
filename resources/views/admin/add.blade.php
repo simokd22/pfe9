@@ -5,7 +5,7 @@
 @section('title' , 'Add news')
 @section('content')
 <div class="container">
-         <header>Add</header>
+         <header>Add NEWS</header>
          <form method="POST" action="{{route('news.store')}}">
             @csrf
             <div class="input-field">
@@ -13,7 +13,7 @@
                <label>News name</label>
             </div>
             <div class="input-field">
-                <input type="text"name="News_url" id="News_url" required>
+                <input type="url"name="News_url" id="News_url" required>
                 <label>News url</label>
              </div>
              <div class="input-field">
@@ -33,12 +33,15 @@
                <label>News content</label>
             </div>
             <div class="input-field">
-               <input type="text" name="News_date" id="News_date" required>
-               <label>News date</label>
+               <input style="color: gray" type="date" name="News_date" id="News_date" required>
             </div>
              <div class="input-field">
-                <input type="text" name="id_langue" id="id_langue" required>
-                <label>id langue</label>
+                <select style="color: gray" name="ID" id="">
+                  <option value="id">Select Id</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
              </div>
             
              <div class="button">

@@ -25,7 +25,7 @@
                     <a href={{route('about')}} class="about">about</i></a>
             </div>
             <div class="terms">
-                <a href={{url('/terms')}} class="term-service">Terms</i></a>
+                <a href={{route('terms')}} class="term-service">Terms</i></a>
             </div>
             <div class="logo_icon">
                 <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo"></a>

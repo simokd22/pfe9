@@ -34,8 +34,8 @@
                <label>News content</label>
             </div>
             <div class="input-field">
-               <input type="text" value="{{$datafind->News_date}}" name="News_date" required>
-               <label>News date</label>
+               <input type="date" value="{{$datafind->News_date}}" name="News_date" required>
+               
             </div>
              <div class="input-field">
                 <input type="text" value="{{$datafind->id_langue}}" name="id_langue" required>

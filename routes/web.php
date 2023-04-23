@@ -53,6 +53,10 @@ Route::middleware([
     Route::get('user/about', function () {
         return view('user.about');
     })->name('about');
+
+    Route::get('user/termsOfService', function () {
+        return view('user.termsOfService');
+    })->name('terms');
     
 });
 
