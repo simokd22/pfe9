@@ -3,7 +3,6 @@ session_start();
 if(!isset($_SESSION['IsInArticle'])) {
   $_SESSION['IsInArticle']=0;
 }
-
 @endphp
 
 @extends('layouts/navbar_user')
@@ -21,7 +20,6 @@ if(!isset($_SESSION['IsInArticle'])) {
    
     
             </nav>   
-         <body>
 
     @if (empty($data))
     <h2 class="Error">No Results Found!!</h2>
