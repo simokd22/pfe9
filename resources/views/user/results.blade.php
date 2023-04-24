@@ -14,11 +14,7 @@ if(!isset($_SESSION['IsInArticle'])) {
 @endsection
 @section('title' , 'results')
 @section('content')
-    
-            <nav>
-   
-    
-            </nav>   
+
          <body>>
     @if (empty($data))
     <h2 class="Error">No Results Found!!</h2>
