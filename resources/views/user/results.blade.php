@@ -4,6 +4,7 @@ if(!isset($_SESSION['IsInArticle'])) {
   $_SESSION['IsInArticle']=0;
 }
 @endphp
+
 @extends('layouts/navbar_user')
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
