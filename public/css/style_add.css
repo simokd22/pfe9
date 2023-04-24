@@ -6,6 +6,7 @@
   box-sizing: border-box;
 }
 body{
+  background-color: #f9f6f6;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -16,6 +17,7 @@ body{
   background-size: cover;
   background-position: center;
 }
+
 .container{
   position: relative;
   width: 400px;
@@ -23,7 +25,7 @@ body{
   padding: 60px 40px;
 }
 header{
-  margin-top: 200px;
+  margin-top: 400px;
   font-size: 40px;
   margin-bottom: 60px;
   font-family: 'Poppins', sans-serif;
@@ -34,7 +36,8 @@ header{
   height: 50px;
   width: 100%;
 }
-.input-field input{
+
+.input-field input, select{
   height: 100%;
   width: 100%;
   border: 1px solid silver;
