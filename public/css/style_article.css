@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');*/
 
  *{
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    /*font-family: 'Poppins', sans-serif;*/
+    font-family: 'sky-bold';
    }
    
 body {
     margin: 0 15%;
     background-color: white;
-    font-family: 'Cairo';
+   /* font-family: 'Cairo';*/
 }
 
 .blogpost {
@@ -22,11 +23,11 @@ body {
 }
 
 .title {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'sky-bold';
     font-size: 40px;
     text-align: center;
     direction: rtl;
-    margin-top: 120px;
+    margin-top: 170px;
 }
 
 .date {
@@ -46,14 +47,15 @@ body {
 article p {
     color: rgb(20, 19, 19);
     font-size: 18px;
-    font-family: 'Cairo';
+    font-family: 'sky-bold';
     text-align: justify;
     line-height: 1.5;
     font-weight: bold;
     direction: rtl;
+    font-weight: lighter;
 }
 
-i {
+.i {
     color: rgb(151, 151, 151);
     margin-top: 19px;
     padding: 0 10px;
@@ -141,6 +143,14 @@ i {
     font-size: 20px;
     margin: 80px 0 20px 0;
     direction: rtl;
-    font-weight: bold;
+    font-family: 'sky-bold';
 }
 
+footer {
+	color: #333;
+	padding: 20px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
