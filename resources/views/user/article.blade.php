@@ -1,25 +1,27 @@
 
+@extends('layouts/navbar_user')
+@section('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <link rel="stylesheet" href="{{ asset('css/style_article.css') }}">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet"  href="https://www.fontstatic.com/f=sky-bold" />
 <script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
+@endsection
+@section('title' , 'search')
+@section('content')
+     
 
-    
-</head>
-
-
-
-    <body>
-       
+	<body >
+        
      <div class="blogpost">
-        <h1 class="title"> {{ $data[$news][$id]['title'] }}</h1>
+        <h1  class="title"> {{ $data[$news][$id]['title'] }}</h1>
         <div class="image">
             <img src="{{ $data[$news][$id]['image'] }}" alt="" >
         </div>
         <div class="date">
             <p>{{ $data[$news][$id]['category'] }}</p>
             <span> | </span>
-            <i class="fas fa-clock" style="float: right;"></i>
+            <i style="color: rgb(151, 151, 151); margin-top: 22px; padding: 0 10px;" class="fas fa-clock" style="float: right;"></i>
             <p>  {{ $data[$news][$id]['date'] }} </p>
         </div>
     <article>
@@ -29,38 +31,41 @@
     </article>
  </div >
      <h2 class="other-articles">مقالات ذات صلة: </h2>
-    <div class="blog-container">
+     <div class="blog-container">
         @php
-        $index= $id+1 ;
-        $key=$id ;
+        $index = $id + 1;
+        $key = $id;
+        $count = 0;
         @endphp
-        @for ($i=0;$i<8;$i++)
-        @if ($key==$index)
-            @break
-        @else
-        @if ($index==count($data[$news])-1)
-        @php
-        $i--;
-        $index=0 ;
-        @endphp
-
-        @else
-        <div class="blog">
-        <img src="{{ $data[$news][$index]['image'] }}" alt="" loading="lazy" decoding="async">
-        <div class="blog-info">
-          <p class="blog-date">{{ $data[$news][$index]['date'] }}</p>
-          <a href="{{ route('user.article',['news'=>$news,'id'=>$index]) }}" class="blog-title">{{ $data[$news][$index]['title'] }}</a>
-        </div>
-        </div>
-        @php
-        $index++ ;
-        @endphp
-
-        @endif
-        @endif
+        @for ($i = 0; $i < 8; $i++)
+            @if ($key == $index || $count == 3)
+                @break
+            @else
+                @if ($index == count($data[$news]) - 1)
+                    @php
+                    $i--;
+                    $index = 0;
+                    @endphp
+                @endif
+                <div class="blog" style="flex-basis: calc(33.33% - 10px);">
+                    <img src="{{ $data[$news][$index]['image'] }}" alt="" loading="lazy" decoding="async">
+                    <div class="blog-info">
+                        <p class="blog-date">{{ $data[$news][$index]['date'] }}</p>
+                        <a href="{{ route('user.article',['news'=>$news,'id'=>$index]) }}" class="blog-title">{{ $data[$news][$index]['title'] }}</a>
+                    </div>
+                </div>
+                @php
+                $index++;
+                $count++;
+                @endphp
+            @endif
         @endfor
-
     </div>
+    <footer>
+        <p>copyright 2023-2024</p>
+      </footer>
+    
     <script src="{{ asset('js/article.js') }}"></script>
 </body>
-</html>
+@endsection
+
