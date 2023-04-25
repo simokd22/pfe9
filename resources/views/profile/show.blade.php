@@ -1,8 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <a href="{{ route('login') }}">
+            <img src="{{ asset('logo/blue_symbol.png') }}" alt="Logo" class="w-10 h-10 " />
+        </a>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight center" style="font-size: 2em; text-align:center">
             {{ __('Profile') }}
         </h2>
+        
     </x-slot>
 
     <div>

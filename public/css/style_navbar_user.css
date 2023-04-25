@@ -9,7 +9,7 @@
     height: 30px;
     padding: 0 20px;
     font-size: 16px;
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #000000;
     border: none;
     border-radius: 8px;
@@ -23,7 +23,7 @@
     .logout-btn i {
     margin-right: 10px;
   }
-  
+
   .profile-btn{
    position: absolute;
     top: 0;
@@ -35,7 +35,7 @@
     height: 30px;
     padding: 0 20px;
     font-size: 16px;
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #000000;
     border: none;
     border-radius: 8px;

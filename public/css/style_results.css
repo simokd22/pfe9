@@ -95,11 +95,11 @@ a {
     align-items: center;
     padding-top: 5px;
     height: 32px;
-    width: 110px;
+    width: 80px;
 }
 
 .tab:hover {
-    color: blue;
+    background-color: lightgray;
     cursor: pointer;
 }
 
@@ -147,5 +147,5 @@ a {
 
 .page-num:hover {
     cursor: pointer;
-    background-color: rgba(245, 245, 245, 0.964);
+    background-color: #cfc8c8;
 }
