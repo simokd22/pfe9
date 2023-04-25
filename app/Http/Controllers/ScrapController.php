@@ -600,7 +600,7 @@ $client = new Client([
         'Accept' => 'text/html',
         'Referer' => 'http://www.est-umi.ac.ma/'
     ],
-    'verify' => base_path('resources/cacert.pem')
+    //'verify' => base_path('resources/cacert.pem')
 ]);
 
 $requests = function ($urls){

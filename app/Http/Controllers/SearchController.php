@@ -23,7 +23,7 @@ class SearchController extends Controller
         $sites=$request->input('sites'); 
         
         $data=ScrapController::handle($key_word);//,$date_start,$date_end,$Category);
-         /* $data=[
+          /* $data=[
             "goud" =>[
                 "PagesNumber" => 10,
                 0 =>[
@@ -83,8 +83,8 @@ class SearchController extends Controller
                   "date" => "9 فبراير، 2023",
                 ]
             ]
-        ];  */
-        
+        ];  
+         */
         $request->session()->put('data', $data);
         return redirect()->route('user.SearchResults');
 
