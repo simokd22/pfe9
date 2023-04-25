@@ -43,7 +43,7 @@ Route::middleware([
     Route::get('/user/search', function () {
         return view('user.search');
     })->name('user.search');
-    Route::post('/user/search', [SearchController::class ,'search'])->name('user.search');
+    Route::post('/user/search', [SearchController::class ,'search'])->name('user-search');
     
     Route::get('/User/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');
     Route::get('/user/article/{news}/{id}', [SearchController::class,'show'])->name('user.article');

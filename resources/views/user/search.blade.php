@@ -55,7 +55,7 @@
 
    
 
-<form method="post" >
+<form action="{{ route('user-search') }}" method="post" >
   @csrf
     <div class="input-box">
       <input type="text" placeholder="Search..." name="keyword" id="query" >
