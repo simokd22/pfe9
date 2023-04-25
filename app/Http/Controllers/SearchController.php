@@ -17,12 +17,11 @@ class SearchController extends Controller
     {
       //dd($request->all());
         $key_word = $request->input('keyword');
-        $date_start = $request->input('start_date');
-        $date_end = $request->input('end_date');
+        $date_start = $request->input('start-date');
+        $date_end = $request->input('end-date');
         $Category = $request->input('Category'); 
         $sites=$request->input('sites'); 
-        
-        $data=ScrapController::handle($key_word);//,$date_start,$date_end,$Category);
+        $data=ScrapController::handle($key_word,$date_start,$date_end);//,$Category);
           /* $data=[
             "goud" =>[
                 "PagesNumber" => 10,
