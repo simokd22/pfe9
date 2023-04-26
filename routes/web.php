@@ -31,6 +31,8 @@ Route::middleware([
     
     Route::resource('news' , NewsinfoController::class)->names('news');
 
+    
+
 
 });
 
