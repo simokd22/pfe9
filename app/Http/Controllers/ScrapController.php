@@ -13,7 +13,9 @@ use GuzzleHttp\Pool;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
-
+use App\Models\Article;
+use App\Models\Newsinfo;
+use App\Models\Newspaper;
 //use Illuminate\Http\Request;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -600,7 +602,7 @@ $client = new Client([
         'Accept' => 'text/html',
         'Referer' => 'http://www.est-umi.ac.ma/'
     ],
-    //'verify' => base_path('resources/cacert.pem')
+    'verify' => base_path('public/cacert.pem')
 ]);
 
 $requests = function ($urls){
@@ -615,7 +617,6 @@ $pool = new Pool($client, $requests($urls), [
         global $searchResults;
         $instance=new self;
         $searchUrl=$instance->compare_date($urls[$index],$key_word,$date_start,$date_end);
-        
         /*$searchUrl = 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls[$index]['url'])
        . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
        . '%2Ccd_max%3A' . urlencode(Carbon::create($date_end)->format('m/d/Y'));*/
@@ -670,8 +671,8 @@ global $searchResults,$data;
         $crawler = new Crawler($response->getBody()->getContents());
         //echo($response->getBody()->getContents());
         $NumPages=$crawler->filter('.AaVjTc tr > td');
-
-        $data[$urls[$index]['name']]['PagesNumber']=count($NumPages)-2;
+        
+        //$data[$urls[$index]['name']]['PagesNumber']=count($NumPages)-2;
         $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use($urls,$index){
 
             global $searchResults ;
@@ -687,7 +688,7 @@ $request = function ($urls)  {
 
 $pool = new Pool($client, $request($searchResults[$index]), [
     'concurrency' => 20,
-    'fulfilled' => function (Response $response,$index3) use ($index,$urls, $Category,$key_word) {
+    'fulfilled' => function (Response $response,$index2) use ($index,$urls, $Category,$key_word,$NumPages) {
         global $data;
         $instance=new self;
         try{
@@ -702,9 +703,9 @@ $pool = new Pool($client, $request($searchResults[$index]), [
             $scraped_category=$crawler->filter($urls[$index]['section'])->text();
                 //echo($scraped_category. '<br>');
           //  if($instance->compare_category($scraped_category,$Category) ){ }
-                $innerData['category'] =$scraped_category;
+                /* $innerData['category'] =$scraped_category;
                 $innerData['title']    = $title;
-                $innerData['text']     = $paragraphs;
+                $innerData['text']     = $paragraphs; */
                 $image=$crawler->filter($urls[$index]['img']);
                 //dd($image->attr('src'));
                 if(str_contains($image->attr('data-src'),'jpg') || str_contains($image->attr('data-src'),'webp') || str_contains($image->attr('data-src'),'jpeg')){
@@ -716,14 +717,15 @@ $pool = new Pool($client, $request($searchResults[$index]), [
                 }
 
                 if(str_contains($imageUrl,'https://') || str_contains($imageUrl,'http://')){
-                $innerData['image']     =  $imageUrl;
+                $image    =  $imageUrl;
                 }
                 else{
-                $innerData['image']     =  $urls[$index]['url'] . $imageUrl;
+                $image    =  $urls[$index]['url'] . $imageUrl;
                 }
                  //$instance->translateDate()
-                $innerData['date']    = $crawler->filter($urls[$index]['date'])->text();
-                $data[$urls[$index]['name']][]=$innerData;
+                $date   = $crawler->filter($urls[$index]['date'])->text();
+                ${$urls[$index]['name']}->articles[]=new Article($title,$paragraphs,$image,$date,$scraped_category);
+                //$data[]=${$urls[$index]['name']};
            
         }
 
@@ -742,6 +744,7 @@ foreach ($pool as $index => $response) {
 $promise = $pool->promise();
 // Force the pool of requests to complete.
 $promise->wait();
+$data=${$urls[$index]['name']};
         },
     'rejected' => function (Exception $reason,$index2){
                 dd($reason);
@@ -750,7 +753,7 @@ $promise->wait();
     $promise = $pool->promise();
         // Force the pool of requests to complete.
     $promise->wait();
-//dd($data);
+dd($data);
 //dd('done');
 
 
@@ -767,4 +770,3 @@ return $data;
 }
 
 }
-
