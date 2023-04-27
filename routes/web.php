@@ -40,9 +40,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified','authuser'
 ])->group(function () {
-    Route::get('/user/search', function () {
-        return view('user.search');
-    })->name('user.search');
+    Route::get('/user/search', [SearchController::class ,'index'])->name('user.search');
     Route::post('/user/search', [SearchController::class ,'search'])->name('user.search-post');
     
     Route::get('/User/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');
@@ -60,4 +58,3 @@ Route::middleware([
     })->name('terms');
     
 });
-

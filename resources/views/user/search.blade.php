@@ -108,15 +108,12 @@
       </div>
       <!--That little search-box-->
       <div class="options">
-        <label> <input type="radio" name="language" value="english">English</label>
-        <label>
-          <input type="radio" name="language" value="french">
-          French
+        @foreach($languages as $language)
+        <label> 
+            <input type="radio" name="language" value="{{ $language->langue }}">
+            {{ $language->langue }}
         </label>
-        <label>
-          <input type="radio" name="language" value="arabic">
-          Arabic
-        </label>
+        @endforeach
       </div>
     </div>
   </div> 

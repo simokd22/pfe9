@@ -1,7 +1,6 @@
     $(document).ready(function() {
         var IsInArticle = localStorage.getItem('IsInArticle');
         var activeTab = localStorage.getItem('activeTab');
-        console.log(activeTab);
         if (IsInArticle == 0 || IsInArticle == null) {
             $('.tab-pane').hide();
             $('#1-content').addClass('active');
@@ -22,7 +21,6 @@
         $('.tab').click(function() {
             //e.preventDefault();
             let id = $(this).attr("id");
-            console.log(id);
             localStorage.setItem('activeTab', id);
             $('.tab-pane').hide();
             $('.tab-pane').removeClass('active');
