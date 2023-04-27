@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Langue;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+  public function index(Request $request)
+    {
+      //dd('$languages');
+        $languages=Langue::all();
+        return view('user.search', compact('languages'));  
+        }
     public function results(Request $request)
     {
         $data = $request->session()->get('data');
@@ -100,4 +107,3 @@ class SearchController extends Controller
         return view('user.article',['data'=>$data,'news'=>$news,'id'=>$id]);
     }
 }
-
