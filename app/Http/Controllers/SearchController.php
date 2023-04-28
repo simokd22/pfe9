@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\Langue;
+use App\Models\Newsinfo;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -11,7 +13,9 @@ class SearchController extends Controller
     {
       //dd('$languages');
         $languages=Langue::all();
-        return view('user.search', compact('languages'));  
+        $categories=category::all();
+        $sites=Newsinfo::all();
+        return view('user.search', compact('languages','categories','sites'));  
         }
     public function results(Request $request)
     {
