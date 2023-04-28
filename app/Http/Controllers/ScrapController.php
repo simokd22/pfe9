@@ -400,7 +400,15 @@ else{
 }
 public static function handle(String $key_word,$date_start='',$date_end='',String $Category=''){
     $instance=new self;
-
+       $hespress=new Newspaper();
+     //dd($hespress->pages);
+    //$articles=$hespress->articles;
+   /*  $hespress->pages=10;
+     for($i=0;$i<10;$i++){
+        $articles[]=" $i  sohayb";
+    $hespress->articles=$articles;
+    } 
+     dd($hespress->articles); */
 $urls = [
     [
         'language'=>'ar',
@@ -413,7 +421,7 @@ $urls = [
         'date'=>'.timePost',
 
       ],
-   [
+   /*[
         'language'=>'ar',
         'name'=>'tanja24',
         'url'=>"https://tanja24.com/",
@@ -499,7 +507,7 @@ $urls = [
 
 
 
-/*
+
 
     [
         'language'=>'ar',
@@ -671,7 +679,6 @@ global $searchResults,$data;
         $crawler = new Crawler($response->getBody()->getContents());
         //echo($response->getBody()->getContents());
         $NumPages=$crawler->filter('.AaVjTc tr > td');
-        
         //$data[$urls[$index]['name']]['PagesNumber']=count($NumPages)-2;
         $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use($urls,$index){
 
@@ -685,12 +692,15 @@ $request = function ($urls)  {
     foreach($urls as $url) {
             yield new Request('GET', $url);
     }};
-
+    global ${$urls[$index]['name']},$articles;
+    ${$urls[$index]['name']}=new Newspaper();
+    ${$urls[$index]['name']}->pages=count($NumPages)-2;
 $pool = new Pool($client, $request($searchResults[$index]), [
     'concurrency' => 20,
-    'fulfilled' => function (Response $response,$index2) use ($index,$urls, $Category,$key_word,$NumPages) {
+    'fulfilled' => function (Response $response,$index2) use ($index,$urls, $Category,$key_word) {
         global $data;
         $instance=new self;
+        global ${$urls[$index]['name']},$articles;
         try{
         $crawler = new Crawler($response->getBody()->getContents());
         $content = $crawler->filter($urls[$index]['content']);
@@ -724,9 +734,8 @@ $pool = new Pool($client, $request($searchResults[$index]), [
                 }
                  //$instance->translateDate()
                 $date   = $crawler->filter($urls[$index]['date'])->text();
-                ${$urls[$index]['name']}->articles[]=new Article($title,$paragraphs,$image,$date,$scraped_category);
-                //$data[]=${$urls[$index]['name']};
-           
+                $articles[$index2]=new Article($title,$paragraphs,$image,$date,$scraped_category);
+                ${$urls[$index]['name']}->articles=$articles;
         }
 
 
@@ -744,7 +753,10 @@ foreach ($pool as $index => $response) {
 $promise = $pool->promise();
 // Force the pool of requests to complete.
 $promise->wait();
-$data=${$urls[$index]['name']};
+dd($articles);
+dd(${$urls[$index]['name']}->articles);
+$data[$urls[$index]['name']]=${$urls[$index]['name']};
+
         },
     'rejected' => function (Exception $reason,$index2){
                 dd($reason);
@@ -753,7 +765,8 @@ $data=${$urls[$index]['name']};
     $promise = $pool->promise();
         // Force the pool of requests to complete.
     $promise->wait();
-dd($data);
+    
+dd($data['alyaoum24']->articles);
 //dd('done');
 
 

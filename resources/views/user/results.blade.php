@@ -25,7 +25,7 @@ if(!isset($_SESSION['IsInArticle'])) {
     @endphp
     <div class="tab-container">
         <div class="tabs">
-            @foreach ( $data as $key => $innerdata )
+            @foreach ( $data as $key => $NewsPaper )
             <div class="tab" id="{{ $index }}" > {{ $key }}</div>
             @php
             $index++ ;
@@ -36,7 +36,7 @@ if(!isset($_SESSION['IsInArticle'])) {
                 @php
                 $index=1;
                 @endphp
-                @foreach ($data as $key => $innerdata)
+                @foreach ($data as $key => $NewsPaper)
                 <div class="tab-pane" id="{{ $index }}-content">
                 @if (count($innerdata)==1)
                 <div class="articles-container">

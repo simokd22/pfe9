@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Langue;
+use App\Models\category;
+use App\Models\Newsinfo;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
   public function index(){
     $languages=Langue::all();
-    return view('user.search',compact('languages'));
+    $categories=category::all();
+    $sites=Newsinfo::all();
+    return view('user.search',compact('languages','categories','sites'));
   } 
     public function results(Request $request)
     {

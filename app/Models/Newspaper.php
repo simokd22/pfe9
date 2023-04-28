@@ -8,13 +8,11 @@ use App\Models\Article;
 
 class Newspaper extends Model
 {
-    use HasFactory;
-    protected $pages;
-    protected $articles=[];
+    private $pages;
+    private $articles;
 
-    public function __construct($pages)
+    public function __construct()
     {
-        $this->pages = $pages;
-
-    }
+        $this->articles = [];
+    } 
 }
