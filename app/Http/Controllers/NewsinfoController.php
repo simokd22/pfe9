@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use App\Models\Newsinfo;
 use Illuminate\Http\Request;
-use App\Models\info;
+
 
 class NewsinfoController extends Controller
 {
