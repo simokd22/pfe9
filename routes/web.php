@@ -33,6 +33,8 @@ Route::middleware([
     Route::resource('Userinfo' , Userinfo::class)->names('Userinfo');
     Route::resource('news' , NewsinfoController::class)->names('news');
 
+    
+
 
 });
 

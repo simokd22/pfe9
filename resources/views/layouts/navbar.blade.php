@@ -20,6 +20,9 @@
                 <a  href="{{route('Userinfo.index')}}" >Users</a>
             </div>
             <div class="link">
+                <a  href= >Sections</a>
+            </div>
+            <div class="link">
                 <a  href="{{route('news.index')}}">News Table</a>
             </div>
         </div>
