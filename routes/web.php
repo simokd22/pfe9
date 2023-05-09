@@ -28,8 +28,7 @@ Route::middleware([
     'verified','authadmin'
 ])->group(function () {
     //admindashboard
-       /* Route::get('admin/dashboard', function (){return view ('admin.dashboard');})
-    ->name('admindashboard');*/
+        //Route::get('admin/dashboard', function (){return view ('admin.dashboard');})->name('admindashboard');
     //Route::get('admin/dashboard', [Userinfo::class ,'index'])->name('admindashboard');
     Route::resource('Userinfo' , Userinfo::class)->names('Userinfo');
     Route::resource('news' , NewsinfoController::class)->names('news');

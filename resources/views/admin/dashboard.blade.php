@@ -11,7 +11,6 @@
 <div class="tab-content">
     <div class="tab-pane" id="tab1-content">
       <!-- Tab 1 content here -->
-      <a  href="{{route('news.create')}}" class="plus-button" id="addButton" >
 
       <table class="table table-bordered text-center">
             <tr class="bg-dark text-white">
