@@ -17,7 +17,6 @@
       <div class="tab-content">
         <div class="tab-pane" id="tab1-content">
           <!-- Tab 1 content here -->
-          <a  href="{{route('news.create')}}" class="plus-button" id="addButton" >
             <i class="fas fa-plus"></i>
             Add
             </a>
@@ -41,15 +40,7 @@
                   <td>{{$item['Language']}}</td>
                   <td>{{$item['Sites']}}</td>
                   
-                 <td><a href="{{route('news.edit',$item['id'])}}" class = "edit" type="submit" name="edit" ><i class="fa-solid fa-pen"></i></a></td>  
-                  <td> 
-                    <form action="{{route('news.destroy',$item['id'])}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class = "delete" type="submit" name="delete"><i class="fa-solid fa-trash"></i></button>
-                        
-                    </form>
-            
+               
                 </td> 
                 </tr>
                   @endforeach

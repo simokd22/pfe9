@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\NewsinfoController;
+use App\Http\Controllers\Userinfo;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +28,9 @@ Route::middleware([
     'verified','authadmin'
 ])->group(function () {
     //admindashboard
-        Route::get('admin/dashboard', function (){return view ('admin.dashboard');})
-    ->name('admindashboard');
-    
+        //Route::get('admin/dashboard', function (){return view ('admin.dashboard');})->name('admindashboard');
+    //Route::get('admin/dashboard', [Userinfo::class ,'index'])->name('admindashboard');
+    Route::resource('Userinfo' , Userinfo::class)->names('Userinfo');
     Route::resource('news' , NewsinfoController::class)->names('news');
 
     
@@ -42,9 +44,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified','authuser'
 ])->group(function () {
-    Route::get('/user/search', function () {
-        return view('user.search');
-    })->name('user.search');
+    Route::get('/user/search', [SearchController::class ,'index'])->name('user.search');
     Route::post('/user/search', [SearchController::class ,'search'])->name('user.search-post');
     
     Route::get('/User/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');
@@ -62,4 +62,3 @@ Route::middleware([
     })->name('terms');
     
 });
-

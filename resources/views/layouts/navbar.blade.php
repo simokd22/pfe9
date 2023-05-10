@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +17,7 @@
   <!--logo icon-->
         <div class="links">    
             <div class="link">
-                <a  href="{{route('admindashboard')}}" >Users</a>
+                <a  href="{{route('Userinfo.index')}}" >Users</a>
             </div>
             <div class="link">
                 <a  href= >Sections</a>

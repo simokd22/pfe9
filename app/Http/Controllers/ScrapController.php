@@ -452,7 +452,7 @@ $urls = [
         'content'=>'.entry-content >  p',
         'date'=>'.date ',
       ],
-    [
+   /* [
         'language'=>'ar',
         'name'=>'hibapress',
         'section'=>'.menu > .current-post-ancestor',
@@ -497,7 +497,7 @@ $urls = [
 
 
 
-/*
+
 
     [
         'language'=>'ar',
@@ -600,7 +600,7 @@ $client = new Client([
         'Accept' => 'text/html',
         'Referer' => 'http://www.est-umi.ac.ma/'
     ],
-    //'verify' => base_path('resources/cacert.pem')
+    'verify' => base_path('public/cacert.pem')
 ]);
 
 $requests = function ($urls){
@@ -767,4 +767,3 @@ return $data;
 }
 
 }
-

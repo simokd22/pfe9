@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use App\Models\Newsinfo;
 use Illuminate\Http\Request;
-use App\Models\info;
+
 
 class NewsinfoController extends Controller
 {
@@ -38,7 +38,8 @@ class NewsinfoController extends Controller
         $StoreNews->News_name=$request->input('News_name');
         $StoreNews->News_url=$request->input('News_url');
         $StoreNews->News_category=$request->input('News_category');
-        $StoreNews->id_langue=$request->input('id_langue');
+        $selectedLangue = $request->input('id_langue');
+        $StoreNews->id_langue = $selectedLangue;
         $StoreNews->News_image=$request->input('News_image');
         $StoreNews->News_title=$request->input('News_title');
         $StoreNews->News_content=$request->input('News_content');

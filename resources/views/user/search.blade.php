@@ -84,9 +84,9 @@
             <!--That little search-box-->
             <ul class="options1">
               <li><input type="checkbox" id="all-categories" name="all-categories" value="all-categories"> <label id="category_label" for="all-categories"> <b>All Categories</b></label></li>
-              <li value="sport"><input type="checkbox" id="sport" name="categories[]" value="رياضة"><label for="sport">رياضة</label></li>
-              <li value="politique"><input type="checkbox" id="politique" name="categories[]" value="سياسة"><label for="politique">سياسة</label></li>
-              <li value="societe"><input type="checkbox" id="societe" name="categories[]" value="مجتمع"><label for="societe">مجتمع</label></li>
+              @foreach ($categories as $category)
+              <li value="sport"><input type="checkbox" id="sport" name="categories[]" value="{{ $category->category }}"><label for="sport">{{ $category->category }}</label></li>
+              @endforeach
             </ul>
           </div>
         </div> 
@@ -108,15 +108,12 @@
       </div>
       <!--That little search-box-->
       <div class="options">
-        <label> <input type="radio" name="language" value="english">English</label>
-        <label>
-          <input type="radio" name="language" value="french">
-          French
+        @foreach($languages as $language)
+        <label> 
+            <input type="radio" name="language" value="{{ $language->langue }}">
+            {{ $language->langue }}
         </label>
-        <label>
-          <input type="radio" name="language" value="arabic">
-          Arabic
-        </label>
+        @endforeach
       </div>
     </div>
   </div> 
@@ -142,10 +139,9 @@
       <!--That little search-box-->
       <ul class="options2">
         <li><input type="checkbox" id="all-sites" name="all-sites" value="all-sites"> <label for="all-sites" id="all-sites"><b>All Sites</b></label></li>
-        <li value="hespress"><input type="checkbox" id="hespress" name="sites[]" value="hespress"><label for="hespress">Hespress</label></li>
-        <li value="al3omeq"><input type="checkbox" id="al3omeq" name="sites[]" value="al3omeq"><label for="al3omeq">Al3omeq</label></li>
-        <li value="24h"><input type="checkbox" id="24h" name="sites[]" value="24h"><label for="24h">24h</label></li>
-        <li value="today"><input type="checkbox" id="today" name="sites[]" value="today"><label for="today">Today</label></li>
+        @foreach ($sites as $site)
+                  <li value="hespress"><input type="checkbox" id="hespress" name="sites[]" value=" {{ $site->News_name }}"><label > {{ $site->News_name }}</label></li>
+        @endforeach
       </ul>
     </div>
   </div>
