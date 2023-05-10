@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600|Noto+Sans|Open+Sans:400,700&display=swap');
+.form-container {
+  margin-top: 100px; /* Adjust the margin-top value to create space below the navbar */
+  margin-bottom: 100px; /* Adjust the margin-bottom value if needed */
+}
+/*
 *{
   margin: 0;
   padding: 0;
@@ -116,3 +121,4 @@ form .button{
   font-size: 19px;
   color: grey;
 }
+*/
