@@ -412,6 +412,16 @@ public static function handle(String $key_word,$date_start='',$date_end='',Strin
 $urls = [
     [
         'language'=>'ar',
+        'name'=>'tanja24',
+        'url'=>"https://tanja24.com/",
+        'section'=>'.current-post-parent > a',
+        'img'=>'.post-thumbnail > img',
+        'title'=>'.single-post-title',
+        'content'=>'.entry-content > p',
+        'date'=>'.post-published > b',
+      ],
+    /* [
+        'language'=>'ar',
         'name'=>'alyaoum24',
         'url'=>"https://alyaoum24.com/",
         'section'=>'.breadcrumb >  li:last-child',
@@ -420,16 +430,6 @@ $urls = [
         'content'=>'.post_content > p',
         'date'=>'.timePost',
 
-      ],
-   /*[
-        'language'=>'ar',
-        'name'=>'tanja24',
-        'url'=>"https://tanja24.com/",
-        'section'=>'.current-post-parent > a',
-        'img'=>'.post-thumbnail > img',
-        'title'=>'.single-post-title',
-        'content'=>'.entry-content > p',
-        'date'=>'.post-published > b',
       ],
    [
         'language'=>'ar',
@@ -610,12 +610,15 @@ $client = new Client([
         'Accept' => 'text/html',
         'Referer' => 'http://www.est-umi.ac.ma/'
     ],
-    'verify' => base_path('public/cacert.pem')
+    //'verify' => base_path('public/cacert.pem')
 ]);
+//dd($client->request('GET',$instance->compare_date($urls[0],$key_word,$date_start,$date_end)));
 
+$r=new Request("GET","https://tanja24.com/");
+dd($r);
 $requests = function ($urls){
     foreach($urls as $url) {
-        yield new Request('GET', $url['url']);
+        yield new Request("GET", $url['url']);
 }
 };
 
@@ -623,6 +626,7 @@ $pool = new Pool($client, $requests($urls), [
     'concurrency' => 20,
     'fulfilled' => function (Response $response,$index) use ($urls, $Category,$key_word,$date_start,$date_end,$client) {
         global $searchResults;
+        dd("here");
         $instance=new self;
         $searchUrl=$instance->compare_date($urls[$index],$key_word,$date_start,$date_end);
         /*$searchUrl = 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls[$index]['url'])
@@ -699,6 +703,7 @@ $pool = new Pool($client, $request($searchResults[$index]), [
     'concurrency' => 20,
     'fulfilled' => function (Response $response,$index2) use ($index,$urls, $Category,$key_word) {
         global $data;
+        dd('data');
         $instance=new self;
         global ${$urls[$index]['name']},$articles;
         try{
@@ -734,16 +739,17 @@ $pool = new Pool($client, $request($searchResults[$index]), [
                 }
                  //$instance->translateDate()
                 $date   = $crawler->filter($urls[$index]['date'])->text();
-                $articles[$index2]=new Article($title,$paragraphs,$image,$date,$scraped_category);
+                $articles[]=new Article($title,$paragraphs,$image,$date,$scraped_category);
                 ${$urls[$index]['name']}->articles=$articles;
         }
 
 
     }catch(Exception $e){
-       // echo();
+       
     }
 },
     'rejected' => function (Exception $reason,$index2){
+        dd($reason);
         //dd('error'.$index2 .': '. $reason);
 },
 ]);
@@ -753,8 +759,8 @@ foreach ($pool as $index => $response) {
 $promise = $pool->promise();
 // Force the pool of requests to complete.
 $promise->wait();
-dd($articles);
-dd(${$urls[$index]['name']}->articles);
+//dd($articles);
+//dd(${$urls[$index]['name']}->articles[1]->title);
 $data[$urls[$index]['name']]=${$urls[$index]['name']};
 
         },
@@ -764,11 +770,9 @@ $data[$urls[$index]['name']]=${$urls[$index]['name']};
         ]);
     $promise = $pool->promise();
         // Force the pool of requests to complete.
-    $promise->wait();
-    
-dd($data['alyaoum24']->articles);
+   
+//dd($data['alyaoum24']->articles);
 //dd('done');
-
 
 //usort($data, function ($a, $b) {return strtotime($b['date']) - strtotime($a['date']);});
 return $data;

@@ -15,4 +15,5 @@ class Newspaper extends Model
     {
         $this->articles = [];
     } 
+    
 }

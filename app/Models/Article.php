@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
-    protected $title;
-    protected $content;
-    protected $image;
-    protected $date;
-    protected $category ;
+    public $title;
+    public $content;
+    public $image;
+    public $date;
+    public $category ;
 
     public function __construct($title, $content, $image, $date,$category)
     {
@@ -22,4 +22,5 @@ class Article extends Model
         $this->date = $date;
         $this->category=$category;
     }
+   
 }

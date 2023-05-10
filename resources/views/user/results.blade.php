@@ -1,9 +1,3 @@
-@php
-session_start();
-if(!isset($_SESSION['IsInArticle'])) {
-  $_SESSION['IsInArticle']=0;
-}
-@endphp
 @extends('layouts/navbar_user')
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -38,19 +32,19 @@ if(!isset($_SESSION['IsInArticle'])) {
                 @endphp
                 @foreach ($data as $key => $NewsPaper)
                 <div class="tab-pane" id="{{ $index }}-content">
-                @if (count($innerdata)==1)
+                @if (count($NewsPaper->articles)==1)
                 <div class="articles-container">
                     <div class="blog"><p>NO DATA FOUND</p></div>
                 </div>
                 @else
                 <div class="articles-container">
-                    @for ($i=0;$i<count($innerdata)-1;$i++)
+                    @for ($i=0;$i<count($NewsPaper->articles)-1;$i++)
                     <div class="blog">
                       <a href="{{ route('user.article',['news'=>$key,'id'=>$i]) }}" >
-                        <img src="{{ $innerdata[$i]['image'] }}" alt="Blog Image {{ $i }}" loading="lazy" decoding="async">
+                        <img src="{{ $NewsPaper->articles[$i]->image }}" alt="Blog Image {{ $i }}" loading="lazy" decoding="async">
                         <div class="blog-info">
-                          <p class="blog-date">{{ $innerdata[$i]['date'] }}</p>
-                          <p  class="blog-title">{{ $innerdata[$i]['title'] }}</p>
+                          <p class="blog-date">{{ $NewsPaper->articles[$i]->date }}</p>
+                          <p  class="blog-title">{{ $NewsPaper->articles[$i]->title }}</p>
                         </div>
                       </a>
                     </div>
@@ -62,7 +56,7 @@ if(!isset($_SESSION['IsInArticle'])) {
                             <p class="page">Pages</p>
                           </tr>
                             <tr>
-                                @for ($i=1;$i<=$innerdata['PagesNumber'];$i++)
+                                @for ($i=1;$i<=$NewsPaper->pages;$i++)
                                 <td><button class="page-num" data-number="{{ $i }}"> {{ $i }} </button> </td>
                                 @endfor
                             </tr>
