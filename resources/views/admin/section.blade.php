@@ -1,16 +1,13 @@
 @extends('layouts/navbar')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link rel="stylesheet" href="{{asset('css/style_section.css')}}">
 <script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
 @endsection
-@section('title' , 'News')
-
-
+@section('title' , 'Sections')
 @section('content')
-  
-
 <header>
-    <p>Admin page</p> 
+    <p>Sections</p>
+    
 </header>
    <nav>
    
@@ -20,22 +17,15 @@
       <div class="tab-content">
         <div class="tab-pane" id="tab1-content">
           <!-- Tab 1 content here -->
-          <a href="{{route('news.create')}}" class="plus-button" id="addButton" data-toggle="modal" data-target="#exampleModalCenter">
             <i class="fas fa-plus"></i>
             Add
-          </a>
-          
+            </a>
             
           <table class="table table-bordered text-center">
                 <tr class="bg-dark text-white">
-                  <th> News name </th>
-                  <th> News url </th>
-                  <th> News category </th>
-                  <th> News title </th>
-                  <th> News image </th>
-                  <th> News content </th>
-                  <th> News date </th>
-                  <th> id langue </th>
+                  <th> Category </th>
+                  <th> Language </th>
+                  <th> Sites </th>
                   <th colspan="2"> Action </th>
                  
                 </tr>
@@ -46,23 +36,11 @@
                 @if(isset($data))
                 @forEach($data as $item)
                 <tr>
-                  <td>{{$item['News_name']}}</td>
-                  <td>{{$item['News_url']}}</td>
-                  <td>{{$item['News_category']}}</td>
-                  <td>{{$item['News_title']}}</td>
-                  <td>{{$item['News_image']}}</td>
-                  <td>{{$item['News_content']}}</td>
-                  <td>{{$item['News_date']}}</td>
-                  <td>{{$item['id_langue']}}</td>
-                 <td><a href="{{route('news.edit',$item['id'])}}" class = "edit" type="submit" name="edit" ><i class="fa-solid fa-pen"></i></a></td>  
-                  <td> 
-                    <form action="{{route('news.destroy',$item['id'])}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class = "delete" type="submit" name="delete"><i class="fa-solid fa-trash"></i></button>
-                        
-                    </form>
-            
+                  <td>{{$item['Category']}}</td>
+                  <td>{{$item['Language']}}</td>
+                  <td>{{$item['Sites']}}</td>
+                  
+               
                 </td> 
                 </tr>
                   @endforeach
@@ -76,9 +54,7 @@
        
       </div>
 
-</div>
-
-
+      
 
       <script>
         const tabs = document.querySelectorAll(".tab");
@@ -99,7 +75,6 @@
             document.getElementById(tabId + "-content").style.display = "block";
           });
         });
+
       </script>
-
-
 @endsection

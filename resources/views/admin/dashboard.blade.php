@@ -11,31 +11,30 @@
 <div class="tab-content">
     <div class="tab-pane" id="tab1-content">
       <!-- Tab 1 content here -->
-      <a  href="{{route('news.create')}}" class="plus-button" id="addButton" >
 
       <table class="table table-bordered text-center">
             <tr class="bg-dark text-white">
               <th> Name </th>
               <th> email </th>
-              <th> Action</th>
+              <th colspan="2"> Action</th>
             </tr>
             
                 
             
             <form >
-            @if(isset($data))
-            @forEach($data as $item)
+            @if(isset($Userdata))
+            @forEach($Userdata as $item)
             <tr>
-              <td>{{$item['Name']}}</td>
-              <td>{{$item['Email']}}</td>
+              <td>{{$item['name']}}</td>
+              <td>{{$item['email']}}</td>
              
     
               <td> 
-                    <form action="{{route('news.destroy',$item['id'])}}" method="POST">
+                    <form action="{{route('Userinfo.destroy',$item['id'])}}" method="POST">
                         @csrf
-                        @method('MAKEADMIN') <!--le nom de methode-->
-                        <button class = "make-admin" type="submit" name="make-admin">Make Admin</i></button>
                         
+                          @method('DELETE')
+                          <button class = "delete" type="submit" name="delete"><i class="fa-solid fa-trash"></i></button>
                     </form>
             
                 </td> 

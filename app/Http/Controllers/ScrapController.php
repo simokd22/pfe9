@@ -462,7 +462,7 @@ $urls = [
         'content'=>'.entry-content >  p',
         'date'=>'.date ',
       ],
-    [
+   /* [
         'language'=>'ar',
         'name'=>'hibapress',
         'section'=>'.menu > .current-post-ancestor',
@@ -502,6 +502,7 @@ $urls = [
         'content'=>'.entry-content > p',
         'date'=>' .post-meta > .date',
       ],
+
 
 
 
