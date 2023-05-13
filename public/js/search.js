@@ -1,5 +1,3 @@
-
-
 //searchbar script
 /*----------------------------------------------------------------------------------------------------------------*/
 let inputBox = document.querySelector(".input-box"),
@@ -145,18 +143,90 @@ wrapper.classList.toggle("active");
 //change sites based on language
 /*----------------------------------------------------------------------------------------------------------------*/
 const sitesSelect = document.getElementById("sites-select");
+let data;
+
+
+// fetch('http://127.0.0.1:8000/api/langue')
+// .then((response)=>{ console.log(response); return response.json()})
+
 
 // Define the available sites for each language
 const languageSites = {
-  english: ["Hespress", "Today"],
-  french: ["24h", "Site2"],
-  arabic: ["Al3omq"]
+  Arabe: [],
+  Français: [],
+  Anglais: [],
 };
 
+axios.get('http://127.0.0.1:8000/api/sites').then(Response=>{
+  let data = Response.data.filter(e => e.id_langue === 1).map(e => e.News_name);;
+  languageSites.Arabe.push(...data);
+});
+axios.get('http://127.0.0.1:8000/api/sites').then(Response=>{
+  let data = Response.data.filter(e => e.id_langue === 2).map(e => e.News_name);
+  languageSites.Français.push(...data);
+});
+axios.get('http://127.0.0.1:8000/api/sites').then(Response=>{
+  let data = Response.data.filter(e => e.id_langue === 3).map(e => e.News_name);
+  languageSites.Anglais.push(...data);
+});
+
+console.log(languageSites);
+/*
+async function getNewsNames(lang) {
+  try {
+    const response = await fetch(`/search?language=${lang}`);
+    if (!response.ok) {
+      throw new Error('Error retrieving news names');
+    }
+    const data = await response.json();
+    return data.map(entry => entry.News_name);
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+// Usage
+getNewsNames(1)
+  .then(newsNames => {
+    languageSites.Arabic = newsNames;
+    return getNewsNames(2);
+  })
+  .then(newsNames => {
+    languageSites.Français = newsNames;
+    return getNewsNames(3);
+  })
+  .then(newsNames => {
+    languageSites.Anglais = newsNames;
+    console.log(languageSites);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+  document.querySelector(".options").addEventListener("change", async (event) => {
+    const selectedLanguage = event.target.value;
+  const availableNews = await getNewsNames(selectedLanguage);
+
+  const sitesSelect = document.getElementById("sites-select");
+  const optionsList = sitesSelect.querySelector(".options2");
+
+  // Clear existing options
+  optionsList.innerHTML = "";
+
+  // Add new options
+  availableNews.forEach((news) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <input type="checkbox" id="${news}" name="news[]" value="${news}">
+      <label for="${news}">${news}</label>`;
+    optionsList.appendChild(li);
+    });
+  });
+  */
 // Update the available sites when the language is changed
-document.querySelector(".options").addEventListener("change", (event) => {
+document.querySelector(".options").addEventListener("change", (_event) => {
   const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
-  const availableSites = languageSites[selectedLanguage] || ["Hespress", "Today"];
+  const availableSites = languageSites[selectedLanguage] ;
   sitesSelect.querySelector(".options2").innerHTML = "";
   availableSites.forEach((site) => {
     const li = document.createElement("li");
@@ -164,6 +234,7 @@ document.querySelector(".options").addEventListener("change", (event) => {
     sitesSelect.querySelector(".options2").appendChild(li);
   });
 });
+
 /*----------------------------------------------------------------------------------------------------------------*/
 
 
@@ -293,3 +364,5 @@ languageRadioButtons.forEach((button) => {
   });
 });
 /*----------------------------------------------------------------------------------------------------------------*/
+const Langue=(e)=>{console.log(e)}
+console.log('test')
