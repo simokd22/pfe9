@@ -14,7 +14,6 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
 use App\Models\Article;
-use App\Models\Newsinfo;
 use App\Models\Newspaper;
 //use Illuminate\Http\Request;
 
@@ -410,17 +409,8 @@ public static function handle(String $key_word,$date_start='',$date_end='',Strin
     } 
      dd($hespress->articles); */
 $urls = [
-    [
-        'language'=>'ar',
-        'name'=>'tanja24',
-        'url'=>"https://tanja24.com/",
-        'section'=>'.current-post-parent > a',
-        'img'=>'.post-thumbnail > img',
-        'title'=>'.single-post-title',
-        'content'=>'.entry-content > p',
-        'date'=>'.post-published > b',
-      ],
-    /* [
+   
+     [
         'language'=>'ar',
         'name'=>'alyaoum24',
         'url'=>"https://alyaoum24.com/",
@@ -430,6 +420,16 @@ $urls = [
         'content'=>'.post_content > p',
         'date'=>'.timePost',
 
+      ],
+      /* [
+        'language'=>'ar',
+        'name'=>'tanja24',
+        'url'=>"https://tanja24.com/",
+        'section'=>'.current-post-parent > a',
+        'img'=>'.post-thumbnail > img',
+        'title'=>'.single-post-title',
+        'content'=>'.entry-content > p',
+        'date'=>'.post-published > b',
       ],
    [
         'language'=>'ar',
@@ -611,12 +611,10 @@ $client = new Client([
         'Accept' => 'text/html',
         'Referer' => 'http://www.est-umi.ac.ma/'
     ],
-    //'verify' => base_path('public/cacert.pem')
+    'verify' => base_path('public/cacert.pem')
 ]);
 //dd($client->request('GET',$instance->compare_date($urls[0],$key_word,$date_start,$date_end)));
 
-$r=new Request("GET","https://tanja24.com/");
-dd($r);
 $requests = function ($urls){
     foreach($urls as $url) {
         yield new Request("GET", $url['url']);
@@ -627,8 +625,8 @@ $pool = new Pool($client, $requests($urls), [
     'concurrency' => 20,
     'fulfilled' => function (Response $response,$index) use ($urls, $Category,$key_word,$date_start,$date_end,$client) {
         global $searchResults;
-        dd("here");
         $instance=new self;
+        dd('here');
         $searchUrl=$instance->compare_date($urls[$index],$key_word,$date_start,$date_end);
         /*$searchUrl = 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls[$index]['url'])
        . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
