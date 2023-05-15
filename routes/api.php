@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('sites', [SearchController::class ,'sites']);
+Route::get('langue', [SearchController::class ,'langue']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -6,6 +6,8 @@ use App\Models\category;
 use App\Models\Langue;
 use App\Models\Newsinfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class SearchController extends Controller
 {
@@ -16,6 +18,18 @@ class SearchController extends Controller
         $categories=category::all();
         $sites=Newsinfo::all();
         return view('user.search', compact('languages','categories','sites'));  
+        }
+        public function sites()
+        { 
+          
+          $sites=Newsinfo::all();
+          return response()->json($sites);
+        }
+        public function langue()
+        { 
+          
+          $languages=Langue::all();
+          return response()->json($languages);
         }
     public function results(Request $request)
     {
@@ -110,4 +124,17 @@ class SearchController extends Controller
         //$article=Controller::getArticle($data[$id]);
         return view('user.article',['data'=>$data,'news'=>$news,'id'=>$id]);
     }
+    public function getSites(Request $request)
+{
+    $selectedLanguage = $request->query('language');
+    
+    // Retrieve the sites for the selected language from the database
+    $sites = DB::table('newsinfos')
+        ->join('langues', 'langues.id_langue', '=', 'newsinfos.id_langue')
+        ->where('langues.langue', $selectedLanguage)
+        ->pluck('newsinfos.News_name')
+        ->toArray();
+    
+    return response()->json(['sites' => $sites]);
+}
 }

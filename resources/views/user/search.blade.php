@@ -15,45 +15,6 @@
             </nav>   
          <body>
               
-<!-- Menu -->
-
-      <!--log out-->
-{{--<div class="logout">
-  <form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <button type="submit"  class="logout-btn"><i class="fas fa-sign-out-alt"></i>Logout</button>
-  </form>
-  <!--log out-->
-
-
- <!--terms-->
-<div class="terms">
-  <a href={{url('/terms')}} class="term-service">Terms</i></a>
-</div>
-<!--terms-->
-
-<!--about-->
-<div class="about">
-  <a href={{url('/about')}} class="about">about</i></a>
-  </div>
-  <!--about-->
-
-  <!--profile-->
-  <div class="profile">
-    <a href={{ route('profile') }} class="profile-btn"><i class="fa fa-user"></i></a>
-</div>
-<!--profile-->
-
-<!--logo icon-->
-<div class="logo_icon">
-  <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo">
-  </a>
-</div>
-<!--logo icon-->
-
-<!-- Menu -->--}}
-
-   
 
 <form method="post" action="{{route('user.search-post')}}" >
   @csrf
@@ -108,12 +69,15 @@
       </div>
       <!--That little search-box-->
       <div class="options">
+      
         @foreach($languages as $language)
         <label> 
             <input type="radio" name="language" value="{{ $language->langue }}">
             {{ $language->langue }}
         </label>
         @endforeach
+        
+        
       </div>
     </div>
   </div> 
@@ -140,7 +104,8 @@
       <ul class="options2">
         <li><input type="checkbox" id="all-sites" name="all-sites" value="all-sites"> <label for="all-sites" id="all-sites"><b>All Sites</b></label></li>
         @foreach ($sites as $site)
-                  <li value="hespress"><input type="checkbox" id="hespress" name="sites[]" value=" {{ $site->News_name }}"><label > {{ $site->News_name }}</label></li>
+                  <li ><input type="checkbox"  name="sites" value="{{ $site->News_name }}">
+                    <label > {{ $site->News_name }}</label></li>
         @endforeach
       </ul>
     </div>
@@ -181,6 +146,32 @@
              </div>
         
           
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
           <script src="{{ asset('js/search.js') }}"></script>
+          <!-- <script type="module" src="{{ asset('js/Langue.js') }}"></script> -->
+         {{-- <script>
+            $('input[name="language"]').on('change', function() {
+  const selectedLanguage = $(this).val();
+  let languageId = null;
+
+  // Map language values to language IDs
+  if (selectedLanguage === 'Arabe') {
+    languageId = 1;
+  } else if (selectedLanguage === 'Francais') {
+    languageId = 2;
+  }
+
+  // Show/hide sites based on language ID
+  $('.options2 li').each(function() {
+    const siteLanguageId = $(this).data('id_langue');
+
+    if (languageId === null || siteLanguageId === languageId) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+});
+          </script>--}}
         </body>
    @endsection
