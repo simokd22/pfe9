@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 set_time_limit(0);
 
 
@@ -9,12 +10,10 @@ use Exception;
 use GuzzleHttp\Client;
 
 use GuzzleHttp\Pool;
-
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
-use App\Models\Article;
-use App\Models\Newspaper;
+
 //use Illuminate\Http\Request;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -22,6 +21,9 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use IntlDateFormatter;
+
+
+
 use Symfony\Component\DomCrawler\Crawler;
 
 class ScrapController extends BaseController
@@ -399,18 +401,9 @@ else{
 }
 public static function handle(String $key_word,$date_start='',$date_end='',String $Category=''){
     $instance=new self;
-       $hespress=new Newspaper();
-     //dd($hespress->pages);
-    //$articles=$hespress->articles;
-   /*  $hespress->pages=10;
-     for($i=0;$i<10;$i++){
-        $articles[]=" $i  sohayb";
-    $hespress->articles=$articles;
-    } 
-     dd($hespress->articles); */
+
 $urls = [
-   
-     [
+    [
         'language'=>'ar',
         'name'=>'alyaoum24',
         'url'=>"https://alyaoum24.com/",
@@ -420,26 +413,6 @@ $urls = [
         'content'=>'.post_content > p',
         'date'=>'.timePost',
 
-      ],
-      /* [
-        'language'=>'ar',
-        'name'=>'tanja24',
-        'url'=>"https://tanja24.com/",
-        'section'=>'.current-post-parent > a',
-        'img'=>'.post-thumbnail > img',
-        'title'=>'.single-post-title',
-        'content'=>'.entry-content > p',
-        'date'=>'.post-published > b',
-      ],
-   [
-        'language'=>'ar',
-        'name'=>'barlamane',
-        'url'=>"https://www.barlamane.com/",
-        'section'=>'.current-post-parent:not(.menu-item-has-children) > a',
-        'img'=>'div.thumb > img',
-        'title'=>'.post-content > .title',
-        'content'=>'.content > p',
-        'date'=>'.date',
       ],
    [
         'language'=>'ar',
@@ -452,7 +425,7 @@ $urls = [
         'date'=>'.time',
 
       ],
-     [
+  /*  [
         'language'=>'ar',
         'name'=>'almassaa',
         'url'=>"https://almassaa.com/",
@@ -462,7 +435,7 @@ $urls = [
         'content'=>'.entry-content >  p',
         'date'=>'.date ',
       ],
-   /* [
+     [
         'language'=>'ar',
         'name'=>'hibapress',
         'section'=>'.menu > .current-post-ancestor',
@@ -508,9 +481,29 @@ $urls = [
 
 
 
-
+  [
+        'language'=>'ar',
+        'name'=>'tanja24',
+        'url'=>"https://tanja24.com/",
+        'section'=>'.current-post-parent > a',
+        'img'=>'.post-thumbnail > img',
+        'title'=>'.single-post-title',
+        'content'=>'.entry-content > p',
+        'date'=>'.post-published > b',
+      ],
+   [
+        'language'=>'ar',
+        'name'=>'barlamane',
+        'url'=>"https://www.barlamane.com/",
+        'section'=>'.current-post-parent:not(.menu-item-has-children) > a',
+        'img'=>'div.thumb > img',
+        'title'=>'.post-content > .title',
+        'content'=>'.content > p',
+        'date'=>'.date',
+      ],
 
     [
+
         'language'=>'ar',
         'name'=>'hespress',
         'url'=>"https://www.hespress.com/",
@@ -605,19 +598,18 @@ $userAgents = [
     //'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko',
     'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0'
 ];
-$client = new Client([
+$client = new Client( [
     'headers' => [
         'User-Agent' => $userAgents[array_rand($userAgents)],
         'Accept' => 'text/html',
         'Referer' => 'http://www.est-umi.ac.ma/'
     ],
     'verify' => base_path('public/cacert.pem')
-]);
-//dd($client->request('GET',$instance->compare_date($urls[0],$key_word,$date_start,$date_end)));
+]); 
 
 $requests = function ($urls){
     foreach($urls as $url) {
-        yield new Request("GET", $url['url']);
+        yield new Request('GET', $url['url']);
 }
 };
 
@@ -626,8 +618,8 @@ $pool = new Pool($client, $requests($urls), [
     'fulfilled' => function (Response $response,$index) use ($urls, $Category,$key_word,$date_start,$date_end,$client) {
         global $searchResults;
         $instance=new self;
-        dd('here');
         $searchUrl=$instance->compare_date($urls[$index],$key_word,$date_start,$date_end);
+        //dd('here');
         /*$searchUrl = 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls[$index]['url'])
        . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
        . '%2Ccd_max%3A' . urlencode(Carbon::create($date_end)->format('m/d/Y'));*/
@@ -682,7 +674,8 @@ global $searchResults,$data;
         $crawler = new Crawler($response->getBody()->getContents());
         //echo($response->getBody()->getContents());
         $NumPages=$crawler->filter('.AaVjTc tr > td');
-        //$data[$urls[$index]['name']]['PagesNumber']=count($NumPages)-2;
+
+        $data[$urls[$index]['name']]['PagesNumber']=count($NumPages)-2;
         $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use($urls,$index){
 
             global $searchResults ;
@@ -695,16 +688,12 @@ $request = function ($urls)  {
     foreach($urls as $url) {
             yield new Request('GET', $url);
     }};
-    global ${$urls[$index]['name']},$articles;
-    ${$urls[$index]['name']}=new Newspaper();
-    ${$urls[$index]['name']}->pages=count($NumPages)-2;
+
 $pool = new Pool($client, $request($searchResults[$index]), [
     'concurrency' => 20,
-    'fulfilled' => function (Response $response,$index2) use ($index,$urls, $Category,$key_word) {
+    'fulfilled' => function (Response $response,$index3) use ($index,$urls, $Category,$key_word) {
         global $data;
-        dd('data');
         $instance=new self;
-        global ${$urls[$index]['name']},$articles;
         try{
         $crawler = new Crawler($response->getBody()->getContents());
         $content = $crawler->filter($urls[$index]['content']);
@@ -717,9 +706,9 @@ $pool = new Pool($client, $request($searchResults[$index]), [
             $scraped_category=$crawler->filter($urls[$index]['section'])->text();
                 //echo($scraped_category. '<br>');
           //  if($instance->compare_category($scraped_category,$Category) ){ }
-                /* $innerData['category'] =$scraped_category;
+                $innerData['category'] =$scraped_category;
                 $innerData['title']    = $title;
-                $innerData['text']     = $paragraphs; */
+                $innerData['text']     = $paragraphs;
                 $image=$crawler->filter($urls[$index]['img']);
                 //dd($image->attr('src'));
                 if(str_contains($image->attr('data-src'),'jpg') || str_contains($image->attr('data-src'),'webp') || str_contains($image->attr('data-src'),'jpeg')){
@@ -731,24 +720,23 @@ $pool = new Pool($client, $request($searchResults[$index]), [
                 }
 
                 if(str_contains($imageUrl,'https://') || str_contains($imageUrl,'http://')){
-                $image    =  $imageUrl;
+                $innerData['image']     =  $imageUrl;
                 }
                 else{
-                $image    =  $urls[$index]['url'] . $imageUrl;
+                $innerData['image']     =  $urls[$index]['url'] . $imageUrl;
                 }
                  //$instance->translateDate()
-                $date   = $crawler->filter($urls[$index]['date'])->text();
-                $articles[]=new Article($title,$paragraphs,$image,$date,$scraped_category);
-                ${$urls[$index]['name']}->articles=$articles;
+                $innerData['date']    = $crawler->filter($urls[$index]['date'])->text();
+                $data[$urls[$index]['name']][]=$innerData;
+           
         }
 
 
     }catch(Exception $e){
-       
+       // echo();
     }
 },
     'rejected' => function (Exception $reason,$index2){
-        dd($reason);
         //dd('error'.$index2 .': '. $reason);
 },
 ]);
@@ -758,10 +746,6 @@ foreach ($pool as $index => $response) {
 $promise = $pool->promise();
 // Force the pool of requests to complete.
 $promise->wait();
-//dd($articles);
-//dd(${$urls[$index]['name']}->articles[1]->title);
-$data[$urls[$index]['name']]=${$urls[$index]['name']};
-
         },
     'rejected' => function (Exception $reason,$index2){
                 dd($reason);
@@ -769,9 +753,10 @@ $data[$urls[$index]['name']]=${$urls[$index]['name']};
         ]);
     $promise = $pool->promise();
         // Force the pool of requests to complete.
-   
-//dd($data['alyaoum24']->articles);
+    $promise->wait();
+//dd($data);
 //dd('done');
+
 
 //usort($data, function ($a, $b) {return strtotime($b['date']) - strtotime($a['date']);});
 return $data;
@@ -786,3 +771,4 @@ return $data;
 }
 
 }
+
