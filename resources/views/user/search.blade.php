@@ -148,30 +148,6 @@
           
           <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
           <script src="{{ asset('js/search.js') }}"></script>
-          <!-- <script type="module" src="{{ asset('js/Langue.js') }}"></script> -->
-         {{-- <script>
-            $('input[name="language"]').on('change', function() {
-  const selectedLanguage = $(this).val();
-  let languageId = null;
-
-  // Map language values to language IDs
-  if (selectedLanguage === 'Arabe') {
-    languageId = 1;
-  } else if (selectedLanguage === 'Francais') {
-    languageId = 2;
-  }
-
-  // Show/hide sites based on language ID
-  $('.options2 li').each(function() {
-    const siteLanguageId = $(this).data('id_langue');
-
-    if (languageId === null || siteLanguageId === languageId) {
-      $(this).show();
-    } else {
-      $(this).hide();
-    }
-  });
-});
-          </script>--}}
+     
         </body>
    @endsection
