@@ -48,7 +48,7 @@ Route::middleware([
     Route::post('/user/search', [SearchController::class ,'search'])->name('user.search-post');
     Route::get('/user/get-sites', [SearchController::class, 'getSites'])->name('user.get-sites');
     
-    Route::get('/User/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');
+    Route::get('/user/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');
     Route::get('/user/article/{news}/{id}', [SearchController::class,'show'])->name('user.article');
      Route::get('user/profile', function () {
         return view('profile.show');

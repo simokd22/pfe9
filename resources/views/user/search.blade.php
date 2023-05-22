@@ -27,31 +27,31 @@
       <i class="uil uil-times close-icon"></i>
     </div>
 
-   <!--Categories-->          
-    <div class="selects">
+     <!--Categories-->          
+   <div class="selects">
       
         
-        <div class="wrapper1">
-          <div class="select-btn1">
-            <span>Select Category</span>
-            <i class="uil uil-angle-down"></i>
-          </div>
-          <div class="content1">
-            <!--That little search-box-->
-            <div class="search">
-              <i class="uil uil-search"></i>
-              <input id="category-search" spellcheck="false" type="text" placeholder="Search">
-            </div>
-            <!--That little search-box-->
-            <ul class="options1">
-              <li><input type="checkbox" id="all-categories" name="all-categories" value="all-categories"> <label id="category_label" for="all-categories"> <b>All Categories</b></label></li>
-              @foreach ($categories as $category)
-              <li value="sport"><input type="checkbox" id="sport" name="categories[]" value="{{ $category->category }}"><label for="sport">{{ $category->category }}</label></li>
-              @endforeach
-            </ul>
-          </div>
-        </div> 
-    
+    <div class="wrapper1">
+      <div class="select-btn1">
+        <span>Select Category</span>
+        <i class="uil uil-angle-down"></i>
+      </div>
+      <div class="content1">
+        <!--That little search-box-->
+        <div class="search">
+          <i class="uil uil-search"></i>
+          <input id="category-search" spellcheck="false" type="text" placeholder="Search">
+        </div>
+        <!--That little search-box-->
+        <ul class="options1">
+          <li><input type="checkbox" id="all-categories" name="all-categories" value="all-categories"> <label id="category_label" for="all-categories"> <b>All Categories</b></label></li>
+          @foreach ($categories as $category)
+          <li value="sport"><input type="checkbox" id="{{ $category->category_name }}" name="categories[]" value="{{ $category->category_name }}"><label for="{{ $category->category_name }}">{{ $category->category_name }}</label></li>
+          @endforeach
+        </ul>
+      </div>
+    </div> 
+
 <!--Categories--> 
 
 
@@ -72,7 +72,7 @@
       
         @foreach($languages as $language)
         <label> 
-            <input type="radio" name="language" value="{{ $language->langue }}">
+            <input type="radio" name="language" value="{{ $language->langue }}" class="langues">
             {{ $language->langue }}
         </label>
         @endforeach
@@ -102,9 +102,9 @@
       </div>
       <!--That little search-box-->
       <ul class="options2">
-        <li><input type="checkbox" id="all-sites" name="all-sites" value="all-sites"> <label for="all-sites" id="all-sites"><b>All Sites</b></label></li>
+        <li><input type="checkbox" id="all-sites" name="all-sites" value="all-sites"> <label for="all-sites" id="all-sites-label"><b>All Sites</b></label></li>
         @foreach ($sites as $site)
-                  <li ><input type="checkbox"  name="sites" value="{{ $site->News_name }}">
+                  <li ><input class="sites" type="checkbox"  name="sites[]" value="{{ $site->News_name }}">
                     <label > {{ $site->News_name }}</label></li>
         @endforeach
       </ul>

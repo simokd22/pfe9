@@ -3,19 +3,23 @@ session_start();
 if(!isset($_SESSION['IsInArticle'])) {
   $_SESSION['IsInArticle']=0;
 }
-
 @endphp
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('css/style_results.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
+@extends('layouts/navbar_user')
+@section('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<link rel="stylesheet" href="{{ asset('css/style_results.css') }}">
+<link rel="stylesheet"  href="https://www.fontstatic.com/f=sky-bold" />
+<script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@endsection
+@section('title' , 'results')
+@section('content')
+
+         <body>
+          <div class="back">
+                <a href="search"  class="back-btn"><i class="fas fa-arrow-left"></i>Back</a>
+          </div>
     @if (empty($data))
     <h2 class="Error">No Results Found!!</h2>
     @else
@@ -76,6 +80,5 @@ if(!isset($_SESSION['IsInArticle'])) {
         </div>
     @endif
     <script src="{{ asset('js/results.js') }}"></script>
-    
 </body>
-</html>
+@endsection

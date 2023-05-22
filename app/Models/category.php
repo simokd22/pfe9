@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,5 +14,5 @@ class Category extends Model
     'synonyms_categories',
     'id_langue',
     ];
-    protected $casts = ['synonyms_categories' => 'array']; 
+
 }

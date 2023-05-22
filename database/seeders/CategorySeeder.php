@@ -15,43 +15,43 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'category_name'=>'رياضة',
-            'synonyms_categories'=>['رياضة','الرياضة','سبور','الرياضي'],
+            'synonyms_categories'=>json_encode(['رياضة','الرياضة','سبور','الرياضي']),
             'id_langue'=>1,
             ]);
         Category::create([
             'category_name'=>'سياسة',
-            'synonyms_categories'=>['سياسة','سياسية','وطنية'],
+            'synonyms_categories'=>json_encode(['سياسة','سياسية','وطنية']),
             'id_langue'=>1,
             ]);
         Category::create([
             'category_name'=>'مجتمع',
-            'synonyms_categories'=>['مجتمع',],
+            'synonyms_categories'=>json_encode(['مجتمع',]),
             'id_langue'=>1,
             ]);
         Category::create([
             'category_name'=>'اقتصاد',
-            'synonyms_categories'=>['اقتصاد','إقتصاد','مال وأعمال'],
+            'synonyms_categories'=>json_encode(['اقتصاد','إقتصاد','مال وأعمال']),
             'id_langue'=>1,
             ]);
 
         Category::create([
             'category_name'=>'sport',
-            'synonyms_categories'=>['sport','sports','sport express',],
+            'synonyms_categories'=>json_encode(['sport','sports','sport express',]),
             'id_langue'=>2,
             ]);
         Category::create([
             'category_name'=>'politique',
-            'synonyms_categories'=>['politique',],
+            'synonyms_categories'=>json_encode(['politique',]),
             'id_langue'=>2,
             ]);
         Category::create([
             'category_name'=>'societe',
-            'synonyms_categories'=>['société','national'],
+            'synonyms_categories'=>json_encode(['société','national']),
             'id_langue'=>2,
             ]);
         Category::create([
             'category_name'=>'economie',
-            'synonyms_categories'=>['economie','économie',],
+            'synonyms_categories'=>json_encode(['economie','économie',]),
             'id_langue'=>2,
             ]);
     }
