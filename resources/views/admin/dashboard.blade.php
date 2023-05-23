@@ -3,10 +3,13 @@
 @section('content')
 @section('style')
 <link rel="stylesheet" href="{{asset('css/style_dashboard.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
 <header>
 <h1>User Table</h1>
 </header>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 <div class="tab-content">
     <div class="tab-pane" id="tab1-content">
@@ -20,22 +23,23 @@
             </tr>
             
                 
-            
-            <form >
             @if(isset($Userdata))
             @forEach($Userdata as $item)
+            <form action="{{route('Userinfo.destroy',$item['id'])}}" method="POST">
+              @csrf
+        
+                @method('DELETE')          
+           
             <tr>
               <td>{{$item['name']}}</td>
               <td>{{$item['email']}}</td>
              
     
               <td> 
-                    <form action="{{route('Userinfo.destroy',$item['id'])}}" method="POST">
-                        @csrf
-                        
-                          @method('DELETE')
-                          <button class = "delete" type="submit" name="delete"><i class="fa-solid fa-trash"></i></button>
-                    </form>
+                   
+                          
+                          <button class="btn btn-danger" type="submit" name="delete">Delete<i class="bi bi-trash"></i></button>
+                        </form>
             
                 </td> 
             </tr>
@@ -73,4 +77,6 @@
     });
 
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 @endsection
