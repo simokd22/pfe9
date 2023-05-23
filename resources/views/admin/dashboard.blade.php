@@ -3,6 +3,7 @@
 @section('content')
 @section('style')
 <link rel="stylesheet" href="{{asset('css/style_dashboard.css')}}">
+<script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
 <header>
 <h1>User Table</h1>
 </header>
@@ -34,7 +35,7 @@
                         @csrf
                         
                           @method('DELETE')
-                          <button class = "delete" type="submit" name="delete"><i class="fa-solid fa-trash"></i></button>
+                          <button class = "delete" type="submit" name="delete" style="color: #ff5252;border:none; cursor: pointer;" ><i class="fa-solid fa-trash"></i></button>
                     </form>
             
                 </td> 

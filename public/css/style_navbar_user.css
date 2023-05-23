@@ -52,6 +52,9 @@
   .profile-btn i {
    margin-right: 10px;
   }
+  .profile-btn:hover {
+      background-color: #e2e2e2;
+    }
   
   
   .terms .term-service{
