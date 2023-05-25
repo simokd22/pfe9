@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->String('category');
+            $table->string('category_name');
+            $table->string('synonyms_categories')->nullable();
+            $table->unsignedBigInteger('id_langue');
+            $table->foreign('id_langue')
+                  ->references('id')
+                  ->on('langues')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

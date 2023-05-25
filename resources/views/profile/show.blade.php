@@ -1,9 +1,8 @@
 <x-app-layout>
+    @extends('layouts/navbar_user')
     <x-slot name="header">
-        <a href="{{ route('login') }}">
-            <img src="{{ asset('logo/blue_symbol.png') }}" alt="Logo" class="w-10 h-10 " />
-        </a>
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight center" style="font-size: 2em; text-align:center">
+        
+        <h2 style="margin-top: 90px; justify-content: center; display: flex;font-size: 40px;" class="font-semibold text-gray-800 dark:text-black-200 leading-tight center" style="font-size: 2em; text-align:center">
             {{ __('Profile') }}
         </h2>
         

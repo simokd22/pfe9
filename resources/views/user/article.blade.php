@@ -12,7 +12,9 @@
      
 
 	<body >
-        
+        <div class="back">
+            <a href="{{ url()->previous() }}"  class="back-btn"><i class="fas fa-arrow-left"></i>Back</a>
+      </div>
      <div class="blogpost">
         <h1  class="title"> {{ $data[$news][$id]['title'] }}</h1>
         <div class="image">

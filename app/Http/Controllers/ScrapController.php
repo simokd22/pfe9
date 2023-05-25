@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 set_time_limit(0);
 
-
+use App\Models\Newsinfo;
 use Carbon\Carbon;
 use Exception;
 use GuzzleHttp\Client;
 
 use GuzzleHttp\Pool;
-
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
@@ -21,6 +21,9 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use IntlDateFormatter;
+
+
+
 use Symfony\Component\DomCrawler\Crawler;
 
 class ScrapController extends BaseController
@@ -348,235 +351,52 @@ public function translateDate($input,$format='') {
 }
 
 //,$start_date,$end_date
-public function compare_category($scraped_cat,$in_cat){
+public function compare_category($scraped_cat,$categories){
     $isTrue = false;
-    if($in_cat=='all' ){
+    if($categories=='' ){
         $isTrue = true;
     }
     else{
-    $categories=[
-        'رياضة'=>['رياضة','الرياضة','سبور','الرياضي'],
-        'سياسة'=>['سياسة','سياسية','وطنية'],
-        'مجتمع'=>['مجتمع',],
-        'اقتصاد'=>['اقتصاد','إقتصاد','مال وأعمال'],
-    ];
-
-    foreach ($categories[$in_cat] as $value) {
-
-        if (str_contains($scraped_cat, $value)) {
-            $isTrue = true;
-            break;
+        foreach($categories as $category){
+            foreach (json_decode($category->synonyms_categories) as $value) {
+                if (str_contains($scraped_cat, $value)) {
+                    $isTrue = true;
+                    break;
+                }
+            }
         }
+    
     }
-    }
-
-
     return $isTrue;
 }
 
 public function compare_date($urls,$key_word,$date_start,$date_end){
     $searchUrl='';
 if(!empty($date_start) && !empty($date_end)){
-    $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls['url'])
+    $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls->News_url)
        . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
        . '%2Ccd_max%3A' . urlencode(Carbon::create($date_end)->format('m/d/Y'));
 }
 else if(empty($date_start) && !empty($date_end)){
-    $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls['url'])
+    $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls->News_url)
        . '&tbs=cdr%3A1%2Ccd_min%3A'. '%2Ccd_max%3A' . urlencode(Carbon::create($date_end)->format('m/d/Y'));
 }
 else if(!empty($date_start) && empty($date_end)){
-    $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls['url'])
+    $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls->News_url)
        . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
        . '%2Ccd_max%3A';
 }
 else{
-    $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls['url'])
+    $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls->News_url)
     . '&tbs=0';
 }
         return $searchUrl;
 }
-public static function handle(String $key_word,$date_start='',$date_end='',String $Category=''){
+public static function handle(String $key_word,$date_start='',$date_end='',$sites,$Category=''){
     $instance=new self;
-
-$urls = [
-    [
-        'language'=>'ar',
-        'name'=>'alyaoum24',
-        'url'=>"https://alyaoum24.com/",
-        'section'=>'.breadcrumb >  li:last-child',
-        'img'=>'.wp-post-image',
-        'title'=>'.infoSingle > h1',
-        'content'=>'.post_content > p',
-        'date'=>'.timePost',
-
-      ],
-   [
-        'language'=>'ar',
-        'name'=>'tanja24',
-        'url'=>"https://tanja24.com/",
-        'section'=>'.current-post-parent > a',
-        'img'=>'.post-thumbnail > img',
-        'title'=>'.single-post-title',
-        'content'=>'.entry-content > p',
-        'date'=>'.post-published > b',
-      ],
-   [
-        'language'=>'ar',
-        'name'=>'barlamane',
-        'url'=>"https://www.barlamane.com/",
-        'section'=>'.current-post-parent:not(.menu-item-has-children) > a',
-        'img'=>'div.thumb > img',
-        'title'=>'.post-content > .title',
-        'content'=>'.content > p',
-        'date'=>'.date',
-      ],
-   [
-        'language'=>'ar',
-        'name'=>'assahraa',
-        'url'=>"https://assahraa.ma/",
-        'section'=>'.main-title',
-        'img'=>'.img-thumbnail',
-        'title'=>'.sec-info > h1',
-        'content'=>'.article > p',
-        'date'=>'.time',
-
-      ],
-     [
-        'language'=>'ar',
-        'name'=>'almassaa',
-        'url'=>"https://almassaa.com/",
-        'section'=>'.menu > .current-post-ancestor',
-        'img'=>'.single-featured-image > img',
-        'title'=>'.post-title',
-        'content'=>'.entry-content >  p',
-        'date'=>'.date ',
-      ],
-   /* [
-        'language'=>'ar',
-        'name'=>'hibapress',
-        'section'=>'.menu > .current-post-ancestor',
-        'url'=>"https://ar.hibapress.com/",
-        'img'=>'.featured-area-inner  img',
-        'title'=>'.post-title',
-        'content'=>'.entry-content > p',
-        'date'=>' .date',
-      ],
-   [
-        'language'=>'ar',
-        'name'=>'goud',
-        'url'=>"https://www.goud.ma/",
-        'section'=>'.cat-link',
-        'img'=>'.content > img',
-        'title'=>'.col-md-12 > h1',
-        'content'=>'.content > p',
-        'date'=>' .date',
-     ],
-     [
-        'language'=>'ar',
-        'name'=>'al3omk',
-        'url'=>"https://al3omk.com/",
-        'section'=>'.post-cat > a',
-        'img'=>'.post-image > img',
-        'title'=>'.post-title',
-        'content'=>'.post-body > p',
-        'date'=>'.post-date',
-      ],
-   [
-        'language'=>'ar',
-        'name'=>'alakhbar',
-        'url'=>"https://www.alakhbar.press.ma/",
-        'section'=>'.post-cat-wrap > a:last-child',
-        'img'=>'.featured-area-inner  img',
-        'title'=>'.post-title',
-        'content'=>'.entry-content > p',
-        'date'=>' .post-meta > .date',
-      ],
-
-
-
-
-
-
-
-    [
-        'language'=>'ar',
-        'name'=>'hespress',
-        'url'=>"https://www.hespress.com/",
-        'section'=>'.breadcrumb > li:last-child',
-        'img'=>'.ratio-medium > img',
-        'title'=>'.post-title',
-        'content'=>'.article-content > p',
-        'date'=>'.date-post',
-      ],
-      */
-/*
-  [
-    'language'=>'fr',
-    'name'=>'hespress',
-    'url'=>"https://fr.hespress.com/",
-    'section'=>'.breadcrumb > li:last-child',
-    'img'=>'.img-fluid',
-    'articles'=>'.search_results > div',
-    'title'=>'.post-title',
-    'content'=>'.article-content > p',
-    'date'=>'.date-post',
-    'search'=>'?s',
-  ],
-  ['language'=>'fr',
-  'name'=>'al3omk',
-  'url'=>"https://fr.al3omk.com/",
-  'section'=>'.current-post-parent',
-  'img'=>'.lg-big-image > img',
-  'articles'=>'.search-item',
-  'title'=>'.title-single',
-  'content'=>'.post_content > p',
-  'date'=>'.timePost',
-  'search'=>'?s',
-],
-[
-    'language'=>'fr',
-    'name'=>'hibapress',
-    'section'=>'.current-post-parent ',
-    'url'=>"https://fr.hibapress.com/",
-    'articles'=>'#posts-container > li',
-    'img'=>'.wp-post-image',
-    'title'=>'.post-title',
-    'content'=>'.entry-content > p',
-    'date'=>' .date',
-    'search'=>'?s',
-  ],
-  [
-    'language'=>'fr',
-    'name'=>'alyaoum24',
-    'url'=>"https://fr.alyaoum24.com/",
-    'section'=>'.current-post-parent > a',
-    'img'=>'.imagePostArchive > a > img',
-    'articles'=>'.listing-archive  li',
-    'title'=>'.infoSingle > h1',
-    'content'=>'.post_content > p',
-    'date'=>'.timePost',
-    'search'=>'?s',
-  ],
-   [
-  'language'=>'fr',
-    'name'=>'barlamane',
-    'url'=>"https://www.barlamane.com/fr/",
-    'section'=>'.breadcrumbs > a:last-child',
-    'img'=>'.wp-post-image',
-    'articles'=>'.posts-list > article',
-    'title'=>'.entry-header > .entry-title',
-    'content'=>'.entry-content > p',
-    'date'=>'.entry-date',
-    'search'=>'?s',
-  ],
-  */
-
-
-];
-//$instance= new self;
-//dd(Carbon::parse($instance->translateDate('منذ 3 أيام'))->format('Y-m-d'));
-        //dd($urls);
+    
+    $urls= $sites;
+    //dd($sitesdata->get(0));
         global $data;
         global $links;
         global $searchResults;
@@ -590,22 +410,22 @@ $urls = [
 
 
 $userAgents = [
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+    //'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
     //'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko',
     'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0'
 ];
-$client = new Client([
+$client = new Client( [
     'headers' => [
         'User-Agent' => $userAgents[array_rand($userAgents)],
         'Accept' => 'text/html',
         'Referer' => 'http://www.est-umi.ac.ma/'
     ],
     'verify' => base_path('public/cacert.pem')
-]);
+]); 
 
 $requests = function ($urls){
     foreach($urls as $url) {
-        yield new Request('GET', $url['url']);
+        yield new Request('GET', $url->News_url);
 }
 };
 
@@ -614,66 +434,17 @@ $pool = new Pool($client, $requests($urls), [
     'fulfilled' => function (Response $response,$index) use ($urls, $Category,$key_word,$date_start,$date_end,$client) {
         global $searchResults;
         $instance=new self;
-        $searchUrl=$instance->compare_date($urls[$index],$key_word,$date_start,$date_end);
-        
-        /*$searchUrl = 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls[$index]['url'])
-       . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
-       . '%2Ccd_max%3A' . urlencode(Carbon::create($date_end)->format('m/d/Y'));*/
-/*
-       $resultsPerPage = 10;
-    $numPages = 3;
-    // Loop through each page of search results and retrieve them
-    for ($page = 0; $page < $numPages; $page++) {
-    // Calculate the start offset for this page
-    $startOffset= $page * $resultsPerPage;
-    // Add the start offset to the search URL query string
-    $searchUrlWithOffset[$index][] = $searchUrl . '&start=' . $startOffset;
-    }
-    //dd($searchUrlWithOffset);
-    $requests = function ($urls){
-        foreach($urls as $url) {
-            yield new Request('GET', $url);
-    }};
-$pool = new Pool($client, $requests($searchUrlWithOffset[$index]), [
-    'concurrency' => 20,
-    'fulfilled' => function (Response $response,$index2) use ($index,$urls,$client, $Category) {
-        global $searchResults;
-        //echo($response->getBody()->getContents());
-        $crawler = new Crawler($response->getBody()->getContents());
-        //echo($response->getBody()->getContents());
-
-        $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use($urls,$index2,$index){
-
-            global $searchResults ;
-            //dd($node->attr('href'));
-                //echo($index2);
-            $searchResults[$index][]=$node->attr('href');
-
-        });
-
-    },
-    'rejected' => function (Exception $reason) {
-        dd('error2');
-},
-]);
-foreach ($pool as $index => $response) {
-    sleep(2);
-}
-// Initiate the transfers and create a promise
-$promise = $pool->promise();
-
-// Force the pool of requests to complete.
-$promise->wait();*/
+        $searchUrl=$instance->compare_date($urls->get($index),$key_word,$date_start,$date_end);
+        //dd($searchUrl);
 global $searchResults,$data;
         //echo($response->getBody()->getContents());
         $response=$client->get($searchUrl);
         $crawler = new Crawler($response->getBody()->getContents());
         //echo($response->getBody()->getContents());
         $NumPages=$crawler->filter('.AaVjTc tr > td');
-
-        $data[$urls[$index]['name']]['PagesNumber']=count($NumPages)-2;
+        $data[$urls->get($index)->News_name]['PagesNumber']=count($NumPages)-2;
         $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use($urls,$index){
-
+            //dd($node);
             global $searchResults ;
             //dd($node->attr('href'));
                 //echo($index2);
@@ -684,7 +455,7 @@ $request = function ($urls)  {
     foreach($urls as $url) {
             yield new Request('GET', $url);
     }};
-
+//dd($searchResults);
 $pool = new Pool($client, $request($searchResults[$index]), [
     'concurrency' => 20,
     'fulfilled' => function (Response $response,$index3) use ($index,$urls, $Category,$key_word) {
@@ -692,20 +463,20 @@ $pool = new Pool($client, $request($searchResults[$index]), [
         $instance=new self;
         try{
         $crawler = new Crawler($response->getBody()->getContents());
-        $content = $crawler->filter($urls[$index]['content']);
+        $content = $crawler->filter($urls->get($index)->News_content);
         $paragraphs='';
         for ($i = 0; $i < count($content);$i++){
         $paragraphs.= $content->eq($i)->text() ." \n";
         }
-        $title=$crawler->filter($urls[$index]['title'])->text();
+        $title=$crawler->filter($urls->get($index)->News_title)->text();
         if(str_contains($title,$key_word) || str_contains($paragraphs,$key_word)){
-            $scraped_category=$crawler->filter($urls[$index]['section'])->text();
+            $scraped_category=$crawler->filter($urls->get($index)->News_category)->text();
                 //echo($scraped_category. '<br>');
-          //  if($instance->compare_category($scraped_category,$Category) ){ }
+            if($instance->compare_category($scraped_category,$Category) ){ 
                 $innerData['category'] =$scraped_category;
                 $innerData['title']    = $title;
                 $innerData['text']     = $paragraphs;
-                $image=$crawler->filter($urls[$index]['img']);
+                $image=$crawler->filter($urls->get($index)->News_image);
                 //dd($image->attr('src'));
                 if(str_contains($image->attr('data-src'),'jpg') || str_contains($image->attr('data-src'),'webp') || str_contains($image->attr('data-src'),'jpeg')){
                     $imageUrl=$image->attr('data-src');
@@ -719,12 +490,12 @@ $pool = new Pool($client, $request($searchResults[$index]), [
                 $innerData['image']     =  $imageUrl;
                 }
                 else{
-                $innerData['image']     =  $urls[$index]['url'] . $imageUrl;
+                $innerData['image']     =  $urls->get($index)->News_url . $imageUrl;
                 }
                  //$instance->translateDate()
-                $innerData['date']    = $crawler->filter($urls[$index]['date'])->text();
-                $data[$urls[$index]['name']][]=$innerData;
-           
+                $innerData['date']    = $crawler->filter($urls->get($index)->News_date)->text();
+                $data[$urls->get($index)->News_name][]=$innerData;
+            }
         }
 
 
@@ -736,9 +507,9 @@ $pool = new Pool($client, $request($searchResults[$index]), [
         //dd('error'.$index2 .': '. $reason);
 },
 ]);
-foreach ($pool as $index => $response) {
-    sleep(1);
-}
+ foreach ($pool as $index => $response) {
+    sleep(3);
+} 
 $promise = $pool->promise();
 // Force the pool of requests to complete.
 $promise->wait();
@@ -747,6 +518,9 @@ $promise->wait();
                 dd($reason);
         },
         ]);
+    foreach ($pool as $index => $response) {
+            sleep(2);
+    }
     $promise = $pool->promise();
         // Force the pool of requests to complete.
     $promise->wait();
@@ -767,3 +541,4 @@ return $data;
 }
 
 }
+

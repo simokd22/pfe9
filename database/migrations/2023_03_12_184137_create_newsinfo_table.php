@@ -16,12 +16,15 @@ return new class extends Migration
             $table->String('News_name');
             $table->String('News_url');
             $table->String('News_category');
+            $table->string('News_image');
+            $table->string('News_title');
+            $table->string('News_content');
+            $table->string('News_date');
             $table->unsignedBigInteger('id_langue');
             $table->foreign('id_langue')
                   ->references('id')
                   ->on('langues')
                   ->onDelete('cascade');
-
             $table->timestamps();
         });
     }

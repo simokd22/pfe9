@@ -20,8 +20,8 @@ searchInp3 = wrapper3.querySelector("input"),
 options3 = wrapper3.querySelector(".options2");
 
 //checkbox
-const allSitesCheckbox = document.getElementById('all-sites');
-const siteCheckboxes = document.querySelectorAll('input[name="sites[]"]');
+let allSitesCheckbox = document.getElementById('all-sites');
+let siteCheckboxes = document.querySelectorAll('input[name="sites[]"]');
 
 allSitesCheckbox.addEventListener('change', (e) => {
 siteCheckboxes.forEach((checkbox) => {
@@ -37,8 +37,34 @@ allSitesCheckbox.checked = false;
 });
 });
 //checkbox
+function myFunction() {
+  let CheckedLangue=document.querySelectorAll('input[name="language"]');
+  console.log(CheckedLangue.length);
+  let isChecked=false;
+  CheckedLangue.forEach((langue) => {
+    if(langue.checked){
+      wrapper3.classList.toggle("active");
+      return false;
+    } 
+    });
+    let allSitesCheckbox = document.getElementById('all-sites');
+let siteCheckboxes = document.querySelectorAll('input[name="sites[]"]');
 
-selectBtn3.addEventListener("click", () => wrapper3.classList.toggle("active")); 
+allSitesCheckbox.addEventListener('change', (e) => {
+siteCheckboxes.forEach((checkbox) => {
+checkbox.checked = e.target.checked;
+});
+});
+
+siteCheckboxes.forEach((checkbox) => {
+checkbox.addEventListener('change', (e) => {
+if (!e.target.checked) {
+allSitesCheckbox.checked = false;
+}
+});
+});
+}
+selectBtn3.addEventListener("click", myFunction); 
 /*----------------------------------------------------------------------------------------------------------------*/
 
 
@@ -132,6 +158,15 @@ span.textContent = el.textContent;
 selectBtn.addEventListener("click", () => {
 wrapper.classList.toggle("active");
 });
+
+//to complete
+/* let Langues=document.querySelectorAll('input[name="language"]');
+Langues.forEach((langue) => {
+  langue.addEventListener("click",(langue) =>{
+    console.log('wtf');
+    langue.checked=false;
+  });
+  }); */
 /*----------------------------------------------------------------------------------------------------------------*/
 
 
@@ -227,14 +262,26 @@ getNewsNames(1)
 document.querySelector(".options").addEventListener("change", (_event) => {
   const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
   const availableSites = languageSites[selectedLanguage] ;
-  sitesSelect.querySelector(".options2").innerHTML = "";
+  sitesSelect.querySelector(".options2").innerHTML = "<li><input type='checkbox' id='all-sites' name='all-sites' value='all-sites'> <label for='all-sites' id='all-sites-label'><b>All Sites</b></label></li>";
   availableSites.forEach((site) => {
     const li = document.createElement("li");
-    li.innerHTML = `<input type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site}</label>`;
+    li.innerHTML = `<input class="sites" type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site}</label>`;
     sitesSelect.querySelector(".options2").appendChild(li);
   });
 });
 
+
+
+/*  let all_sites=document.getElementById('all-sites');
+ all_sites.addEventListener("click", (event) => {
+  console.log(event.target.checked);
+  let sites=document.querySelectorAll('.sites');
+  console.log(sites.length);
+  console.log('here2');
+  sites.forEach((site)=>{
+    site.checked = !site.checked;
+  });
+  }); */
 /*----------------------------------------------------------------------------------------------------------------*/
 
 

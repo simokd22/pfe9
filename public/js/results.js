@@ -9,8 +9,6 @@
                 'border-bottom': '4px solid #ddd',
             });
         } else {
-            console.log('activeTab != 0');
-
             $('.tab-pane').hide();
             $('#' + activeTab + '-content').addClass('active');
             $('#' + activeTab + '-content').show();

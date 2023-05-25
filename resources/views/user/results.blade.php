@@ -17,6 +17,9 @@ if(!isset($_SESSION['IsInArticle'])) {
 @section('content')
 
          <body>
+          <div class="back">
+                <a href="search"  class="back-btn"><i class="fas fa-arrow-left"></i>Back</a>
+          </div>
     @if (empty($data))
     <h2 class="Error">No Results Found!!</h2>
     @else
