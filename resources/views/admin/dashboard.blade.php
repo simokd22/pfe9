@@ -4,6 +4,7 @@
 @section('style')
 <link rel="stylesheet" href="{{asset('css/style_dashboard.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+<script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
 
 <header>
 <h1>User Table</h1>
@@ -38,7 +39,7 @@
               <td> 
                    
                           
-                          <button class="btn btn-danger" type="submit" name="delete">Delete<i class="bi bi-trash"></i></button>
+                          <button style="border: none; color:red;cursor: pointer;" class="btn btn-danger" type="submit" name="delete"><i  class="fa-solid fa-trash"></i></button>
                         </form>
             
                 </td> 
