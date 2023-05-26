@@ -52,7 +52,10 @@ class SearchController extends Controller
         $langue=$request->input('language'); 
         $langue_id=Langue::where('langue','=',$langue)->pluck('id');
         $sites=Newsinfo::where('id_langue','=',$langue_id)->whereIn('News_name', $sites)->get();
+        $categories='';
+        if($Category){
         $categories=Category::where('id_langue','=',$langue_id)->whereIn('category_name', $Category)->get();
+        }
         $data=ScrapController::handle($key_word,$date_start,$date_end,$sites,$categories);   
         $request->session()->put('data', $data);
         return redirect()->route('user.SearchResults');
@@ -77,5 +80,16 @@ class SearchController extends Controller
         ->toArray();
     
     return response()->json(['sites' => $sites]);
+}
+
+public function guessScrapElements(Request $request){
+  $url=$request->input('url');
+  $keyword=$request->input('keyword');
+  $data=ScrapController::guessScrapingElements($url,$keyword);
+  
+  $result['success'] = true;
+  $result['data'] = json_encode($data);
+
+  return response()->json($result);
 }
 }

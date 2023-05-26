@@ -40,9 +40,10 @@
  <div class="mb-3">
    
    <div class="input-group">
-     
      <input type="text" class="form-control"  name="News_url" id="News_url" aria-describedby="News_url"required placeholder="https://example.com">
-   </div>
+     <input type="text" hidden value="{{ csrf_token() }}" id="csrf-token">
+     <button style="width: 100px;" type="button" class="btn btn-primary" id="auto-fill">Auto-fill</button>  
+    </div>
    <div class="form-text" id="basic-addon4">Url must be like: https://example.com </div>
  </div>
 
@@ -87,7 +88,7 @@
 </div>
 </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
       <script>
         $("#add-button").click(function() {
   $.ajax({
@@ -97,7 +98,26 @@
     }
   });
 });
-
+      $(document).ready(function(){
+        $('#auto-fill').click(function(){
+          var url=$('#News_url').val();
+          var keyword= prompt("prompt");
+          console.log(keyword);
+          $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('#csrf-token').val()
+            }
+            });
+          $.ajax({
+           type:'POST',
+           url:"{{ route('guessScrapingElements') }}",
+           data:{url:url,keyword:keyword},
+           success:function(result){
+              alert(result.data['url']);
+           }
+        });
+        });
+      });
       </script>
 @endsection
 {{----}}

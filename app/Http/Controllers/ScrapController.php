@@ -394,7 +394,37 @@ else{
 }
 public static function handle(String $key_word,$date_start='',$date_end='',$sites,$Category=''){
     $instance=new self;
-    
+  
+$client = new Client();
+
+// Make the HTTP request and retrieve the HTML response
+//$response = $client->get('https://www.hespress.com/%d8%a3%d8%a8%d9%88-%d8%a8%d9%83%d8%b1-%d8%a7%d9%84%d8%ac%d8%a7%d9%85%d8%b9%d9%8a-%d8%b9%d9%86%d8%af%d9%85%d8%a7-%d9%8a%d8%aa%d8%ad%d9%88%d9%84-%d8%b5%d8%ad%d8%a7%d9%81%d9%8a-%d8%b3%d8%a7%d8%a8%d9%82-1175707.html');
+$response = $client->get('https://www.alakhbar.press.ma/%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9-%D8%B7%D8%A7%D8%B1%D8%A6-%D9%84%D9%85%D8%AC%D9%84%D8%B3-%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9-%D9%82%D8%A8%D9%84-%D8%A7%D9%86%D8%B9%D9%82%D8%A7%D8%AF-%D8%A7-212704.html');
+// Create a new Crawler instance and load the HTML response body
+$crawler = new Crawler($response->getBody()->getContents());
+
+// Define the search string
+//$searchString = 'أبو بكر الجامعي.. عندما يتحول صحافي سابق إلى لعبة بيد الدولة الفرنسية العميقة';
+$searchString='اجتماع طارئ لمجلس الحكومة قبل انعقاد المجلس الوزاري';
+// Find all elements containing the search string in their text content
+$matchingElements = $crawler->filterXPath("//body//article[contains(., '$searchString')]");
+//dd($matchingElements);
+
+// Loop through the matching elements and extract their HTML
+$result = [];
+$matchingElements->each(function (Crawler $element) use (&$result) {
+    $image=$element->filterXPath(".//img");
+    $date=$element->filter("[class*='date'],[id*='date']");
+    $content=$element->filterXPath(".//*[contains(@class, 'content') or contains(@id, 'content')]");
+    $content=new Crawler($content->getNode(0)->parentNode);
+    dd($content);
+    dd($element->attr('class'));
+    $parentNodeCrawler = new Crawler($element->getNode(0)->parentNode);
+    $classAttribute = $parentNodeCrawler->attr('class');
+    dd($classAttribute);
+    $result[] = $element->attr('class');
+});
+dd($result);
     $urls= $sites;
     //dd($sitesdata->get(0));
         global $data;
@@ -538,6 +568,54 @@ return $data;
 
 
 
+}
+
+public static function guessScrapingElements($siteUrl,$keyword){
+    
+    $searchUrl= 'https://www.google.com/search?q=' . urlencode($keyword) . ' site:'. urlencode($siteUrl)
+    . '&tbs=0';
+    
+    $client = new Client( [
+        'headers' => [
+            'User-Agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0',
+            'Accept' => 'text/html',
+            'Referer' => 'http://www.est-umi.ac.ma/'
+        ],
+        'verify' => base_path('public/cacert.pem')
+    ]); 
+    $response = $client->get($searchUrl);
+    $crawler = new Crawler($response->getBody()->getContents());
+    $page=$crawler->filter('.yuRUbf > a')->getNode(1);
+    $page=new Crawler($page);
+    $testArticleUrl=$page->attr('href');
+    $testArticleTitle=$page->text();
+    $result['title']=$testArticleTitle;
+    $result['url']=$testArticleUrl;
+   /*  each(function ($node,$key)use(&$testArticleUrl){
+        dd($node->attr('href'));
+        $testArticleUrl=$node->attr('href');
+    }); */
+  /*    $testArticleUrl=(new Crawler($page))->attr('href'); */
+
+   /* $content = $crawler->filter($urls[$articles['id']]['content']);
+    $paragraphs=[];
+    for ($i = 0; $i < count($content);$i++){
+    $paragraphs[]= $content->eq($i)->text();
+    }
+    try{
+        $secttionName=$crawler->filter($urls[$articles['id']]['section'])->text();
+    }
+    catch(Exception $e){
+        $secttionName='';
+    }
+    $article['category'] = $secttionName;
+    $article['category'] = $articles['category'];
+    $article['title']    = $articles['title'];
+    $article['text']     = $paragraphs;
+    $article['date']     = $articles['date'];
+    $article['image']    = $articles['image'];*/
+
+return $result;
 }
 
 }
