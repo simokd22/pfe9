@@ -120,8 +120,8 @@
 
       
       <div class="wrapper3">
-       <label >Du:</label>  <input type="date" name="start-date">
-       <label>Au:</label> <input type="date" name="end-date">
+       <label ><b>From</b></label>  <input type="date" name="start-date">
+       <label> <b>To</b></label> <input type="date" name="end-date">
       </div>
   
     <!--date--> 

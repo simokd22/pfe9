@@ -6,9 +6,9 @@
 <style>
    .form-container {
      
-     margin-bottom: 100px; /* Adjust the margin-bottom value if needed */
+     margin-bottom: 100px; 
      height: 508px;
-  
+     
    }
 
    header{
@@ -30,9 +30,10 @@
   </header>
    <form method="POST" action="{{route('news.store')}}">
       @csrf
-      
-<div class="row justify-content-center">
-<div class="col-md-6 ">
+
+      <!--<div class="outline " >-->
+<div class="row justify-content-center ">
+<div class="col-md-6">
    <div class="input-group mb-3">
    <span  id="basic-addon1"></span>
    <input type="text" class="form-control" placeholder="News name"  name="News_name" aria-label="News_name" aria-describedby="News_name" required>
