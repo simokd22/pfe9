@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+ }
+
+.logout-btn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+    padding: 0 20px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 130px;
+    margin-top: 25px;
+    font-weight: bold;
+  }
+    .logout-btn:hover {
+      background-color: #e2e2e2;
+    }
+    .logout-btn i {
+    margin-right: 10px;
+  }
+
+  .profile-btn{
+   position: absolute;
+    top: 0;
+    right: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+    padding: 0 20px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 130px;
+    margin-top: 25px;
+  }
+  .profile-btn i {
+   margin-right: 10px;
+  }
+  .profile-btn:hover {
+      background-color: #e2e2e2;
+    }
+  
+  
+  .terms .term-service{
+   position: absolute;
+   top: 0;
+   left: 0; 
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   width: 90px;
+   height: 30px;
+   padding: 0 20px;
+   font-size: 16px;
+   background-color: transparent;
+   color: #000000;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   margin-top: 25px;
+   margin-left: 130px;
+   text-decoration: none;
+   font-weight: bold;
+  }
+  
+  .about .about{
+   position: absolute;
+   top: 0;
+   left: 0; 
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   width: 90px;
+   height: 30px;
+   padding: 0 20px;
+   font-size: 16px;
+   background-color: transparent;
+   color: #000000;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   margin-top: 25px;
+   margin-left: 200px;
+   text-decoration: none;
+   font-weight: bold;
+  }
