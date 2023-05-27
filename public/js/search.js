@@ -352,7 +352,7 @@ selectWrapper2[i].classList.remove("active");
 //search box for the selects
 /*----------------------------------------------------------------------------------------------------------------*/
 //for language
-const searchBox = document.querySelector("#language-search");
+/*const searchBox = document.querySelector("#language-search");
 const languageList = document.querySelectorAll(".options li");
 
 searchBox.addEventListener("keyup", function(event) {
@@ -394,7 +394,7 @@ const text = category.textContent.toLowerCase();
 const match = text.includes(searchTerm);
 category.style.display = match ? "block" : "none";
 });
-});
+});*/
 /*----------------------------------------------------------------------------------------------------------------*/
 
 
