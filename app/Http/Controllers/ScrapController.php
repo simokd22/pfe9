@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use GuzzleHttp\TransferStats;
 
 set_time_limit(0);
 
@@ -395,7 +396,7 @@ else{
 public static function handle(String $key_word,$date_start='',$date_end='',$sites,$Category=''){
     $instance=new self;
   
-$client = new Client();
+/* $client = new Client();
 
 // Make the HTTP request and retrieve the HTML response
 //$response = $client->get('https://www.hespress.com/%d8%a3%d8%a8%d9%88-%d8%a8%d9%83%d8%b1-%d8%a7%d9%84%d8%ac%d8%a7%d9%85%d8%b9%d9%8a-%d8%b9%d9%86%d8%af%d9%85%d8%a7-%d9%8a%d8%aa%d8%ad%d9%88%d9%84-%d8%b5%d8%ad%d8%a7%d9%81%d9%8a-%d8%b3%d8%a7%d8%a8%d9%82-1175707.html');
@@ -424,7 +425,7 @@ $matchingElements->each(function (Crawler $element) use (&$result) {
     dd($classAttribute);
     $result[] = $element->attr('class');
 });
-dd($result);
+dd($result); */
     $urls= $sites;
     //dd($sitesdata->get(0));
         global $data;
@@ -574,7 +575,7 @@ public static function guessScrapingElements($siteUrl,$keyword){
     
     $searchUrl= 'https://www.google.com/search?q=' . urlencode($keyword) . ' site:'. urlencode($siteUrl)
     . '&tbs=0';
-    
+    //dd($searchUrl);
     $client = new Client( [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0',
@@ -585,36 +586,46 @@ public static function guessScrapingElements($siteUrl,$keyword){
     ]); 
     $response = $client->get($searchUrl);
     $crawler = new Crawler($response->getBody()->getContents());
-    $page=$crawler->filter('.yuRUbf > a')->getNode(1);
-    $page=new Crawler($page);
-    $testArticleUrl=$page->attr('href');
-    $testArticleTitle=$page->text();
-    $result['title']=$testArticleTitle;
-    $result['url']=$testArticleUrl;
-   /*  each(function ($node,$key)use(&$testArticleUrl){
-        dd($node->attr('href'));
-        $testArticleUrl=$node->attr('href');
-    }); */
-  /*    $testArticleUrl=(new Crawler($page))->attr('href'); */
+    $result=[];
+    $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use(&$client,&$result){
+       $testArticleUrl=$node->attr('href');
+       $testArticleTitle=$node->filter('h3 > span')->text();
+       //$result['url']=$testArticleUrl;
+       $response = $client->get($testArticleUrl,[
+        'on_stats' => function (TransferStats $stats) use (&$url) {
+            $url = $stats->getEffectiveUri();
+        }]);
+        $result['url']=$url;
+       $crawler = new Crawler($response->getBody()->getContents());
+       $matchingElements = $crawler->filterXPath("//body//article[contains(.,'$testArticleTitle')]");
+       //dd($matchingElements);
+        $matchingElements->each(function (Crawler $element) use (&$result) {
+           $content=$element->filter(("[class*='content'] > p,[id*='content'] > p "));
+           $paragraphs='';
+            for ($i = 0; $i < count($content);$i++){
+                $paragraphs.= $content->eq($i)->text() ." \n"; 
+           }
+           $result['text']=$paragraphs;
+           $result['date']=$element->filter("[class*='date'],[id*='date']")->text();
+           $result['title']=$element->filter("[class*='title'],[id*='title']")->text();
+          /*  if($element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->count() > 1){
+            dd('1 '.$element->filter("img")->eq(0)->attr('src'));
+            $result['image'] = $element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->first()->attr('src');
+            }else{
+            dd('2 '.$element->filter("img")->attr('src'));
+            $result['image']=$element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->attr('src');
+            }   */
+       }); 
+       $allAttributesNotEmptyOrNull = collect($result)->every(function ($attribute) {
+        return !empty($attribute) || $attribute === null;
+        });
+        if ($allAttributesNotEmptyOrNull) {
+            return false;
+        } 
+    });
 
-   /* $content = $crawler->filter($urls[$articles['id']]['content']);
-    $paragraphs=[];
-    for ($i = 0; $i < count($content);$i++){
-    $paragraphs[]= $content->eq($i)->text();
-    }
-    try{
-        $secttionName=$crawler->filter($urls[$articles['id']]['section'])->text();
-    }
-    catch(Exception $e){
-        $secttionName='';
-    }
-    $article['category'] = $secttionName;
-    $article['category'] = $articles['category'];
-    $article['title']    = $articles['title'];
-    $article['text']     = $paragraphs;
-    $article['date']     = $articles['date'];
-    $article['image']    = $articles['image'];*/
-
+    $result['category']='';
+    $result['image']='';
 return $result;
 }
 

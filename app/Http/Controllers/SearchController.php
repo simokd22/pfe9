@@ -7,6 +7,8 @@ use App\Models\Langue;
 use App\Models\Newsinfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\View;
 
 
 class SearchController extends Controller
@@ -85,11 +87,10 @@ class SearchController extends Controller
 public function guessScrapElements(Request $request){
   $url=$request->input('url');
   $keyword=$request->input('keyword');
+  /* $url=$request->input('News_url');
+  $keyword='الحكومة'; */
   $data=ScrapController::guessScrapingElements($url,$keyword);
-  
-  $result['success'] = true;
-  $result['data'] = json_encode($data);
-
-  return response()->json($result);
+  $html = View::make('admin.guessedArticle', compact('data'))->render();
+  return Response::json(['html' => $html]);
 }
 }

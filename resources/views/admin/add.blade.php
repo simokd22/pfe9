@@ -2,6 +2,7 @@
 
 @section('style')
 <link rel="stylesheet" href="{{asset('css/style_add.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/modal.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <style>
    .form-container {
@@ -28,10 +29,10 @@
   <header>
     <h1>Add page</h1>
   </header>
-   <form method="POST" action="{{route('news.store')}}">
+   <form method="POST" action="{{route('guessScrapingElements')}}">{{-- guessScrapingElements --}}{{-- news.store --}}
       @csrf
 
-      <!--<div class="outline " >-->
+      
 <div class="row justify-content-center ">
 <div class="col-md-6">
    <div class="input-group mb-3">
@@ -43,7 +44,7 @@
    <div class="input-group">
      <input type="text" class="form-control"  name="News_url" id="News_url" aria-describedby="News_url"required placeholder="https://example.com">
      <input type="text" hidden value="{{ csrf_token() }}" id="csrf-token">
-     <button style="width: 100px;" type="button" class="btn btn-primary" id="auto-fill">Auto-fill</button>  
+     <button style="width: 100px;" type="button"{{-- button --}}{{-- submit --}} class="btn btn-primary" {{----}}  id="auto-fill">Auto-fill</button>  
     </div>
    <div class="form-text" id="basic-addon4">Url must be like: https://example.com </div>
  </div>
@@ -89,34 +90,67 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+
+<div id="Modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Test Article</h4>
+      <button class="close" type="button" id="CloseModalX" aria-label="Close" onclick="CloseModalfn()"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="modal-body">
+      <div class="card-body d-flex justify-content-around flex-wrap ">
+        
+      </div>
+    </div>
+    <div class="modal-footer d-flex justify-content-start ml-xl-5">
+      <button class="btn btn-default " type="button" id="CloseModalBtn" onclick="CloseModalfn()">Close</button>
+      <button class="btn btn-success " type="submit" >Save</button>
+    </div>
+  </div>
+</div> 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script  src="{{ asset('js/modal.js') }}"></script> 
       <script>
-        $("#add-button").click(function() {
+/*         $("#add-button").click(function() {
   $.ajax({
     url: "addbutton.php",
     success: function(data) {
       $("#add-form").html(data);
     }
   });
-});
+}); */
       $(document).ready(function(){
         $('#auto-fill').click(function(){
           var url=$('#News_url').val();
           var keyword= prompt("prompt");
-          console.log(keyword);
+          if(keyword!='' && keyword!=null){
           $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('#csrf-token').val()
             }
-            });
+          });
           $.ajax({
            type:'POST',
            url:"{{ route('guessScrapingElements') }}",
            data:{url:url,keyword:keyword},
            success:function(result){
-              alert(result.data['url']);
+              //alert(result.data);
+              $('.card-body').empty();
+              $('.card-body').append(result['html']);
+              OpenModalfn();
+           },
+           error: function(xhr, status, error) {
+              console.log(xhr.responseText); 
+              console.log(error); 
            }
+
         });
+      }
         });
       });
       </script>
