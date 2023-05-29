@@ -36,7 +36,6 @@ allSitesCheckbox.checked = false;
 }
 });
 });
-//checkbox
 function myFunction() {
   let CheckedLangue=document.querySelectorAll('input[name="language"]');
   console.log(CheckedLangue.length);
@@ -65,6 +64,7 @@ allSitesCheckbox.checked = false;
 });
 }
 selectBtn3.addEventListener("click", myFunction);
+//checkbox
 /*----------------------------------------------------------------------------------------------------------------*/
 
 

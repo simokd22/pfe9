@@ -12,7 +12,7 @@
      
 
 	<body >
-        <div class="back">
+        <div style="margin-top:40px;" class="back">
             <a href="{{ url()->previous() }}"  class="back-btn"><i class="fas fa-arrow-left"></i>Back</a>
       </div>
      <div class="blogpost">

@@ -537,7 +537,7 @@ input[type="checkbox"] {
   display: block;
     margin: 0 auto;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     width: 200px;
 }
 /*logo*/
@@ -571,3 +571,53 @@ input[type="checkbox"] {
 #category_label {
   white-space: nowrap;
 }
+
+/*loading*/
+
+.loading-overlay {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 9999;
+  display: none;
+}
+
+.loading-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: rgb(53, 53, 255);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: dotAnimation 1.5s infinite;
+  margin-bottom: 25px;
+}
+
+@keyframes dotAnimation {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+
+
