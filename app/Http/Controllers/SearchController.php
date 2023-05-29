@@ -18,19 +18,25 @@ class SearchController extends Controller
         $languages=Langue::all();
         $categories=Category::all();
         $sites=Newsinfo::all();
-        return view('user.search', compact('languages','categories','sites'));  
+        return view('user.search', compact('languages','categories','sites'));
         }
         public function sites()
-        { 
-          
+        {
+
           $sites=Newsinfo::all();
           return response()->json($sites);
         }
         public function langue()
-        { 
-          
+        {
+
           $languages=Langue::all();
           return response()->json($languages);
+        }
+        public function category()
+        {
+
+          $Category=Category::all();
+          return response()->json($Category);
         }
     public function results(Request $request)
     {
@@ -49,9 +55,9 @@ class SearchController extends Controller
         $key_word = $request->input('keyword');
         $date_start = $request->input('start-date');
         $date_end = $request->input('end-date');
-        $Category = $request->input('categories'); 
-        $sites=$request->input('sites'); 
-        $langue=$request->input('language'); 
+        $Category = $request->input('categories');
+        $sites=$request->input('sites');
+        $langue=$request->input('language');
         $langue_id=Langue::where('langue','=',$langue)->pluck('id');
         $sites=Newsinfo::where('id_langue','=',$langue_id)->whereIn('News_name', $sites)->get();
         $categories='';
@@ -73,14 +79,14 @@ class SearchController extends Controller
     public function getSites(Request $request)
 {
     $selectedLanguage = $request->query('language');
-    
+
     // Retrieve the sites for the selected language from the database
     $sites = DB::table('newsinfos')
         ->join('langues', 'langues.id_langue', '=', 'newsinfos.id_langue')
         ->where('langues.langue', $selectedLanguage)
         ->pluck('newsinfos.News_name')
         ->toArray();
-    
+
     return response()->json(['sites' => $sites]);
 }
 
