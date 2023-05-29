@@ -18,6 +18,8 @@ use App\Http\Controllers\SearchController;
 
 Route::get('sites', [SearchController::class ,'sites']);
 Route::get('langue', [SearchController::class ,'langue']);
+Route::get('Category', [SearchController::class ,'Category']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

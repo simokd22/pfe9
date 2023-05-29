@@ -8,23 +8,23 @@
 @endsection
 @section('title' , 'search')
 @section('content')
-    
+
             <nav>
-   
-    
-            </nav>   
+
+
+            </nav>
          <body>
-              
-          
+
+
 <form method="post" action="{{route('user.search-post')}}" >
   @csrf
-<!--logo--> 
+<!--logo-->
   <div class="logo_icon">
     <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_logo.png') }}" alt="My Logo"></a>
   </div>
-<!--logo--> 
+<!--logo-->
 
-<!--searchbar--> 
+<!--searchbar-->
     <div  class="input-box">
       <input style="margin-left: 65px" type="text" placeholder="Search..." name="keyword" id="query" >
       <span class="icon">
@@ -32,23 +32,23 @@
       </span>
       <i style="color: transparent" class="uil uil-times close-icon"></i>
     </div>
-<!--searchbar--> 
+<!--searchbar-->
 
 
-<!--radio-container--> 
+<!--radio-container-->
 <div class="radio-container">
   <input type="radio" id="magasin" name="radio-option" checked>
   <label for="magasin">MAGASIN</label>
-  
+
   <input type="radio" id="journal" name="radio-option">
   <label for="journal">JOURNAL</label>
 </div>
-<!--radio-container--> 
+<!--radio-container-->
 
-     <!--Categories-->          
-   <div class="selects">
-      
-        
+     <!--Categories-->
+   <div class="selects" id="category-select">
+
+
     <div class="wrapper1">
       <div class="select-btn1">
         <span>Select Category</span>
@@ -75,14 +75,14 @@
           </li>
           @endforeach
         </ul>
-        
+
       </div>
-    </div> 
+    </div>
 
-<!--Categories--> 
+<!--Categories-->
 
 
-<!--Languages--> 
+<!--Languages-->
   <div class="wrapper">
     <div class="select-btn">
       <span>Select Language</span>
@@ -96,26 +96,26 @@
       </div>
       That little search-box-->
       <div class="options">
-      
+
         @foreach($languages as $language)
-        <label> 
+        <label>
             <input type="radio" name="language" value="{{ $language->langue }}" class="langues">
             {{ $language->langue }}
         </label>
         @endforeach
-        
-        
+
+
       </div>
     </div>
-  </div> 
+  </div>
 
-<!--Languages--> 
+<!--Languages-->
 
 
-<!--Sites--> 
+<!--Sites-->
  <div id="sites-select">
- 
-  
+
+
   <div class="wrapper2">
     <div class="select-btn2">
       <span>Select Sites</span>
@@ -142,36 +142,36 @@
         </li>
         @endforeach
       </ul>
-      
+
     </div>
   </div>
 
 </div>
-<!--Sites--> 
+<!--Sites-->
 
 
-  <!--date--> 
+  <!--date-->
     </div>
 
-      
+
       <div class="wrapper3">
        <label ><b>From</b></label>  <input type="date" name="start-date">
        <label> <b>To</b></label> <input type="date" name="end-date">
       </div>
-  
-    <!--date--> 
 
-    <!--save and reset botton--> 
-   
-      
+    <!--date-->
+
+    <!--save and reset botton-->
+
+
       <div class="buttons">
         <div class="button">
            <button class="search-btn" type="submit">Search</button>
         <button class="reset-btn" type="reset">Reset</button>
         </div>
-       
+
       </div>
-    <!--save and reset botton--> 
+    <!--save and reset botton-->
     </form>
 
             <footer>
@@ -179,10 +179,10 @@
             </footer>
 
              </div>
-        
-          
+
+
           <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
           <script src="{{ asset('js/search.js') }}"></script>
-     
+
         </body>
    @endsection
