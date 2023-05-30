@@ -37,11 +37,11 @@
 
 <!--radio-container-->
 <div class="radio-container">
-  <input type="radio" id="magasin" name="radio-option" checked>
-  <label for="magasin">MAGASIN</label>
-
-  <input type="radio" id="journal" name="radio-option">
+<input type="radio" id="journal" name="radio-option" value="journal">
   <label for="journal">JOURNAL</label>
+
+  <input type="radio" id="magazine" name="radio-option" value="magazine" >
+  <label for="magazine">MAGAZINE</label>
 </div>
 <!--radio-container-->
 
