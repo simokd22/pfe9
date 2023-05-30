@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('News_title');
             $table->string('News_content');
             $table->string('News_date');
+            $table->enum('News_type', ['journal', 'magazine']);
             $table->unsignedBigInteger('id_langue');
             $table->foreign('id_langue')
                   ->references('id')
@@ -35,6 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('newsinfos');
-        
+
     }
 };
