@@ -23,7 +23,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.HwkLR div',
         'News_date'=>'.datetimefull12',
         'id_langue'=>1,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
       Newsinfo::create([
         'News_name'=>'zahratalkhaleej',
@@ -34,7 +34,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.article-right .article-content  > p',
         'News_date'=>'.article-right  .date',
         'id_langue'=>1,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
       Newsinfo::create([
         'News_name'=>'zamane',
@@ -45,7 +45,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.entry-content  > .content-inner  .x_x_Arab',
         'News_date'=>'.jeg_meta_container .jeg_meta_date > a',
         'id_langue'=>1,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
       Newsinfo::create([
         'News_name'=>'babmagazine',
@@ -56,7 +56,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.node__content >.field--name-body  > p',
         'News_date'=>'.blablabla',
         'id_langue'=>1,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
       /* Newsinfo::create([
         'News_name'=>'',
@@ -67,7 +67,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'',
         'News_date'=>'',
         'id_langue'=>1,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]); */
 
       /* journaux arabe */ 
@@ -81,7 +81,7 @@ class NewsinfoSeeder extends Seeder
             'News_date'=>'.timePost',
             'News_type'=>'journal',
             'id_langue'=>1,
-            'type'=>'journal'
+           
           ]);
        Newsinfo::create([
 
@@ -92,9 +92,8 @@ class NewsinfoSeeder extends Seeder
             'News_title'=>'.sec-info > h1',
             'News_content'=>'.article > p',
             'News_date'=>'.time',
-            'News_type'=>'magazine',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
         Newsinfo::create([
 
@@ -105,9 +104,8 @@ class NewsinfoSeeder extends Seeder
             'News_title'=>'.post-title',
             'News_content'=>'.entry-content >  p',
             'News_date'=>'.date ',
-            'News_type'=>'magazine',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
          Newsinfo::create([
 
@@ -120,7 +118,7 @@ class NewsinfoSeeder extends Seeder
             'News_date'=>' .date',
             'News_type'=>'journal',
             'id_langue'=>1,
-            'type'=>'journal'
+        
           ]);
        Newsinfo::create([
 
@@ -131,9 +129,9 @@ class NewsinfoSeeder extends Seeder
             'News_title'=>'.col-md-12 > h1',
             'News_content'=>'.content > p',
             'News_date'=>' .date',
-            'News_type'=>'magazine',
+         
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
          ]);
          Newsinfo::create([
 
@@ -146,7 +144,7 @@ class NewsinfoSeeder extends Seeder
             'News_date'=>'.post-date',
             'News_type'=>'journal',
             'id_langue'=>1,
-            'type'=>'journal'
+            
           ]);
        Newsinfo::create([
 
@@ -157,9 +155,8 @@ class NewsinfoSeeder extends Seeder
             'News_title'=>'.post-title',
             'News_content'=>'.entry-content > p',
             'News_date'=>' .post-meta > .date',
-            'News_type'=>'magazine',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
       Newsinfo::create([
 
@@ -170,9 +167,8 @@ class NewsinfoSeeder extends Seeder
             'News_title'=>'.single-post-title',
             'News_content'=>'.entry-content > p',
             'News_date'=>'.post-published > b',
-            'News_type'=>'journal',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
        Newsinfo::create([
 
@@ -183,9 +179,8 @@ class NewsinfoSeeder extends Seeder
             'News_title'=>'.post-content > .title',
             'News_content'=>'.content > p',
             'News_date'=>'.date',
-            'News_type'=>'journal',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
 
         Newsinfo::create([
@@ -198,7 +193,7 @@ class NewsinfoSeeder extends Seeder
             'News_date'=>'.date-post',
             'News_type'=>'journal',
             'id_langue'=>1,
-            'type'=>'journal'
+            
           ]);
 
           Newsinfo::create([
@@ -210,7 +205,7 @@ class NewsinfoSeeder extends Seeder
             'News_content'=>'.article-body > p',
             'News_date'=>'.article-page .time',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
           Newsinfo::create([
             'News_name'=>'mapexpress',
@@ -221,7 +216,7 @@ class NewsinfoSeeder extends Seeder
             'News_content'=>'.single_act > p',
             'News_date'=>'.single_act > .a-post',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
           Newsinfo::create([
             'News_name'=>'annahar',
@@ -232,7 +227,7 @@ class NewsinfoSeeder extends Seeder
             'News_content'=>'.entry-content  > .content-inner  > p',
             'News_date'=>'.jeg_meta_container .jeg_meta_date > a',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
           Newsinfo::create([
             'News_name'=>'ahdath',
@@ -243,7 +238,7 @@ class NewsinfoSeeder extends Seeder
             'News_content'=>'.article-content  > .article-desc > p',
             'News_date'=>'.publishing-date',
             'id_langue'=>1,
-            'type'=>'journal'
+            'News_type'=>'journal'
           ]);
 
 
@@ -257,7 +252,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.single-content > .col-large > p',
         'News_date'=>'.single-header .article-publish',
         'id_langue'=>2,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
       Newsinfo::create([
         'News_name'=>'lobservateur' ,
@@ -268,7 +263,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.article-desc > p' ,
         'News_date'=>'.publishing-date' ,
         'id_langue'=>2,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
       Newsinfo::create([
         'News_name'=>'lavieeco' ,
@@ -279,7 +274,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.mvp-post-soc-in  p' ,
         'News_date'=>'.mvp-post-date > time' ,
         'id_langue'=>2,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
       Newsinfo::create([
         'News_name'=>'maroc-hebdo' ,
@@ -290,7 +285,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.post-body >  p' ,
         'News_date'=>'.post-meta > ul >li:nth-child(2) >span' ,
         'id_langue'=>2,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
       Newsinfo::create([
         'News_name'=>'challenge',
@@ -301,7 +296,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.vw-post-content p',
         'News_date'=>'.vw-post-date > time',
         'id_langue'=>2,
-        'type'=>'magazine'
+        'News_type'=>'magazine'
       ]);
        /* journaux francais */   
     
@@ -315,7 +310,7 @@ class NewsinfoSeeder extends Seeder
         'News_date'=>'.date-post',
         'News_type'=>'journal',
         'id_langue'=>2,
-        'type'=>'journal'
+      
       ]);
       Newsinfo::create([
       'News_name'=>'al3omk',
@@ -327,7 +322,6 @@ class NewsinfoSeeder extends Seeder
       'News_date'=>'.timePost',
       'News_type'=>'journal',
       'id_langue'=>2,
-      'type'=>'journal'
     ]);
     Newsinfo::create([
 
@@ -338,9 +332,8 @@ class NewsinfoSeeder extends Seeder
         'News_title'=>'.post-title',
         'News_content'=>'.entry-content > p',
         'News_date'=>' .date',
-        'News_type'=>'journal',
         'id_langue'=>2,
-        'type'=>'journal'
+        'News_type'=>'journal'
       ]);
       Newsinfo::create([
 
@@ -351,9 +344,8 @@ class NewsinfoSeeder extends Seeder
         'News_title'=>'.infoSingle > h1',
         'News_content'=>'.post_content > p',
         'News_date'=>'.timePost',
-        'News_type'=>'magazine',
         'id_langue'=>2,
-        'type'=>'journal'
+        'News_type'=>'journal'
       ]);
        Newsinfo::create([
 
@@ -365,7 +357,7 @@ class NewsinfoSeeder extends Seeder
         'News_content'=>'.entry-content > p',
         'News_date'=>'.entry-date',
         'id_langue'=>2,
-        'type'=>'journal'
+        'News_type'=>'journal'
       ]);
     }
 }
