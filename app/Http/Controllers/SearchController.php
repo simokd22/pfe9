@@ -91,12 +91,35 @@ class SearchController extends Controller
 }
 
 public function guessScrapElements(Request $request){
-  $url=$request->input('url');
-  $keyword=$request->input('keyword');
-  /* $url=$request->input('News_url');
-  $keyword='الحكومة'; */
-  $data=ScrapController::guessScrapingElements($url,$keyword);
+  /* $url=$request->input('url');
+  $keyword=$request->input('keyword'); */
+  $title=$request->input('News_title');;
+  $date=$request->input('News_date');;
+  $content=$request->input('News_content');
+  $image=$request->input('News_image');;
+  $cat=$request->input('News_category');;
+  $url=$request->input('News_url');
+  $keyword='ministère'; 
+  /* dd("Newsinfo::create([
+    'News_name'=>'$url' ,
+    'News_url'=>'$url' ,
+    'News_category'=>'$cat' ,
+    'News_image'=>'$image' ,
+    'News_title'=>'$title' ,
+    'News_content'=>'$content' ,
+    'News_date'=>'$date' ,
+    'id_langue'=>2,
+    'type'=>'magazine'
+  ]);"); */
+  //dd($url,$keyword,$title,$date,$content,$image,$cat);
+  $data=ScrapController::guessScrapingElements($url,$keyword,$title,$date,$content,$image,$cat);
   $html = View::make('admin.guessedArticle', compact('data'))->render();
-  return Response::json(['html' => $html]);
+  return Response::json([
+    'html' => $html,
+    'titleClass'=>$data['titleClass'],
+    'dateClass'=>$data['dateClass'],
+    'contentClass'=>$data['contentClass'],
+    'imageClass'=>$data['imageClass'],
+  ]);
 }
 }

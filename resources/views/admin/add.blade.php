@@ -44,7 +44,7 @@
    <div class="input-group">
      <input type="text" class="form-control"  name="News_url" id="News_url" aria-describedby="News_url"required placeholder="https://example.com">
      <input type="text" hidden value="{{ csrf_token() }}" id="csrf-token">
-     <button style="width: 100px;" type="button"{{-- button --}}{{-- submit --}} class="btn btn-primary" {{----}}  id="auto-fill">Auto-fill</button>  
+     <button style="width: 100px;" type="submit"{{-- button --}}{{-- submit --}} class="btn btn-primary" {{--id="auto-fill"--}}  >Auto-fill</button>  
     </div>
    <div class="form-text" id="basic-addon4">Url must be like: https://example.com </div>
  </div>
@@ -140,9 +140,13 @@
            data:{url:url,keyword:keyword},
            success:function(result){
               //alert(result.data);
-              $('.card-body').empty();
-              $('.card-body').append(result['html']);
-              OpenModalfn();
+              //$('.card-body').empty();
+              //$('.card-body').append(result['html']);
+              //OpenModalfn();
+              $('#News_title').val(result.titleClass);
+              $('#News_date').val(result.dateClass);
+              $('#News_content').val(result.contentClass+' > p');
+              $('#News_image').val(result.imageClass);
            },
            error: function(xhr, status, error) {
               console.log(xhr.responseText); 

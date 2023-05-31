@@ -571,7 +571,7 @@ return $data;
 
 }
 
-public static function guessScrapingElements($siteUrl,$keyword){
+public static function guessScrapingElements($siteUrl,$keyword,$title='',$date='',$content='',$image='',$cat=''){
     
     $searchUrl= 'https://www.google.com/search?q=' . urlencode($keyword) . ' site:'. urlencode($siteUrl)
     . '&tbs=0';
@@ -587,45 +587,129 @@ public static function guessScrapingElements($siteUrl,$keyword){
     $response = $client->get($searchUrl);
     $crawler = new Crawler($response->getBody()->getContents());
     $result=[];
-    $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use(&$client,&$result){
+    $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use(&$client,&$result,$title,$date,$content,$image,$cat,$siteUrl){
        $testArticleUrl=$node->attr('href');
-       $testArticleTitle=$node->filter('h3 > span')->text();
+       //$testArticleTitle=$node->filter('h3 > span,h3')->text();
        //$result['url']=$testArticleUrl;
-       $response = $client->get($testArticleUrl,[
-        'on_stats' => function (TransferStats $stats) use (&$url) {
-            $url = $stats->getEffectiveUri();
-        }]);
-        $result['url']=$url;
+       $response = $client->get($testArticleUrl);
+       //dd($content);
        $crawler = new Crawler($response->getBody()->getContents());
-       $matchingElements = $crawler->filterXPath("//body//article[contains(.,'$testArticleTitle')]");
+       try{
+       $content = $crawler->filter($content);
+       $paragraphs='';
+       for ($i = 0; $i < count($content);$i++){
+       $paragraphs.= $content->eq($i)->text() ." \n";
+       }
+        }catch(Exception $e){
+            $paragraphs='';
+       }
+try{
+       $title=$crawler->filter($title)->text();
+    }catch(Exception $e){
+        $title='';
+       }
+       try{
+           $scraped_category=$crawler->filter($cat)->first()->text();
+        }catch(Exception $e){
+            $scraped_category="";
+        }   
+               //echo($scraped_category. '<br>');
+               $innerData['category'] =$scraped_category;
+               $innerData['title']    = $title;
+               $innerData['text']     = $paragraphs;
+               
+               //dd($image->attr('src'));
+               try{
+                $image=$crawler->filter($image);
+               if(str_contains($image->attr('data-src'),'jpg') || str_contains($image->attr('data-src'),'webp') || str_contains($image->attr('data-src'),'jpeg')){
+                   $imageUrl=$image->attr('data-src');
+               }
+               else{
+
+                   $imageUrl=$image->attr('src');
+               }
+
+               if(str_contains($imageUrl,'https://') || str_contains($imageUrl,'http://')){
+               $innerData['image']     =  $imageUrl;
+               }
+               else{
+               $innerData['image']     =  $siteUrl . $imageUrl;
+               }
+            }catch(Exception $e){
+                $innerData['image']='';
+               }
+                //$instance->translateDate()
+                try{
+               $innerData['date']    = $crawler->filter($date)->text();
+            }catch(Exception $e){
+                $innerData['date']="";
+            }
+               $result[]=$innerData;
+            
+/*        $matchingElements = $crawler->filterXPath("//body//article[contains(.,'$testArticleTitle')]");
+          try{
+                $matchingElements = $crawler->filter("body article:contains('$testArticleTitle'), body [class*='article']:contains('$testArticleTitle'), body [id*='article']:contains('$testArticleTitle')");
+            }catch(Exception $e){
+                $matchingElements = $crawler->filterXPath("//body//article[contains(.,'$testArticleTitle')]");
+            }
        //dd($matchingElements);
         $matchingElements->each(function (Crawler $element) use (&$result) {
-           $content=$element->filter(("[class*='content'] > p,[id*='content'] > p "));
+           try{
+            $result['date']=$element->filter("[class*='date'],[id*='date']")->text();
+            $result['dateClass']=$element->filter("[class*='date'],[id*='date']")->attr('class');
+           }catch(Exception $e){
+            $result['date']='';
+           }
+           try{
+            $result['title']=$element->filter("[class*='title'],[id*='title']")->text();
+            $result['titleClass']=$element->filter("[class*='title'],[id*='title']")->attr('class');
+           }catch(Exception $e){
+            $result['title']='';
+           }
+           try{
+            $content=$element->filter(("[class*='content'] > p,[id*='content'] > p "));
            $paragraphs='';
             for ($i = 0; $i < count($content);$i++){
                 $paragraphs.= $content->eq($i)->text() ." \n"; 
            }
            $result['text']=$paragraphs;
-           $result['date']=$element->filter("[class*='date'],[id*='date']")->text();
-           $result['title']=$element->filter("[class*='title'],[id*='title']")->text();
-          /*  if($element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->count() > 1){
-            dd('1 '.$element->filter("img")->eq(0)->attr('src'));
-            $result['image'] = $element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->first()->attr('src');
+           $result['contentClass']=$element->filter("[class*='content'],[id*='content']")->attr('class');
+           }catch(Exception $e){
+            $result['text']='';
+           }
+           
+           
+           
+           
+           
+
+           try{
+            if($element->filter("img,[class*='image'],[id*='image'],[class*='img'],[id*='img'] ")->count() > 1){
+             
+            //$result['image'] = $element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->first()->attr('src');
+            $result['imageClass']=$element->filter("img")->first()->attr('class');
+            $result['image']=$element->filter("img")->first()->attr('src');
             }else{
-            dd('2 '.$element->filter("img")->attr('src'));
-            $result['image']=$element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->attr('src');
-            }   */
+           
+            //$result['image']=$element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->attr('src');
+            $result['imageClass']=$element->filter("img")->attr('class');
+            $result['image']=$element->filter("img")->first()->attr('src');
+            }
+        } catch(Exception $e){
+            $result['image']='';
+        }
        }); 
        $allAttributesNotEmptyOrNull = collect($result)->every(function ($attribute) {
         return !empty($attribute) || $attribute === null;
         });
         if ($allAttributesNotEmptyOrNull) {
             return false;
-        } 
+        } */
     });
 
-    $result['category']='';
-    $result['image']='';
+    //$result['category']='';
+    dd($result);
+    
 return $result;
 }
 

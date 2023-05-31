@@ -1,0 +1,44 @@
+ $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          $.ajax({
+           type:'post',
+           url:"{{ route('shop.filter') }}" ,
+           data:{},
+           success:function(response){
+            $('#product-body').empty();
+              $('#product-body').append(response['html']);
+           },
+           error: function(xhr, status, error) {
+              console.log(xhr.responseText); 
+              console.log(error); 
+           }
+        });
+
+- journal francais:         
+l'economiste:https://www.leconomiste.com/                                    lematin:https://lematin.ma/                             
+map:https://www.map.ma                                  
+l'opinion:https://www.lopinion.ma/                           
+albayane:https://albayane.press.ma/                         
+liberation:https://www.libe.ma/                               
+leseco:https://leseco.ma/                                                    aujourdhui:https://aujourdhui.ma/                           
+lecanardlibere:https://www.lecanardlibere.com/                               le360: https://fr.le360.ma/                                       
+yabiladi:https://www.yabiladi.com/                      
+medias24:https://medias24.com/                         
+lereporter:https://www.lereporter.ma/                   
+ledesk:https://mobile.ledesk.ma/                        
+menara:https://www.menara.ma/fr                      
+boursenews:https://boursenews.ma/                                         
+- journal arabe:                                                         
+menara:https://www.menara.ma/                                               
+yabiladi:https://www.yabiladi.ma/?_ga=2.175036647.431295846.1685399110-695755708.1685399110                   
+le360: https://ar.le360.ma/ 
+map:https://www.map.ma/ar/                       
+alkhabar:https://www.alkhabar.ma/                                     
+meknespress:https://www.meknespress.com/                                     ahdath:https://www.ahdath.info/                        
+alalam:https://www.alalam.ma/                           
+alousboue:https://www.alousboue.ma/                        
+annahar:https://annahar-press.com/                     
+almountakhab:https://www.almountakhab.com/                                   alittihad:https://alittihad.info/
