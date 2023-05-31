@@ -51,7 +51,7 @@
 
     <div class="wrapper1">
       <div class="select-btn1">
-        <span>Select Category</span>
+        <span>Catégorie</span>
         <i class="uil uil-angle-down"></i>
       </div>
       <div class="content1">
@@ -65,7 +65,7 @@
           <li>
             <input type="checkbox" id="all-categories" name="all-categories" value="all-categories">
             <label id="category_label" for="all-categories">
-              <b>All Categories</b>
+              <b>Toute</b>
             </label>
           </li>
           @foreach ($categories as $category)
@@ -85,7 +85,7 @@
 <!--Languages-->
   <div class="wrapper">
     <div class="select-btn">
-      <span>Select Language</span>
+      <span>Langue</span>
       <i class="uil uil-angle-down"></i>
     </div>
     <div class="content">
@@ -118,7 +118,7 @@
 
   <div class="wrapper2">
     <div class="select-btn2">
-      <span>Select Sites</span>
+      <span>Sites</span>
       <i class="uil uil-angle-down"></i>
     </div>
     <div class="content2">
@@ -132,7 +132,7 @@
         <li>
           <input type="checkbox" id="all-sites" name="all-sites" value="all-sites">
           <label for="all-sites" id="all-sites-label">
-            <b>All Sites</b>
+            <b>Tout</b>
           </label>
         </li>
         @foreach ($sites as $site)
@@ -155,8 +155,8 @@
 
 
       <div class="wrapper3">
-       <label ><b>From</b></label>  <input type="date" name="start-date">
-       <label> <b>To</b></label> <input type="date" name="end-date">
+       <label ><b>Du</b></label>  <input type="date" name="start-date">
+       <label> <b>Au</b></label> <input type="date" name="end-date">
       </div>
 
     <!--date-->
