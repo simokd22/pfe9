@@ -37,11 +37,11 @@
 
 <!--radio-container-->
 <div class="radio-container">
-  <input type="radio" id="magasin" name="radio-option" checked>
-  <label for="magasin">MAGASIN</label>
-
-  <input type="radio" id="journal" name="radio-option">
+<input type="radio" id="journal" name="radio-option" value="journal">
   <label for="journal">JOURNAL</label>
+
+  <input type="radio" id="magazine" name="radio-option" value="magazine" >
+  <label for="magazine">MAGAZINE</label>
 </div>
 <!--radio-container-->
 
@@ -162,16 +162,26 @@
     <!--date-->
 
     <!--save and reset botton-->
+    <div class="buttons">
+  <div class="button">
+    <button id="save" class="search-btn" type="submit">Search</button>
+    <button class="reset-btn" type="reset">Reset</button>
+  </div>
+</div>
+<!--save and reset botton-->
+
+<!--loading-->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+<!--loading-->
 
 
-      <div class="buttons">
-        <div class="button">
-           <button class="search-btn" type="submit">Search</button>
-        <button class="reset-btn" type="reset">Reset</button>
-        </div>
 
-      </div>
-    <!--save and reset botton-->
     </form>
 
             <footer>
@@ -183,6 +193,18 @@
 
           <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
           <script src="{{ asset('js/search.js') }}"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script>
+            $(document).ready(function() {
+  $(".search-btn").click(function() {
+    $("#loadingOverlay").fadeIn();
+    setTimeout(function() {
+      //$("#loadingOverlay").fadeOut();
+    }, 2000);
+  });
+});
+
+          </script>
 
         </body>
    @endsection

@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @yield('style')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="{{asset('css/style_navbar.css')}}"/>
     <title>@yield('title')</title>
 </head>
@@ -15,7 +15,7 @@
     </a>
   </div>
   <!--logo icon-->
-        <div class="links">    
+        <div class="links">
             <div class="link">
                 <a  href="{{route('Userinfo.index')}}" >Users</a>
             </div>

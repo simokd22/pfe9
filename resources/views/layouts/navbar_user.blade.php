@@ -17,21 +17,12 @@
     </a>
   </div>
   <!--logo icon-->
-        <div class="links">    
-            <div class="profile">
-                <a href={{ route('profile') }} class="profile-btn"><i class="fa fa-user"></i></a>           
-             </div>
-             <div class="about">
-                    <a href={{route('about')}} class="about">about</i></a>
-            </div>
-            <div class="terms">
-                <a href={{route('terms')}} class="term-service">Terms</i></a>
-            </div>
+        <div class="links">
             <div class="logo_icon">
                 <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo"></a>
               </div>
         </div>
-        
+
         <div class="logout">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

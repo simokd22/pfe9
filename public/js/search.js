@@ -36,7 +36,6 @@ allSitesCheckbox.checked = false;
 }
 });
 });
-//checkbox
 function myFunction() {
   let CheckedLangue=document.querySelectorAll('input[name="language"]');
   console.log(CheckedLangue.length);
@@ -65,6 +64,7 @@ allSitesCheckbox.checked = false;
 });
 }
 selectBtn3.addEventListener("click", myFunction);
+//checkbox
 /*----------------------------------------------------------------------------------------------------------------*/
 
 
@@ -223,16 +223,27 @@ console.log(categorySites);
 
 // Update the available sites when the language is changed
 document.querySelector(".options").addEventListener("change", (_event) => {
-  const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
+        // Uncheck all radio inputs
+        const radioInputs = document.querySelectorAll('input[name="radio-option"]');
+        radioInputs.forEach((radio) => {
+          radio.checked = false;
+        });
+    const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
   const availableSites = languageSites[selectedLanguage] ;
   const availableCategories = categorySites[selectedLanguage];
 
-  sitesSelect.querySelector(".options2").innerHTML = "<li><input type='checkbox' id='all-sites' name='all-sites' value='all-sites'> <label for='all-sites' id='all-sites-label'><b>All Sites</b></label></li>";
-  availableSites.forEach((site) => {
+//
+ sitesSelect.querySelector(".options2").innerHTML = "<li><input type='checkbox' id='all-sites' name='all-sites' value='all-sites'> <label for='all-sites' id='all-sites-label'><b>All Sites</b></label></li>";
+
+console.log(selectedLanguage)
+
+ /* availableSites.forEach((site) => {
     const li = document.createElement("li");
     li.innerHTML = `<input class="sites" type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site}</label>`;
     sitesSelect.querySelector(".options2").appendChild(li);
   });
+  */
+//
   categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>All Categories</b></label></li>";
   availableCategories.forEach((category) => {
     const li = document.createElement("li");
@@ -240,6 +251,40 @@ document.querySelector(".options").addEventListener("change", (_event) => {
     categorySelect.querySelector(".options1").appendChild(li);
   });
 });
+
+const radioContainer = document.querySelector(".radio-container");
+
+radioContainer.addEventListener("change", (event) => {
+
+    const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
+    const selectedNewsType = event.target.value;
+
+    let langueId=0;
+    if (selectedLanguage=='Arabe'){ langueId=1}
+    else if(selectedLanguage=='Français'){ langueId=2}
+    else { langueId=3};
+    console.log(selectedLanguage);
+     axios.get('http://127.0.0.1:8000/api/sites').then(Response=>{
+      let data = Response.data.filter(e =>e.id_langue==langueId);
+      let objectSites=[]
+      objectSites.push(...data);
+
+      const filteredSites = objectSites.filter(site => site.News_type === selectedNewsType);
+      sitesSelect.querySelector(".options2").innerHTML = "";
+
+      console.log(filteredSites);
+      filteredSites.forEach((site) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<input class="sites" type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site.News_name}</label>`;
+        sitesSelect.querySelector(".options2").appendChild(li);
+      });
+
+    });
+
+
+});
+
+
 
 
 
