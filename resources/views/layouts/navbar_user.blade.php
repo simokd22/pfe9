@@ -18,7 +18,6 @@
   </div>
   <!--logo icon-->
         <div class="links">
-            
             <div class="logo_icon">
                 <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo"></a>
               </div>
