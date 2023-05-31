@@ -137,7 +137,7 @@
         </li>
         @foreach ($sites as $site)
         <li>
-          <input class="sites" type="checkbox" name="sites[]" value="{{ $site->News_name }}">
+          <input class="sites" type="checkbox" name="sites[]" value="{{$site->News_name}}">
           <label>{{ $site->News_name }}</label>
         </li>
         @endforeach
