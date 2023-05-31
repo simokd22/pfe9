@@ -6,7 +6,7 @@
 <script src="https://kit.fontawesome.com/3ac08d279f.js" crossorigin="anonymous"></script>
 
 <header>
-<h1>User Table</h1>
+<h1>Section utilisateurs</h1>
 </header>
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -17,7 +17,7 @@
 
       <table class="table table-bordered text-center">
             <tr class="bg-dark text-white">
-              <th> Name </th>
+              <th> Nom </th>
               <th> email </th>
               <th colspan="2"> Action</th>
             </tr>
