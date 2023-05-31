@@ -395,7 +395,7 @@ else{
 }
 public static function handle(String $key_word,$date_start='',$date_end='',$sites,$Category=''){
     $instance=new self;
-  
+  dd($key_word,$sites);
 /* $client = new Client();
 
 // Make the HTTP request and retrieve the HTML response
