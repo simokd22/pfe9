@@ -21,7 +21,7 @@ if(!isset($_SESSION['IsInArticle'])) {
                 <a href="search"  class="back-btn"><i class="fas fa-arrow-left"></i>Back</a>
           </div>
     @if (empty($data))
-    <h2 class="Error">No Results Found!!</h2>
+    <h2 class="Error" style="margin: 22% 38%;">No Results Found!!</h2>
     @else
     @php
         $index=1 ;
@@ -29,10 +29,12 @@ if(!isset($_SESSION['IsInArticle'])) {
     <div class="tab-container">
         <div class="tabs">
             @foreach ( $data as $key => $innerdata )
+            @if(count($innerdata)>1)
             <div class="tab" id="{{ $index }}" > {{ $key }}</div>
             @php
             $index++ ;
             @endphp
+            @endif
             @endforeach
         </div>
         <div class="tab-content">
@@ -41,13 +43,9 @@ if(!isset($_SESSION['IsInArticle'])) {
                 @endphp
                 @foreach ($data as $key => $innerdata)
                 <div class="tab-pane" id="{{ $index }}-content">
-                @if (count($innerdata)==1)
+                @if (count($innerdata)>1)
                 <div class="articles-container">
-                    <div class="blog"><p>NO DATA FOUND</p></div>
-                </div>
-                @else
-                <div class="articles-container">
-                    @for ($i=0;$i<count($innerdata)-1;$i++)
+                    @for($i=0;$i<count($innerdata)-1;$i++)
                     <div class="blog">
                       <a href="{{ route('user.article',['news'=>$key,'id'=>$i]) }}" >
                         <img src="{{ $innerdata[$i]['image'] }}" alt="Blog Image {{ $i }}" loading="lazy" decoding="async">
@@ -59,7 +57,7 @@ if(!isset($_SESSION['IsInArticle'])) {
                     </div>
                     @endfor
                     </div>
-                    <div class="pages" id="pages">
+                    {{-- <div class="pages" id="pages">
                         <table>
                           <tr>
                             <p class="page">Pages</p>
@@ -70,13 +68,15 @@ if(!isset($_SESSION['IsInArticle'])) {
                                 @endfor
                             </tr>
                         </table>
-                    </div>
-                @endif
+                    </div> --}}
+                
                 </div>
                 @php
                 $index++ ;
                 @endphp
+                @endif
                 @endforeach
+               
         </div>
     @endif
     <script src="{{ asset('js/results.js') }}"></script>

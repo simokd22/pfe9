@@ -58,7 +58,6 @@ class SearchController extends Controller
         $Category = $request->input('categories');
         $sites=$request->input('sites');
         $langue=$request->input('language');
-        dd($sites,$Category,$langue);
         $langue_id=Langue::where('langue','=',$langue)->pluck('id');
         $sites=Newsinfo::where('id_langue','=',$langue_id)->whereIn('News_name', $sites)->get();
         $categories='';

@@ -275,7 +275,7 @@ radioContainer.addEventListener("change", (event) => {
       console.log(filteredSites);
       filteredSites.forEach((site) => {
         const li = document.createElement("li");
-        li.innerHTML = `<input class="sites" type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site.News_name}</label>`;
+        li.innerHTML = `<input class="sites" type="checkbox" id="${site.News_name}" name="sites[]" value="${site.News_name}"><label for="${site.News_name}">${site.News_name}</label>`;
         sitesSelect.querySelector(".options2").appendChild(li);
       });
 
