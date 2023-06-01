@@ -19,8 +19,6 @@ class LangueSeeder extends Seeder
         Langue::create([
             'langue'           => 'Français',
         ]);
-        Langue::create([
-            'langue'           => 'Anglais',
-        ]);
+       
     }
 }

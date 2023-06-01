@@ -128,7 +128,7 @@
       <li>
         <input type="checkbox" id="all-categories" name="all-categories" value="all-categories">
         <label id="category_label" for="all-categories">
-          <b>Toutes Categories</b>
+          <b>Tous</b>
         </label>
       </li>
       @foreach ($categories as $category)
