@@ -26,7 +26,7 @@
 
 <div class="container">
   <header>
-    <h1>Add page</h1>
+    <h1>Ajouter</h1>
   </header>
    <form method="POST" action="{{route('news.store')}}">
       @csrf
@@ -36,7 +36,7 @@
 <div class="col-md-6">
    <div class="input-group mb-3">
    <span  id="basic-addon1"></span>
-   <input type="text" class="form-control" placeholder="News name"  name="News_name" aria-label="News_name" aria-describedby="News_name" required>
+   <input type="text" class="form-control" placeholder="Nom"  name="News_name" aria-label="News_name" aria-describedby="News_name" required>
  </div>
  <div class="mb-3">
    
@@ -44,11 +44,11 @@
      
      <input type="text" class="form-control"  name="News_url" id="News_url" aria-describedby="News_url"required placeholder="https://example.com">
    </div>
-   <div class="form-text" id="basic-addon4">Url must be like: https://example.com </div>
+   <div class="form-text" id="basic-addon4">L’URL doit ressembler à : https://example.com</div>
  </div>
 
  <div class="input-group mb-3">
-   <input type="text" class="form-control" name="News_category" id="News_category" placeholder="News category" aria-label="News_category" aria-describedby="News_category" required>
+   <input type="text" class="form-control" name="News_category" id="News_category" placeholder="Catégorie" aria-label="News_category" aria-describedby="News_category" required>
    
  </div>
  
@@ -56,18 +56,18 @@
  
  <div class="input-group mb-3">
   
-   <input type="text" class="form-control" name="News_title" id="News_title" aria-label="News_title" placeholder="News title" required>
+   <input type="text" class="form-control" name="News_title" id="News_title" aria-label="News_title" placeholder="Titre" required>
    
  </div>
  
  <div class="input-group mb-3">
-   <input type="text" class="form-control"   name="News_content" id="News_content" placeholder="News content" aria-label="News_content" required>
+   <input type="text" class="form-control"   name="News_content" id="News_content" placeholder="Contenu" aria-label="News_content" required>
    <span class="input-group-text"></span>
-   <input type="text" class="form-control" name="News_image" id="News_image" placeholder="News image" aria-label="News_image" required>
+   <input type="text" class="form-control" name="News_image" id="News_image" placeholder="Image" aria-label="News_image" required>
  </div>
  
  <div class="input-group mb-3">
-   <input type="text" class="form-control" name="News_date" id="News_date"  placeholder="News date" aria-label="News_date" required>
+   <input type="text" class="form-control" name="News_date" id="News_date"  placeholder="La date" aria-label="News_date" required>
   
  </div>
  
@@ -82,7 +82,7 @@
    <div class="row">
       <div class="col-md-6">
          <div class="form-group">
-             <button style="width: 100px; margin-top:30px;" type="submit" class="btn btn-primary" > Add</button>
+             <button style="width: 130px; margin-top:30px;" type="submit" class="btn btn-primary" >Sauvegarder</button>
 </div>
 </form>
 </div>

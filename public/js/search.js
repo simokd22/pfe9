@@ -233,7 +233,7 @@ document.querySelector(".options").addEventListener("change", (_event) => {
   const availableCategories = categorySites[selectedLanguage];
 
 //
- sitesSelect.querySelector(".options2").innerHTML = "<li><input type='checkbox' id='all-sites' name='all-sites' value='all-sites'> <label for='all-sites' id='all-sites-label'><b>All Sites</b></label></li>";
+ sitesSelect.querySelector(".options2").innerHTML = "<li><input type='checkbox' id='all-sites' name='all-sites' value='all-sites'> <label for='all-sites' id='all-sites-label'><b>Tout</b></label></li>";
 
 console.log(selectedLanguage)
 
@@ -244,7 +244,7 @@ console.log(selectedLanguage)
   });
   */
 //
-  categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>All Categories</b></label></li>";
+  categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>Toute</b></label></li>";
   availableCategories.forEach((category) => {
     const li = document.createElement("li");
     li.innerHTML = `<input class="categories" type="checkbox" id="${category}" name="categories[]" value="${category}"><label for="${category}">${category}</label>`;
