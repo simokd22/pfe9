@@ -29,7 +29,7 @@
   <header>
     <h1>Add page</h1>
   </header>
-   <form method="POST" action="{{route('guessScrapingElements')}}">{{-- guessScrapingElements --}}{{-- news.store --}}
+   <form method="POST" action="{{route('news.store')}}">{{-- guessScrapingElements --}}{{-- news.store --}}
       @csrf
 
       
@@ -44,7 +44,7 @@
    <div class="input-group">
      <input type="text" class="form-control"  name="News_url" id="News_url" aria-describedby="News_url"required placeholder="https://example.com">
      <input type="text" hidden value="{{ csrf_token() }}" id="csrf-token">
-     <button style="width: 100px;" type="submit"{{-- button --}}{{-- submit --}} class="btn btn-primary" {{--id="auto-fill"--}}  >Auto-fill</button>  
+     {{--<button style="width: 100px;" type="button"class="btn btn-primary" id="auto-fill"  >Auto-fill</button>  --}}
     </div>
    <div class="form-text" id="basic-addon4">Url must be like: https://example.com </div>
  </div>

@@ -37,13 +37,27 @@ allSitesCheckbox.checked = false;
 });
 });
 function myFunction() {
+  
   let CheckedLangue=document.querySelectorAll('input[name="language"]');
   console.log(CheckedLangue.length);
   let isChecked=false;
   CheckedLangue.forEach((langue) => {
     if(langue.checked){
-      wrapper3.classList.toggle("active");
+      isChecked=true;
       return false;
+    }
+    });
+
+    let Checkedtype=document.querySelectorAll('input[name="radio-option"]');
+  console.log(CheckedLangue.length);
+  Checkedtype.forEach((langue) => {
+    if(langue.checked){
+      if(isChecked){
+        wrapper3.classList.toggle("active");
+        wrapper2.classList.toggle("active")
+        return false;
+      }
+
     }
     });
     let allSitesCheckbox = document.getElementById('all-sites');
@@ -116,7 +130,7 @@ allCategoriesCheckbox.checked = false;
 });
 //checkbox
 
-selectBtn2.addEventListener("click", () => wrapper2.classList.toggle("active"));
+selectBtn2.addEventListener("click",myFunction);
 /*----------------------------------------------------------------------------------------------------------------*/
 
 
@@ -271,7 +285,12 @@ radioContainer.addEventListener("change", (event) => {
 
       const filteredSites = objectSites.filter(site => site.News_type === selectedNewsType);
       sitesSelect.querySelector(".options2").innerHTML = "";
-
+      const li = document.createElement("li");
+      li.innerHTML = `<input type="checkbox" id="all-sites" name="all-sites" value="all-sites">
+      <label for="all-sites" id="all-sites-label">
+        <b>All Sites</b>
+      </label>`;
+      sitesSelect.querySelector(".options2").appendChild(li);
       console.log(filteredSites);
       filteredSites.forEach((site) => {
         const li = document.createElement("li");
@@ -279,9 +298,43 @@ radioContainer.addEventListener("change", (event) => {
         sitesSelect.querySelector(".options2").appendChild(li);
       });
 
+      
+    });
+
+    let allSitesCheckbox = document.getElementById('all-sites');
+    let siteCheckboxes = document.querySelectorAll('input[name="sites[]"]');
+    
+    allSitesCheckbox.addEventListener('change', (e) => {
+    siteCheckboxes.forEach((checkbox) => {
+    checkbox.checked = e.target.checked;
+    });
+    });
+    
+    siteCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', (e) => {
+    if (!e.target.checked) {
+    allSitesCheckbox.checked = false;
+    }
+    });
     });
 
 
+    let allcategoryCheckbox = document.getElementById('all-categories');
+    let categoryCheckboxes = document.querySelectorAll('input[name="categories[]"]');
+    
+    allcategoryCheckbox.addEventListener('change', (e) => {
+    categoryCheckboxes.forEach((checkbox) => {
+    checkbox.checked = e.target.checked;
+    });
+    });
+    
+    categoryCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', (e) => {
+    if (!e.target.checked) {
+    allcategoryCheckbox.checked = false;
+    }
+    });
+    });
 });
 
 

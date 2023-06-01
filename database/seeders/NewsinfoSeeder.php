@@ -25,7 +25,7 @@ class NewsinfoSeeder extends Seeder
         'id_langue'=>1,
         'News_type'=>'magazine'
       ]);
-      Newsinfo::create([
+  /*     Newsinfo::create([
         'News_name'=>'zahratalkhaleej',
         'News_url'=>"https://www.zahratalkhaleej.ae/",
         'News_category'=>'.article-video .hastag',
@@ -35,7 +35,7 @@ class NewsinfoSeeder extends Seeder
         'News_date'=>'.article-right  .date',
         'id_langue'=>1,
         'News_type'=>'magazine'
-      ]);
+      ]); */
       Newsinfo::create([
         'News_name'=>'zamane',
         'News_url'=>"https://ar.zamane.ma/",
@@ -72,7 +72,7 @@ class NewsinfoSeeder extends Seeder
 
       /* journaux arabe */ 
         Newsinfo::create([
-            'News_name'=>'alyaoum24',
+            'News_name'=>'alyaoum24-Ar',
             'News_url'=>"https://alyaoum24.com/",
             'News_category'=>'.breadcrumb >  li:last-child',
             'News_image'=>'.wp-post-image',
@@ -109,7 +109,7 @@ class NewsinfoSeeder extends Seeder
           ]);
          Newsinfo::create([
 
-            'News_name'=>'hibapress',
+            'News_name'=>'hibapress-Ar',
             'News_category'=>'.menu > .current-post-ancestor',
             'News_url'=>"https://ar.hibapress.com/",
             'News_image'=>'.featured-area-inner  img',
@@ -135,7 +135,7 @@ class NewsinfoSeeder extends Seeder
          ]);
          Newsinfo::create([
 
-            'News_name'=>'al3omk',
+            'News_name'=>'al3omk-Ar',
             'News_url'=>"https://al3omk.com/",
             'News_category'=>'.post-cat > a',
             'News_image'=>'.post-image > img',
@@ -172,7 +172,7 @@ class NewsinfoSeeder extends Seeder
           ]);
        Newsinfo::create([
 
-            'News_name'=>'barlamane',
+            'News_name'=>'barlamane-Ar',
             'News_url'=>"https://www.barlamane.com/",
             'News_category'=>'.current-post-parent:not(.menu-item-has-children) > a',
             'News_image'=>'div.thumb > img',
@@ -184,7 +184,7 @@ class NewsinfoSeeder extends Seeder
           ]);
 
         Newsinfo::create([
-            'News_name'=>'hespress',
+            'News_name'=>'hespress-Ar',
             'News_url'=>"https://www.hespress.com/",
             'News_category'=>'.breadcrumb > li:last-child',
             'News_image'=>'.ratio-medium > img',
@@ -208,7 +208,7 @@ class NewsinfoSeeder extends Seeder
             'News_type'=>'journal'
           ]);
           Newsinfo::create([
-            'News_name'=>'mapexpress',
+            'News_name'=>'mapexpress-Ar',
             'News_url'=>"http://www.mapexpress.ma/ar/",
             'News_category'=>'.current-actualite-parent ',
             'News_image'=>'.single_act img',
@@ -301,7 +301,7 @@ class NewsinfoSeeder extends Seeder
        /* journaux francais */   
     
       Newsinfo::create([
-        'News_name'=>'hespress',
+        'News_name'=>'hespress-Fr',
         'News_url'=>"https://fr.hespress.com/",
         'News_category'=>'.breadcrumb > li:last-child',
         'News_image'=>'.img-fluid',
@@ -313,7 +313,7 @@ class NewsinfoSeeder extends Seeder
       
       ]);
       Newsinfo::create([
-      'News_name'=>'al3omk',
+      'News_name'=>'al3omk-Fr',
       'News_url'=>"https://fr.al3omk.com/",
       'News_category'=>'.current-post-parent',
       'News_image'=>'.lg-big-image > img',
@@ -325,7 +325,7 @@ class NewsinfoSeeder extends Seeder
     ]);
     Newsinfo::create([
 
-        'News_name'=>'hibapress',
+        'News_name'=>'hibapress-Fr',
         'News_category'=>'.current-post-parent ',
         'News_url'=>"https://fr.hibapress.com/",
         'News_image'=>'.wp-post-image',
@@ -337,7 +337,7 @@ class NewsinfoSeeder extends Seeder
       ]);
       Newsinfo::create([
 
-        'News_name'=>'alyaoum24',
+        'News_name'=>'alyaoum24-Fr',
         'News_url'=>"https://fr.alyaoum24.com/",
         'News_category'=>'.current-post-parent > a',
         'News_image'=>'.imagePostArchive > a > img',
@@ -349,13 +349,68 @@ class NewsinfoSeeder extends Seeder
       ]);
        Newsinfo::create([
 
-        'News_name'=>'barlamane',
+        'News_name'=>'barlamane-Fr',
         'News_url'=>"https://www.barlamane.com/fr/",
         'News_category'=>'.breadcrumbs > a:last-child',
         'News_image'=>'.wp-post-image',
         'News_title'=>'.entry-header > .entry-title',
         'News_content'=>'.entry-content > p',
         'News_date'=>'.entry-date',
+        'id_langue'=>2,
+        'News_type'=>'journal'
+      ]);
+      Newsinfo::create([
+        'News_name'=>'leconomiste',
+        'News_url'=>"https://www.leconomiste.com/",
+        'News_category'=>'.TitleBlog',
+        'News_image'=>'.legende-in-article img',
+        'News_title'=>'#content_leconomiste > h1',
+        'News_content'=>'.field-item p',
+        'News_date'=>'#content_leconomiste > .author',
+        'id_langue'=>2,
+        'News_type'=>'journal'
+      ]);
+      Newsinfo::create([
+        'News_name'=>'mapexpress-Fr',
+        'News_url'=>"https://www.mapexpress.ma",
+        'News_category'=>'.current-actualite-parent ',
+        'News_image'=>'.single_act img',
+        'News_title'=>'.single_act > h1',
+        'News_content'=>'.single_act > p',
+        'News_date'=>'.single_act > .a-post',
+        'id_langue'=>2,
+        'News_type'=>'journal'
+      ]);
+      Newsinfo::create([
+        'News_name'=>'albayane',
+        'News_url'=>"https://albayane.press.ma/",
+        'News_category'=>'#primary  .post-categories> li',
+        'News_image'=>'#primary   img',
+        'News_title'=>'#primary .entry-title',
+        'News_content'=>'#primary  .entry-content >p',
+        'News_date'=>'#primary   .entry-meta',
+        'id_langue'=>2,
+        'News_type'=>'journal'
+      ]);
+      Newsinfo::create([
+        'News_name'=>'lematin',
+        'News_url'=>"https://lematin.ma/",
+        'News_category'=>'.title-section',
+        'News_image'=>'.detail-article img',
+        'News_title'=>'.detail-article #title',
+        'News_content'=>'.detail-article .card-body >p',
+        'News_date'=>'.detail-article time',
+        'id_langue'=>2,
+        'News_type'=>'journal'
+      ]);
+      Newsinfo::create([
+        'News_name'=>'lecanardlibere',
+        'News_url'=>"https://www.lecanardlibere.com/",
+        'News_category'=>'.div-block-161 >  .category-link ',
+        'News_image'=>'.div-block-163',
+        'News_title'=>'.titre-post-h3 ',
+        'News_content'=>'.rich-text-block  > p',
+        'News_date'=>'.div-block-162 > .date',
         'id_langue'=>2,
         'News_type'=>'journal'
       ]);

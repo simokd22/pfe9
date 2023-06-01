@@ -220,6 +220,7 @@
          }
          
          .selects {
+          text-transform: capitalize;
            display: flex;
            align-items: center;
            justify-content: center;
@@ -576,17 +577,25 @@ input[type="checkbox"] {
 
 .loading-overlay {
   position: fixed;
-  bottom: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  z-index: 9999;
+  /* transform: translate(-50%, 50%); */
+  top: 0;
+  left: 0;
+  z-index: 9998;
   display: none;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(43, 41, 41); /* Fallback color */
+  background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
 }
 
 .loading-dots {
+  position: absolute;
+  left: 49%;
+  top: 47%;
+  z-index: 9999;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
 }
 
 .dot {
@@ -594,9 +603,9 @@ input[type="checkbox"] {
   width: 10px;
   height: 10px;
   margin: 0 5px;
-  background-color: rgb(53, 53, 255);
+  background-color: rgb(88, 88, 233);
   border-radius: 50%;
-  opacity: 0.2;
+  opacity: 0.6;
   animation: dotAnimation 1.5s infinite;
   margin-bottom: 25px;
 }

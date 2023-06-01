@@ -99,7 +99,7 @@ public function guessScrapElements(Request $request){
   $image=$request->input('News_image');;
   $cat=$request->input('News_category');;
   $url=$request->input('News_url');
-  $keyword='ministère'; 
+  $keyword='walid'; 
   /* dd("Newsinfo::create([
     'News_name'=>'$url' ,
     'News_url'=>'$url' ,
