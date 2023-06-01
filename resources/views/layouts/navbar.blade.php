@@ -17,13 +17,13 @@
   <!--logo icon-->
         <div class="links">
             <div class="link">
-                <a  href="{{route('Userinfo.index')}}" >Users</a>
+                <a  href="{{route('Userinfo.index')}}" >Utilisateurs</a>
             </div>
             <div class="link">
                 <a  href= >Sections</a>
             </div>
             <div class="link">
-                <a  href="{{route('news.index')}}">News Table</a>
+                <a  href="{{route('news.index')}}">Nouvelles</a>
             </div>
         </div>
         <div class="logout">

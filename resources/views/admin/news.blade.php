@@ -10,7 +10,7 @@
   
 
 <header>
-    <p>Admin page</p> 
+    <p>Section nouvelle</p> 
 </header>
    <nav>
    
@@ -22,20 +22,20 @@
           <!-- Tab 1 content here -->
           <a href="{{route('news.create')}}" class="plus-button" id="addButton" data-toggle="modal" data-target="#exampleModalCenter">
             <i class="fas fa-plus"></i>
-            Add
+            Ajouter
           </a>
           
             
           <table class="table table-bordered text-center">
                 <tr class="bg-dark text-white">
-                  <th> News name </th>
-                  <th> News url </th>
-                  <th> News category </th>
-                  <th> News title </th>
-                  <th> News image </th>
-                  <th> News content </th>
-                  <th> News date </th>
-                  <th> id langue </th>
+                  <th>Nom</th>
+                  <th>URL</th>
+                  <th>Catégorie</th>
+                  <th>Titre</th>
+                  <th>Image</th>
+                  <th>Contenu</th>
+                  <th>La date</th>
+                  <th>ID de langue</th>
                   <th colspan="2"> Action </th>
                  
                 </tr>

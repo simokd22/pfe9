@@ -26,7 +26,7 @@
 
 <div class="container">
    <header>
-      <h1>Edit</h1>
+      <h1>Éditer</h1>
    </header>
          
          <form action="{{route('news.update' , $datafind->id)}}" method="POST">
@@ -44,7 +44,7 @@
                     
                     <input value="{{$datafind->News_url}}" type="text" class="form-control"  name="News_url" id="News_url" aria-describedby="News_url"required placeholder="https://example.com">
                   </div>
-                  <div class="form-text" id="basic-addon4">Url must be like: https://example.com </div>
+                  <div class="form-text" id="basic-addon4">L’URL doit ressembler à : https://example.com</div>
                 </div>
                
                 <div class="input-group mb-3">
@@ -73,7 +73,7 @@
                 
                 <div class="input-group">
                   <select value="{{$datafind->id_langue}}" style="color: gray" name="id_langue" id="id_langue" class="form-select" aria-label="Disabled select example"  required>
-                    <option value="id">Select Id</option>
+                    <option value="id">Sélectionnez l’ID</option>
                     <option value="1">1-Arabe</option>
                     <option value="2">2-Francais</option>
                     <option value="3">3-Anglais</option>
@@ -82,7 +82,7 @@
                   <div class="row">
                      <div class="col-md-6">
                         <div class="form-group">
-                            <button style="width: 100px; margin-top:30px;" type="submit" class="btn btn-primary" >Edit</button>
+                            <button style="width: 130px; margin-top:30px;" type="submit" class="btn btn-primary" >Sauvegarder</button>
                </div>
                </form>
                </div>
