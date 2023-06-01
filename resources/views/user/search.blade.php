@@ -41,36 +41,6 @@
    <div class="selects" id="category-select">
 
 
-    <div class="wrapper1">
-      <div class="select-btn1">
-        <span>Catégorie</span>
-        <i class="uil uil-angle-down"></i>
-      </div>
-      <div class="content1">
-        <!--That little search-box
-        <div class="search">
-          <i class="uil uil-search"></i>
-          <input id="category-search" spellcheck="false" type="text" placeholder="Search">
-        </div>
-        That little search-box-->
-        <ul class="options1">
-          <li>
-            <input type="checkbox" id="all-categories" name="all-categories" value="all-categories">
-            <label id="category_label" for="all-categories">
-              <b>Toutes</b>
-            </label>
-          </li>
-          @foreach ($categories as $category)
-          <li value="sport">
-            <input type="checkbox" id="{{ $category->category_name }}" name="categories[]" value="{{ $category->category_name }}">
-            <label for="{{ $category->category_name }}">{{ $category->category_name }}</label>
-          </li>
-          @endforeach
-        </ul>
-
-      </div>
-    </div>
-
 
 
 <!--Languages-->
@@ -142,9 +112,9 @@
 <!--Sites-->
 
 <!--Categories-->
-<div class="wrapper1">
+    <div class="wrapper1">
   <div class="select-btn1">
-    <span>Select Category</span>
+    <span> Catégorie </span>
     <i class="uil uil-angle-down"></i>
   </div>
   <div class="content1">
@@ -158,7 +128,7 @@
       <li>
         <input type="checkbox" id="all-categories" name="all-categories" value="all-categories">
         <label id="category_label" for="all-categories">
-          <b>All Categories</b>
+          <b>Toutes Categories</b>
         </label>
       </li>
       @foreach ($categories as $category)
