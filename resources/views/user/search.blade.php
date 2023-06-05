@@ -20,7 +20,7 @@
   @csrf
 <!--logo-->
   <div class="logo_icon">
-    <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_logo.png') }}" alt="My Logo"></a>
+    <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/logo.jpeg') }}" alt="My Logo"></a>
   </div>
 <!--logo-->
 
