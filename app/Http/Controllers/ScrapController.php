@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use GuzzleHttp\TransferStats;
 
 set_time_limit(0);
 
@@ -37,228 +38,7 @@ class ScrapController extends BaseController
      */
 
 
-public function getArticle($articles){
-    $urls = [
-        [
-            'language'=>'ar',
-            'name'=>'hespress',
-            'url'=>"https://www.hespress.com/",
-            'section'=>'.cat',
-            'img'=>'img',
-            'articles'=>'.search_results > div',
-            'title'=>'.card-title',
-            'content'=>'.article-content > p',
-            'date'=>'.date-card',
-            'search'=>'?s',
-            'date_format'=>'',
-          ],
-      /*  [
-            'language'=>'ar',
-            'name'=>'alakhbar',
-            'url'=>"https://www.alakhbar.press.ma/",
-            'section'=>'.current-post-parent ',
-            'articles'=>'.posts-items > .post-item',
-            'img'=>'img',
-            'title'=>'.post-title',
-            'content'=>'.entry-content > p',
-            'date'=>' .post-meta > .date',
-            'search'=>'?s',
-            'date_format'=>'',
-          ],
-      [
-        'language'=>'ar',
-        'name'=>'goud',
-        'url'=>"https://www.goud.ma/",
-        'section'=>'.cat-link',
-        'articles'=>'.col-md-6 > article > .first-content > a',
-        'img'=>'.content > img',
-        'title'=>'.col-md-12 > h1',
-        'content'=>'.content > p',
-        'date'=>' .date',
-        'search'=>'?s',
-        'date_format'=>'d/m/Y H:i',
-      ],
-
-     [
-            'language'=>'ar',
-            'name'=>'al3omk',
-            'url'=>"https://al3omk.com/",
-            'section'=>'.post-cat > a',
-            'img'=>'img',
-            'articles'=>'.vcard-thumb',
-            'title'=>'.post-single > .post-title',
-            'content'=>'.post-single > .post-body > p',
-            'date'=>'.post-date',
-            'search'=>'?s',
-            'date_format'=>'',
-          ],
-           [
-        'language'=>'ar',
-        'name'=>'hibapress',
-        'section'=>'.menu > .tie-current-menu',
-        'url'=>"https://ar.hibapress.com/",
-        'articles'=>'.post-item > .post-thumb',
-        'img'=>'img',
-        'title'=>'.post-title',
-        'content'=>'.entry-content > p',
-        'date'=>' .date',
-        'search'=>'?s',
-      ],
-     [
-        'language'=>'ar',
-        'name'=>'almassaa',
-        'url'=>"https://almassaa.com/",
-        'section'=>'.post-cat-wrap > a',
-        'img'=>'img',
-        'articles'=>'.post-item > .post-thumb',
-        'title'=>'.post-title',
-        'content'=>'.entry-content >  p',
-        'date'=>'.date ',
-        'search'=>'?s',
-      ],
-     [
-        'language'=>'ar',
-        'name'=>'alyaoum24',
-        'url'=>"https://alyaoum24.com/",
-        'section'=>'.breadcrumb >  li:last-child',
-        'img'=>'img',
-        'articles'=>'.listing-archive .article-image > a',
-        'title'=>'.infoSingle > h1',
-        'content'=>'.post_content > p',
-        'date'=>'.timePost',
-        'search'=>'?s',
-      ],
-       [
-        'language'=>'ar',
-        'name'=>'almaghribia',
-        'url'=>"https://www.almaghribia.ma/",
-        'section'=>'.main-title',
-        'img'=>'.img-thumbnail',
-        'articles'=>'.list-view .col-sm-12 >  a',
-        'title'=>'.sec-info > h1',
-        'content'=>'.article > p',
-        'date'=>'.time',
-        'search'=>'resultat?keyword',
-      ],
-
-    [
-        'language'=>'ar',
-        'name'=>'barlamane',
-        'url'=>"https://www.barlamane.com/",
-        'section'=>'.current-post-parent',
-        'img'=>'.wp-post-image',
-        'articles'=>'.posts > .post > a',
-        'title'=>'.post-content > .title',
-        'content'=>'.content > p',
-        'date'=>'.date',
-        'search'=>'?s',
-      ],
-
-    [
-        'language'=>'ar',
-        'name'=>'tanja24',
-        'url'=>"https://tanja24.com/",
-        'section'=>'.current-post-parent > a',
-        'img'=>'.post-thumbnail > img',
-        'articles'=>'.listing > article  .img-holder',
-        'title'=>'.single-post-title',
-        'content'=>'.entry-content > p',
-        'date'=>'.post-published > b',
-        'search'=>'?s',
-      ],
-    */
-    /*
-      [
-        'language'=>'fr',
-        'name'=>'hespress',
-        'url'=>"https://fr.hespress.com/",
-        'section'=>'.breadcrumb > li:last-child',
-        'img'=>'.img-fluid',
-        'articles'=>'.search_results > div',
-        'title'=>'.post-title',
-        'content'=>'.article-content > p',
-        'date'=>'.date-post',
-        'search'=>'?s',
-      ],
-      ['language'=>'fr',
-      'name'=>'al3omk',
-      'url'=>"https://fr.al3omk.com/",
-      'section'=>'.current-post-parent',
-      'img'=>'.lg-big-image > img',
-      'articles'=>'.search-item',
-      'title'=>'.title-single',
-      'content'=>'.post_content > p',
-      'date'=>'.timePost',
-      'search'=>'?s',
-    ],
-    [
-        'language'=>'fr',
-        'name'=>'hibapress',
-        'section'=>'.current-post-parent ',
-        'url'=>"https://fr.hibapress.com/",
-        'articles'=>'#posts-container > li',
-        'img'=>'.wp-post-image',
-        'title'=>'.post-title',
-        'content'=>'.entry-content > p',
-        'date'=>' .date',
-        'search'=>'?s',
-      ],
-      [
-        'language'=>'fr',
-        'name'=>'alyaoum24',
-        'url'=>"https://fr.alyaoum24.com/",
-        'section'=>'.current-post-parent > a',
-        'img'=>'.imagePostArchive > a > img',
-        'articles'=>'.listing-archive  li',
-        'title'=>'.infoSingle > h1',
-        'content'=>'.post_content > p',
-        'date'=>'.timePost',
-        'search'=>'?s',
-      ],
-       [
-      'language'=>'fr',
-        'name'=>'barlamane',
-        'url'=>"https://www.barlamane.com/fr/",
-        'section'=>'.breadcrumbs > a:last-child',
-        'img'=>'.wp-post-image',
-        'articles'=>'.posts-list > article',
-        'title'=>'.entry-header > .entry-title',
-        'content'=>'.entry-content > p',
-        'date'=>'.entry-date',
-        'search'=>'?s',
-      ],
-      */
-
-
-    ];
-
-$client = new Client;
-try {
-    $response = $client->get($articles['url']);
-    $crawler = new Crawler($response->getBody()->getContents()) ;
-    $content = $crawler->filter($urls[$articles['id']]['content']);
-    $paragraphs=[];
-    for ($i = 0; $i < count($content);$i++){
-    $paragraphs[]= $content->eq($i)->text();
-    }
-    /*try{
-        $secttionName=$crawler->filter($urls[$articles['id']]['section'])->text();
-    }
-    catch(Exception $e){
-        $secttionName='';
-    }
-    $article['category'] = $secttionName;*/
-    $article['category'] = $articles['category'];
-    $article['title']    = $articles['title'];
-    $article['text']     = $paragraphs;
-    $article['date']     = $articles['date'];
-    $article['image']    = $articles['image'];
-} catch (Exception $e) {
-}
-    return $article;
-}
-
-public function translateDate($input,$format='') {
+/* public function translateDate($input,$format='') {
     if($format!==''){
         try {
             return Carbon::createFromFormat($format, $input);
@@ -348,7 +128,7 @@ public function translateDate($input,$format='') {
             return Carbon::create($year,$month,$day);
         }
 }
-}
+} */
 
 //,$start_date,$end_date
 public function compare_category($scraped_cat,$categories){
@@ -372,7 +152,7 @@ public function compare_category($scraped_cat,$categories){
 
 public function compare_date($urls,$key_word,$date_start,$date_end){
     $searchUrl='';
-if(!empty($date_start) && !empty($date_end)){
+/* if(!empty($date_start) && !empty($date_end)){
     $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls->News_url)
        . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
        . '%2Ccd_max%3A' . urlencode(Carbon::create($date_end)->format('m/d/Y'));
@@ -389,12 +169,29 @@ else if(!empty($date_start) && empty($date_end)){
 else{
     $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls->News_url)
     . '&tbs=0';
+} */
+if(!empty($date_start) && !empty($date_end)){
+    $searchUrl= 'https://www.google.com/search?q=' .$key_word  . ' site:'. urlencode($urls->News_url)
+       . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
+       . '%2Ccd_max%3A' . urlencode(Carbon::create($date_end)->format('m/d/Y'));
+}
+else if(empty($date_start) && !empty($date_end)){
+    $searchUrl= 'https://www.google.com/search?q=' .$key_word  . ' site:'. urlencode($urls->News_url)
+       . '&tbs=cdr%3A1%2Ccd_min%3A'. '%2Ccd_max%3A' . urlencode(Carbon::create($date_end)->format('m/d/Y'));
+}
+else if(!empty($date_start) && empty($date_end)){
+    $searchUrl= 'https://www.google.com/search?q=' .$key_word  . ' site:'. urlencode($urls->News_url)
+       . '&tbs=cdr%3A1%2Ccd_min%3A' . urlencode(Carbon::create($date_start)->format('m/d/Y'))
+       . '%2Ccd_max%3A';
+}
+else{
+    $searchUrl= 'https://www.google.com/search?q=' .$key_word  . ' site:'. urlencode($urls->News_url)
+    . '&tbs=0';
 }
         return $searchUrl;
 }
 public static function handle(String $key_word,$date_start='',$date_end='',$sites,$Category=''){
     $instance=new self;
-    
     $urls= $sites;
     //dd($sitesdata->get(0));
         global $data;
@@ -449,33 +246,46 @@ global $searchResults,$data;
             //dd($node->attr('href'));
                 //echo($index2);
             $searchResults[$index][]=$node->attr('href');
-
         });
 $request = function ($urls)  {
     foreach($urls as $url) {
             yield new Request('GET', $url);
     }};
 //dd($searchResults);
+if(isset($searchResults[$index])){
 $pool = new Pool($client, $request($searchResults[$index]), [
     'concurrency' => 20,
     'fulfilled' => function (Response $response,$index3) use ($index,$urls, $Category,$key_word) {
         global $data;
         $instance=new self;
-        try{
+        
         $crawler = new Crawler($response->getBody()->getContents());
-        $content = $crawler->filter($urls->get($index)->News_content);
-        $paragraphs='';
-        for ($i = 0; $i < count($content);$i++){
-        $paragraphs.= $content->eq($i)->text() ." \n";
+        try{
+            $content = $crawler->filter($urls->get($index)->News_content);
+            $paragraphs='';
+            for ($i = 0; $i < count($content);$i++){
+            $paragraphs.= $content->eq($i)->text() ." \n";
+            }
+        }catch(Exception $e){
+            $paragraphs='';
         }
-        $title=$crawler->filter($urls->get($index)->News_title)->text();
-        if(str_contains($title,$key_word) || str_contains($paragraphs,$key_word)){
+        try{
+            $title=$crawler->filter($urls->get($index)->News_title)->text();
+        }catch(Exception $e){
+            $title='';
+        }
+        
+        try{
             $scraped_category=$crawler->filter($urls->get($index)->News_category)->text();
+        }catch(Exception $e){
+            $scraped_category='';
+        }
+        
+        //if(str_contains($title,$key_word) || str_contains($paragraphs,$key_word)){}
+            
                 //echo($scraped_category. '<br>');
-            if($instance->compare_category($scraped_category,$Category) ){ 
-                $innerData['category'] =$scraped_category;
-                $innerData['title']    = $title;
-                $innerData['text']     = $paragraphs;
+            if($instance->compare_category($scraped_category,$Category) && $title!='' && $paragraphs!='' ){ 
+                try{
                 $image=$crawler->filter($urls->get($index)->News_image);
                 //dd($image->attr('src'));
                 if(str_contains($image->attr('data-src'),'jpg') || str_contains($image->attr('data-src'),'webp') || str_contains($image->attr('data-src'),'jpeg')){
@@ -492,16 +302,19 @@ $pool = new Pool($client, $request($searchResults[$index]), [
                 else{
                 $innerData['image']     =  $urls->get($index)->News_url . $imageUrl;
                 }
-                 //$instance->translateDate()
-                $innerData['date']    = $crawler->filter($urls->get($index)->News_date)->text();
+                }catch(Exception $e){
+                    $innerData['image']='';
+                }
+                try{$innerData['date']    = $crawler->filter($urls->get($index)->News_date)->text();
+                }catch(Exception $e){
+                    $innerData['date']    = '';
+                }
+                $innerData['category'] =$scraped_category;
+                $innerData['title']    = $title;
+                $innerData['text']     = $paragraphs;
                 $data[$urls->get($index)->News_name][]=$innerData;
             }
-        }
-
-
-    }catch(Exception $e){
-       // echo();
-    }
+        
 },
     'rejected' => function (Exception $reason,$index2){
         //dd('error'.$index2 .': '. $reason);
@@ -513,9 +326,10 @@ $pool = new Pool($client, $request($searchResults[$index]), [
 $promise = $pool->promise();
 // Force the pool of requests to complete.
 $promise->wait();
+}
         },
     'rejected' => function (Exception $reason,$index2){
-                dd($reason);
+                //dd($reason);
         },
         ]);
     foreach ($pool as $index => $response) {
@@ -526,8 +340,12 @@ $promise->wait();
     $promise->wait();
 //dd($data);
 //dd('done');
-
-
+foreach($data as $innerdata){
+if(count($innerdata)>1){
+    return $data;
+}
+}
+$data=[];
 //usort($data, function ($a, $b) {return strtotime($b['date']) - strtotime($a['date']);});
 return $data;
         //
@@ -538,6 +356,148 @@ return $data;
 
 
 
+}
+
+public static function guessScrapingElements($siteUrl,$keyword,$title='',$date='',$content='',$image='',$cat=''){
+    
+    $searchUrl= 'https://www.google.com/search?q=' . urlencode($keyword) . ' site:'. urlencode($siteUrl)
+    . '&tbs=0';
+    //dd($searchUrl);
+    $client = new Client( [
+        'headers' => [
+            'User-Agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0',
+            'Accept' => 'text/html',
+            'Referer' => 'http://www.est-umi.ac.ma/'
+        ],
+        'verify' => base_path('public/cacert.pem')
+    ]); 
+    $response = $client->get($searchUrl);
+    $crawler = new Crawler($response->getBody()->getContents());
+    $result=[];
+    $crawler->filter('.yuRUbf > a')->each(function ($node,$key)use(&$client,&$result,$title,$date,$content,$image,$cat,$siteUrl){
+       $testArticleUrl=$node->attr('href');
+       //$testArticleTitle=$node->filter('h3 > span,h3')->text();
+       //$result['url']=$testArticleUrl;
+       $response = $client->get($testArticleUrl);
+       //dd($content);
+       $crawler = new Crawler($response->getBody()->getContents());
+       try{
+       $content = $crawler->filter($content);
+       $paragraphs='';
+       for ($i = 0; $i < count($content);$i++){
+       $paragraphs.= $content->eq($i)->text() ." \n";
+       }
+        }catch(Exception $e){
+            $paragraphs='';
+       }
+try{
+       $title=$crawler->filter($title)->text();
+    }catch(Exception $e){
+        $title='';
+       }
+       try{
+           $scraped_category=$crawler->filter($cat)->first()->text();
+        }catch(Exception $e){
+            $scraped_category="";
+        }   
+               //echo($scraped_category. '<br>');
+               $innerData['category'] =$scraped_category;
+               $innerData['title']    = $title;
+               $innerData['text']     = $paragraphs;
+               
+               //dd($image->attr('src'));
+               try{
+                $image=$crawler->filter($image);
+               if(str_contains($image->attr('data-src'),'jpg') || str_contains($image->attr('data-src'),'webp') || str_contains($image->attr('data-src'),'jpeg')){
+                   $imageUrl=$image->attr('data-src');
+               }
+               else{
+
+                   $imageUrl=$image->attr('src');
+               }
+
+               if(str_contains($imageUrl,'https://') || str_contains($imageUrl,'http://')){
+               $innerData['image']     =  $imageUrl;
+               }
+               else{
+               $innerData['image']     =  $siteUrl . $imageUrl;
+               }
+            }catch(Exception $e){
+                $innerData['image']='';
+               }
+                //$instance->translateDate()
+                try{
+               $innerData['date']    = $crawler->filter($date)->text();
+            }catch(Exception $e){
+                $innerData['date']="";
+            }
+               $result[]=$innerData;
+            
+/*        $matchingElements = $crawler->filterXPath("//body//article[contains(.,'$testArticleTitle')]");
+          try{
+                $matchingElements = $crawler->filter("body article:contains('$testArticleTitle'), body [class*='article']:contains('$testArticleTitle'), body [id*='article']:contains('$testArticleTitle')");
+            }catch(Exception $e){
+                $matchingElements = $crawler->filterXPath("//body//article[contains(.,'$testArticleTitle')]");
+            }
+       //dd($matchingElements);
+        $matchingElements->each(function (Crawler $element) use (&$result) {
+           try{
+            $result['date']=$element->filter("[class*='date'],[id*='date']")->text();
+            $result['dateClass']=$element->filter("[class*='date'],[id*='date']")->attr('class');
+           }catch(Exception $e){
+            $result['date']='';
+           }
+           try{
+            $result['title']=$element->filter("[class*='title'],[id*='title']")->text();
+            $result['titleClass']=$element->filter("[class*='title'],[id*='title']")->attr('class');
+           }catch(Exception $e){
+            $result['title']='';
+           }
+           try{
+            $content=$element->filter(("[class*='content'] > p,[id*='content'] > p "));
+           $paragraphs='';
+            for ($i = 0; $i < count($content);$i++){
+                $paragraphs.= $content->eq($i)->text() ." \n"; 
+           }
+           $result['text']=$paragraphs;
+           $result['contentClass']=$element->filter("[class*='content'],[id*='content']")->attr('class');
+           }catch(Exception $e){
+            $result['text']='';
+           }
+           
+           
+           
+           
+           
+
+           try{
+            if($element->filter("img,[class*='image'],[id*='image'],[class*='img'],[id*='img'] ")->count() > 1){
+             
+            //$result['image'] = $element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->first()->attr('src');
+            $result['imageClass']=$element->filter("img")->first()->attr('class');
+            $result['image']=$element->filter("img")->first()->attr('src');
+            }else{
+           
+            //$result['image']=$element->filter("[class*='image'],[id*='image'],[class*='img'],[id*='img']")->attr('src');
+            $result['imageClass']=$element->filter("img")->attr('class');
+            $result['image']=$element->filter("img")->first()->attr('src');
+            }
+        } catch(Exception $e){
+            $result['image']='';
+        }
+       }); 
+       $allAttributesNotEmptyOrNull = collect($result)->every(function ($attribute) {
+        return !empty($attribute) || $attribute === null;
+        });
+        if ($allAttributesNotEmptyOrNull) {
+            return false;
+        } */
+    });
+
+    //$result['category']='';
+    dd($result);
+    
+return $result;
 }
 
 }

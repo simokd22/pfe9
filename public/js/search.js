@@ -37,13 +37,27 @@ allSitesCheckbox.checked = false;
 });
 });
 function myFunction() {
+
   let CheckedLangue=document.querySelectorAll('input[name="language"]');
   console.log(CheckedLangue.length);
   let isChecked=false;
   CheckedLangue.forEach((langue) => {
     if(langue.checked){
-      wrapper3.classList.toggle("active");
+      isChecked=true;
       return false;
+    }
+    });
+
+    let Checkedtype=document.querySelectorAll('input[name="radio-option"]');
+  console.log(CheckedLangue.length);
+  Checkedtype.forEach((langue) => {
+    if(langue.checked){
+      if(isChecked){
+        wrapper3.classList.toggle("active");
+        wrapper2.classList.toggle("active")
+        return false;
+      }
+
     }
     });
     let allSitesCheckbox = document.getElementById('all-sites');
@@ -116,7 +130,7 @@ allCategoriesCheckbox.checked = false;
 });
 //checkbox
 
-selectBtn2.addEventListener("click", () => wrapper2.classList.toggle("active"));
+selectBtn2.addEventListener("click",myFunction);
 /*----------------------------------------------------------------------------------------------------------------*/
 
 
@@ -244,7 +258,7 @@ console.log(selectedLanguage)
   });
   */
 //
-  categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>Toute</b></label></li>";
+  categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>Tous</b></label></li>";
   availableCategories.forEach((category) => {
     const li = document.createElement("li");
     li.innerHTML = `<input class="categories" type="checkbox" id="${category}" name="categories[]" value="${category}"><label for="${category}">${category}</label>`;
@@ -271,17 +285,56 @@ radioContainer.addEventListener("change", (event) => {
 
       const filteredSites = objectSites.filter(site => site.News_type === selectedNewsType);
       sitesSelect.querySelector(".options2").innerHTML = "";
-
+      const li = document.createElement("li");
+      li.innerHTML = `<input type="checkbox" id="all-sites" name="all-sites" value="all-sites">
+      <label for="all-sites" id="all-sites-label">
+        <b>Tous</b>
+      </label>`;
+      sitesSelect.querySelector(".options2").appendChild(li);
       console.log(filteredSites);
       filteredSites.forEach((site) => {
         const li = document.createElement("li");
-        li.innerHTML = `<input class="sites" type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site.News_name}</label>`;
+        li.innerHTML = `<input class="sites" type="checkbox" id="${site.News_name}" name="sites[]" value="${site.News_name}"><label for="${site.News_name}">${site.News_name}</label>`;
         sitesSelect.querySelector(".options2").appendChild(li);
       });
 
+
+    });
+
+    let allSitesCheckbox = document.getElementById('all-sites');
+    let siteCheckboxes = document.querySelectorAll('input[name="sites[]"]');
+
+    allSitesCheckbox.addEventListener('change', (e) => {
+    siteCheckboxes.forEach((checkbox) => {
+    checkbox.checked = e.target.checked;
+    });
+    });
+
+    siteCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', (e) => {
+    if (!e.target.checked) {
+    allSitesCheckbox.checked = false;
+    }
+    });
     });
 
 
+    let allcategoryCheckbox = document.getElementById('all-categories');
+    let categoryCheckboxes = document.querySelectorAll('input[name="categories[]"]');
+
+    allcategoryCheckbox.addEventListener('change', (e) => {
+    categoryCheckboxes.forEach((checkbox) => {
+    checkbox.checked = e.target.checked;
+    });
+    });
+
+    categoryCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', (e) => {
+    if (!e.target.checked) {
+    allcategoryCheckbox.checked = false;
+    }
+    });
+    });
 });
 
 

@@ -90,6 +90,8 @@ a {
     flex-direction: row;
     margin-top: 170px;
     margin-left: 20px;
+    width: 100%;
+    overflow-x: auto;
 }
 
 .tab {
@@ -97,7 +99,7 @@ a {
     align-items: center;
     padding-top: 5px;
     height: 32px;
-    width: 110px;
+    min-width: 200px; /* Adjust the minimum width to your preference */
 }
 
 .tab:hover {
@@ -116,6 +118,7 @@ a {
 .tab-pane.active {
     display: block;
 }
+
 
 .articles-container {
     display: flex;

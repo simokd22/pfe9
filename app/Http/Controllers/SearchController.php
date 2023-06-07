@@ -7,6 +7,8 @@ use App\Models\Langue;
 use App\Models\Newsinfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\View;
 
 
 class SearchController extends Controller
@@ -58,8 +60,11 @@ class SearchController extends Controller
         $langue=$request->input('language');
         $langue_id=Langue::where('langue','=',$langue)->pluck('id');
         $sites=Newsinfo::where('id_langue','=',$langue_id)->whereIn('News_name', $sites)->get();
+        $categories='';
+        if($Category){
         $categories=Category::where('id_langue','=',$langue_id)->whereIn('category_name', $Category)->get();
-        $data=ScrapController::handle($key_word,$date_start,$date_end,$sites,$categories);
+        }
+        $data=ScrapController::handle($key_word,$date_start,$date_end,$sites,$categories);   
         $request->session()->put('data', $data);
         return redirect()->route('user.SearchResults');
 
@@ -83,5 +88,38 @@ class SearchController extends Controller
         ->toArray();
 
     return response()->json(['sites' => $sites]);
+}
+
+public function guessScrapElements(Request $request){
+  /* $url=$request->input('url');
+  $keyword=$request->input('keyword'); */
+  $title=$request->input('News_title');;
+  $date=$request->input('News_date');;
+  $content=$request->input('News_content');
+  $image=$request->input('News_image');;
+  $cat=$request->input('News_category');;
+  $url=$request->input('News_url');
+  $keyword='walid'; 
+  /* dd("Newsinfo::create([
+    'News_name'=>'$url' ,
+    'News_url'=>'$url' ,
+    'News_category'=>'$cat' ,
+    'News_image'=>'$image' ,
+    'News_title'=>'$title' ,
+    'News_content'=>'$content' ,
+    'News_date'=>'$date' ,
+    'id_langue'=>2,
+    'type'=>'magazine'
+  ]);"); */
+  //dd($url,$keyword,$title,$date,$content,$image,$cat);
+  $data=ScrapController::guessScrapingElements($url,$keyword,$title,$date,$content,$image,$cat);
+  $html = View::make('admin.guessedArticle', compact('data'))->render();
+  return Response::json([
+    'html' => $html,
+    'titleClass'=>$data['titleClass'],
+    'dateClass'=>$data['dateClass'],
+    'contentClass'=>$data['contentClass'],
+    'imageClass'=>$data['imageClass'],
+  ]);
 }
 }

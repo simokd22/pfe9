@@ -35,51 +35,12 @@
 <!--searchbar-->
 
 
-<!--radio-container-->
-<div class="radio-container">
-<input type="radio" id="journal" name="radio-option" value="journal">
-  <label for="journal">JOURNAL</label>
 
-  <input type="radio" id="magazine" name="radio-option" value="magazine" >
-  <label for="magazine">MAGAZINE</label>
-</div>
-<!--radio-container-->
 
-     <!--Categories-->
+
    <div class="selects" id="category-select">
 
 
-    <div class="wrapper1">
-      <div class="select-btn1">
-        <span>Catégorie</span>
-        <i class="uil uil-angle-down"></i>
-      </div>
-      <div class="content1">
-        <!--That little search-box
-        <div class="search">
-          <i class="uil uil-search"></i>
-          <input id="category-search" spellcheck="false" type="text" placeholder="Search">
-        </div>
-        That little search-box-->
-        <ul class="options1">
-          <li>
-            <input type="checkbox" id="all-categories" name="all-categories" value="all-categories">
-            <label id="category_label" for="all-categories">
-              <b>Toute</b>
-            </label>
-          </li>
-          @foreach ($categories as $category)
-          <li value="sport">
-            <input type="checkbox" id="{{ $category->category_name }}" name="categories[]" value="{{ $category->category_name }}">
-            <label for="{{ $category->category_name }}">{{ $category->category_name }}</label>
-          </li>
-          @endforeach
-        </ul>
-
-      </div>
-    </div>
-
-<!--Categories-->
 
 
 <!--Languages-->
@@ -112,6 +73,7 @@
 <!--Languages-->
 
 
+
 <!--Sites-->
  <div id="sites-select">
 
@@ -132,12 +94,12 @@
         <li>
           <input type="checkbox" id="all-sites" name="all-sites" value="all-sites">
           <label for="all-sites" id="all-sites-label">
-            <b>Tout</b>
+            <b>Tous</b>
           </label>
         </li>
         @foreach ($sites as $site)
         <li>
-          <input class="sites" type="checkbox" name="sites[]" value="{{ $site->News_name }}">
+          <input class="sites" type="checkbox" name="sites[]" value="{{$site->News_name}}">
           <label>{{ $site->News_name }}</label>
         </li>
         @endforeach
@@ -149,11 +111,50 @@
 </div>
 <!--Sites-->
 
+<!--Categories-->
+    <div class="wrapper1">
+  <div class="select-btn1">
+    <span> Catégorie </span>
+    <i class="uil uil-angle-down"></i>
+  </div>
+  <div class="content1">
+    <!--That little search-box
+    <div class="search">
+      <i class="uil uil-search"></i>
+      <input id="category-search" spellcheck="false" type="text" placeholder="Search">
+    </div>
+    That little search-box-->
+    <ul class="options1">
+      <li>
+        <input type="checkbox" id="all-categories" name="all-categories" value="all-categories">
+        <label id="category_label" for="all-categories">
+          <b>Tous</b>
+        </label>
+      </li>
+      @foreach ($categories as $category)
+      <li value="sport">
+        <input type="checkbox" id="{{ $category->category_name }}" name="categoryCheckboxes[]" value="{{ $category->category_name }}">
+        <label for="{{ $category->category_name }}">{{ $category->category_name }}</label>
+      </li>
+      @endforeach
+    </ul>
+
+  </div>
+</div>
+<!--Categories-->
 
   <!--date-->
     </div>
 
+<!--radio-container-->
+<div class="radio-container">
+  <input type="radio" id="journal" name="radio-option" value="journal">
+    <label for="journal">JOURNAL</label>
 
+    <input type="radio" id="magazine" name="radio-option" value="magazine" >
+    <label for="magazine">MAGAZINE</label>
+  </div>
+  <!--radio-container-->
       <div class="wrapper3">
        <label ><b>Du</b></label>  <input type="date" name="start-date">
        <label> <b>Au</b></label> <input type="date" name="end-date">
@@ -164,8 +165,8 @@
     <!--save and reset botton-->
     <div class="buttons">
   <div class="button">
-    <button id="save" class="search-btn" type="submit">Search</button>
-    <button class="reset-btn" type="reset">Reset</button>
+    <button id="save" class="search-btn" type="submit">Recherche</button>
+    <button class="reset-btn" type="reset">Rénitialiser</button>
   </div>
 </div>
 <!--save and reset botton-->
