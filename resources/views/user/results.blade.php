@@ -47,7 +47,7 @@ if(!isset($_SESSION['IsInArticle'])) {
                 <div class="articles-container">
                     @for($i=0;$i<count($innerdata)-1;$i++)
                     <div class="blog">
-                      <a href="{{ route('user.article',['news'=>$key,'id'=>$i]) }}" >
+                      <a href="{{ Auth::user()->role_id=='1' ?route('admin.article',['news'=>$key,'id'=>$i]):route('user.article',['news'=>$key,'id'=>$i]) }}" >
                         <img src="{{ $innerdata[$i]['image'] }}" alt="Blog Image {{ $i }}" loading="lazy" decoding="async">
                         <div class="blog-info">
                           <p class="blog-date">{{ $innerdata[$i]['date'] }}</p>

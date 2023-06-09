@@ -32,6 +32,10 @@ Route::middleware([
     //Route::get('admin/dashboard', [Userinfo::class ,'index'])->name('admindashboard');
     Route::resource('Userinfo' , Userinfo::class)->names('Userinfo');
     Route::resource('news' , NewsinfoController::class)->names('news');
+    Route::get('/admin/search', [SearchController::class ,'index'])->name('admin.search');
+    Route::post('/admin/search', [SearchController::class ,'search'])->name('admin.search-post');
+    Route::get('/admin/SearchResults', [SearchController::class ,'results'])->name('admin.SearchResults');
+    Route::get('/admin/article/{news}/{id}', [SearchController::class,'show'])->name('admin.article');
 
     Route::post('news/guessScrapElements',[SearchController::class ,'guessScrapElements'])->name('guessScrapingElements');
 });

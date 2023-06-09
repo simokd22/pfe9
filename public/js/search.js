@@ -11,7 +11,6 @@ closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
 
 
 
-
 //sites script
 /*----------------------------------------------------------------------------------------------------------------*/
 const wrapper3 = document.querySelector(".wrapper2"),

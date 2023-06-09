@@ -150,7 +150,7 @@ public function compare_category($scraped_cat,$categories){
     return $isTrue;
 }
 
-public function compare_date($urls,$key_word,$date_start,$date_end){
+public function constructUrl($urls,$key_word,$date_start,$date_end){
     $searchUrl='';
 /* if(!empty($date_start) && !empty($date_end)){
     $searchUrl= 'https://www.google.com/search?q=intext:' . urlencode($key_word) .' OR intitle:'. urlencode($key_word) . ' site:'. urlencode($urls->News_url)
@@ -190,21 +190,13 @@ else{
 }
         return $searchUrl;
 }
-public static function handle(String $key_word,$date_start='',$date_end='',$sites,$Category=''){
-    $instance=new self;
+public static function scrap(String $key_word,$date_start='',$date_end='',$sites,$Category=''){
+   
     $urls= $sites;
-    //dd($sitesdata->get(0));
+  
         global $data;
         global $links;
         global $searchResults;
-/*$requests = function($urls)use($key_word) {
-            for ($i = 0;$i<count($urls);$i++){
-                //$req=new Request('GET', $urls[$i]['url']);
-                //$this->getUrls($urls[$i]['url'],1,$key_word)
-                yield new Request('GET', $urls[$i]['url']);
-            }
-};*/
-
 
 $userAgents = [
     //'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
@@ -231,7 +223,7 @@ $pool = new Pool($client, $requests($urls), [
     'fulfilled' => function (Response $response,$index) use ($urls, $Category,$key_word,$date_start,$date_end,$client) {
         global $searchResults;
         $instance=new self;
-        $searchUrl=$instance->compare_date($urls->get($index),$key_word,$date_start,$date_end);
+        $searchUrl=$instance->constructUrl($urls->get($index),$key_word,$date_start,$date_end);
         //dd($searchUrl);
 global $searchResults,$data;
         //echo($response->getBody()->getContents());

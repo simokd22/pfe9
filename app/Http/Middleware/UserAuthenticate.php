@@ -16,7 +16,7 @@ class UserAuthenticate
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role_id === '0'){
+        if(Auth::user()->role_id == '0'){
             return $next($request);
         }else{
             session()->flush();

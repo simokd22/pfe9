@@ -16,12 +16,11 @@ class Adminauthentication
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role_id === '1'){
+        if(Auth::user()->role_id == '1'){
             return $next($request);
         }else{
             session()->flush();
             return redirect()->route('login');
         }
-        return $next($request);
     }
 }

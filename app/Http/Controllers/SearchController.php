@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Langue;
+use App\Models\Category;
 use App\Models\Newsinfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Response;
 
 
 class SearchController extends Controller
@@ -64,9 +65,15 @@ class SearchController extends Controller
         if($Category){
         $categories=Category::where('id_langue','=',$langue_id)->whereIn('category_name', $Category)->get();
         }
-        $data=ScrapController::handle($key_word,$date_start,$date_end,$sites,$categories);   
+        $data=ScrapController::scrap($key_word,$date_start,$date_end,$sites,$categories);   
         $request->session()->put('data', $data);
-        return redirect()->route('user.SearchResults');
+        if(Auth::user()->role_id=='1'){
+          return redirect()->route('admin.SearchResults');
+        }else{
+          return redirect()->route('user.SearchResults');
+        }
+        
+        
 
 
     }

@@ -1,4 +1,3 @@
-
 @extends('layouts/navbar_search')
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -13,10 +12,8 @@
 
 
             </nav>
-         <body>
-
-
-<form method="post" action="{{route('user.search-post')}}" >
+<body>
+<form method="post" action="{{Auth::user()->role_id=='1' ? route('admin.search-post') : route('user.search-post')}}" >
   @csrf
 <!--logo-->
   <div class="logo_icon">
