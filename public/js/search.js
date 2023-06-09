@@ -36,7 +36,7 @@ allSitesCheckbox.checked = false;
 });
 });
 function myFunction() {
-  
+
   let CheckedLangue=document.querySelectorAll('input[name="language"]');
   console.log(CheckedLangue.length);
   let isChecked=false;
@@ -257,7 +257,7 @@ console.log(selectedLanguage)
   });
   */
 //
-  categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>Toute</b></label></li>";
+  categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>Tous</b></label></li>";
   availableCategories.forEach((category) => {
     const li = document.createElement("li");
     li.innerHTML = `<input class="categories" type="checkbox" id="${category}" name="categories[]" value="${category}"><label for="${category}">${category}</label>`;
@@ -287,7 +287,7 @@ radioContainer.addEventListener("change", (event) => {
       const li = document.createElement("li");
       li.innerHTML = `<input type="checkbox" id="all-sites" name="all-sites" value="all-sites">
       <label for="all-sites" id="all-sites-label">
-        <b>All Sites</b>
+        <b>Tous</b>
       </label>`;
       sitesSelect.querySelector(".options2").appendChild(li);
       console.log(filteredSites);
@@ -297,18 +297,18 @@ radioContainer.addEventListener("change", (event) => {
         sitesSelect.querySelector(".options2").appendChild(li);
       });
 
-      
+
     });
 
     let allSitesCheckbox = document.getElementById('all-sites');
     let siteCheckboxes = document.querySelectorAll('input[name="sites[]"]');
-    
+
     allSitesCheckbox.addEventListener('change', (e) => {
     siteCheckboxes.forEach((checkbox) => {
     checkbox.checked = e.target.checked;
     });
     });
-    
+
     siteCheckboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', (e) => {
     if (!e.target.checked) {
@@ -320,13 +320,13 @@ radioContainer.addEventListener("change", (event) => {
 
     let allcategoryCheckbox = document.getElementById('all-categories');
     let categoryCheckboxes = document.querySelectorAll('input[name="categories[]"]');
-    
+
     allcategoryCheckbox.addEventListener('change', (e) => {
     categoryCheckboxes.forEach((checkbox) => {
     checkbox.checked = e.target.checked;
     });
     });
-    
+
     categoryCheckboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', (e) => {
     if (!e.target.checked) {

@@ -17,7 +17,7 @@
   @csrf
 <!--logo-->
   <div class="logo_icon">
-    <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_logo.png') }}" alt="My Logo"></a>
+    <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/logo.jpeg') }}" alt="My Logo"></a>
   </div>
 <!--logo-->
 
@@ -125,7 +125,7 @@
       <li>
         <input type="checkbox" id="all-categories" name="all-categories" value="all-categories">
         <label id="category_label" for="all-categories">
-          <b>Toutes Categories</b>
+          <b>Tous</b>
         </label>
       </li>
       @foreach ($categories as $category)
