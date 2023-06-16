@@ -76,7 +76,7 @@
    margin-top: 25px;
    margin-left: 130px;
    text-decoration: none;
-   font-weight: bold;
+   
   }
   
   .about .about{
@@ -98,7 +98,7 @@
    margin-top: 25px;
    margin-left: 200px;
    text-decoration: none;
-   font-weight: bold;
+   
   }
 /*logo*/
 .logo_icon {
@@ -109,6 +109,7 @@
     left: 10px;
     display: flex; 
     align-items: center; 
+    color: transparent;
   }
   
   .logo_icon img {
@@ -116,4 +117,5 @@
     height: auto; 
     margin-left: 70px; 
     margin-bottom: 100px;
+    color: transparent;
   }

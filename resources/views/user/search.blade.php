@@ -16,8 +16,8 @@
 <form method="post" action="{{Auth::user()->role_id=='1' ? route('admin.search-post') : route('user.search-post')}}" >
   @csrf
 <!--logo-->
-  <div class="logo_icon">
-    <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/logo.jpeg') }}" alt="My Logo"></a>
+<div class="logo_icon2">
+    <a href={{ route('user.search') }} class="logo_icon2"><img src="{{ asset('logo/logo.jpeg') }}" alt="My Logo"></a>
   </div>
 <!--logo-->
 
