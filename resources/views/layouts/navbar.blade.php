@@ -5,6 +5,8 @@
     @yield('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="{{asset('css/style_navbar.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/style_navbar_user.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/style_navbar_search.css')}}"/>
     <title>@yield('title')</title>
 </head>
 <body>
@@ -16,6 +18,13 @@
   </div>
   <!--logo icon-->
         <div class="links">
+            <div class="logo_icon">
+                <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo"></a>
+              </div>
+              @if (Auth::user()->role_id=='1')
+              <div class="link">
+                <a  href="{{route('admin.search')}}" >Recherche</a>
+            </div>
             <div class="link">
                 <a  href="{{route('Userinfo.index')}}" >Utilisateurs</a>
             </div>
@@ -23,8 +32,12 @@
                 <a  href= >Sections</a>
             </div>
             <div class="link">
-                <a  href="{{route('news.index')}}">Nouvelles</a>
+                <a  href="{{route('news.index')}}">Jornaux et Magazines</a>
             </div>
+            @endif
+            <div class="profile">
+                <a href={{Auth::user()->role_id=='1'? route('profile_admin')  : route('profile_user') }} class="profile-btn"><i class="fa fa-user"></i></a>
+             </div>
         </div>
         <div class="logout">
             <form method="POST" action="{{ route('logout') }}">
