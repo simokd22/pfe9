@@ -204,7 +204,7 @@ const languageSites = {
 };
 const categorySites = {};
 
-
+/* 
 axios.get('http://127.0.0.1:8000/api/sites').then(Response=>{
   let data = Response.data.filter(e => e.id_langue === 1).map(e => e.News_name);;
   languageSites.Arabe.push(...data);
@@ -229,13 +229,11 @@ axios.get('http://127.0.0.1:8000/api/Category').then(Response => {
 axios.get('http://127.0.0.1:8000/api/Category').then(Response => {
   let data = Response.data.filter(e => e.id_langue === 3).map(e => e.category_name);
   categorySites.Anglais = [...data];
-});
-
-console.log(languageSites);
-console.log(categorySites);
+}); 
+*/
 
 // Update the available sites when the language is changed
-document.querySelector(".options").addEventListener("change", (_event) => {
+/*document.querySelector(".options").addEventListener("change", (_event) => {
         // Uncheck all radio inputs
         const radioInputs = document.querySelectorAll('input[name="radio-option"]');
         radioInputs.forEach((radio) => {
@@ -248,24 +246,24 @@ document.querySelector(".options").addEventListener("change", (_event) => {
 //
  sitesSelect.querySelector(".options2").innerHTML = "<li><input type='checkbox' id='all-sites' name='all-sites' value='all-sites'> <label for='all-sites' id='all-sites-label'><b>Tout</b></label></li>";
 
-console.log(selectedLanguage)
+
 
  /* availableSites.forEach((site) => {
     const li = document.createElement("li");
     li.innerHTML = `<input class="sites" type="checkbox" id="${site}" name="sites[]" value="${site}"><label for="${site}">${site}</label>`;
     sitesSelect.querySelector(".options2").appendChild(li);
   });
-  */
+ 
 //
-  categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>Tous</b></label></li>";
+   categorySelect.querySelector(".options1").innerHTML = "<li><input type='checkbox' id='all-categories' name='all-categories' value='all-categories'> <label for='all-categories'><b>Tous</b></label></li>";
   availableCategories.forEach((category) => {
     const li = document.createElement("li");
     li.innerHTML = `<input class="categories" type="checkbox" id="${category}" name="categories[]" value="${category}"><label for="${category}">${category}</label>`;
     categorySelect.querySelector(".options1").appendChild(li);
-  });
-});
+  }); 
+});*/
 
-const radioContainer = document.querySelector(".radio-container");
+/*const radioContainer = document.querySelector(".radio-container");
 
 radioContainer.addEventListener("change", (event) => {
 
@@ -276,8 +274,7 @@ radioContainer.addEventListener("change", (event) => {
     if (selectedLanguage=='Arabe'){ langueId=1}
     else if(selectedLanguage=='Français'){ langueId=2}
     else { langueId=3};
-    console.log(selectedLanguage);
-     axios.get('http://127.0.0.1:8000/api/sites').then(Response=>{
+      axios.get('http://127.0.0.1:8000/api/sites').then(Response=>{
       let data = Response.data.filter(e =>e.id_langue==langueId);
       let objectSites=[]
       objectSites.push(...data);
@@ -298,7 +295,7 @@ radioContainer.addEventListener("change", (event) => {
       });
 
 
-    });
+    }); 
 
     let allSitesCheckbox = document.getElementById('all-sites');
     let siteCheckboxes = document.querySelectorAll('input[name="sites[]"]');
@@ -334,7 +331,7 @@ radioContainer.addEventListener("change", (event) => {
     }
     });
     });
-});
+});*/
 
 
 

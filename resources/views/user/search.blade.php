@@ -61,8 +61,6 @@
             {{ $language->langue }}
         </label>
         @endforeach
-
-
       </div>
     </div>
   </div>
@@ -145,10 +143,10 @@
 
 <!--radio-container-->
 <div class="radio-container">
-  <input type="radio" id="journal" name="radio-option" value="journal">
+  <input class="news-type" type="radio" id="journal" name="radio-option" value="journal">
     <label for="journal">JOURNAL</label>
 
-    <input type="radio" id="magazine" name="radio-option" value="magazine" >
+    <input class="news-type" type="radio" id="magazine" name="radio-option" value="magazine" >
     <label for="magazine">MAGAZINE</label>
   </div>
   <!--radio-container-->
@@ -178,7 +176,7 @@
 </div>
 <!--loading-->
 
-
+<input type="text" hidden value="{{ csrf_token() }}" id="csrf-token">
 
     </form>
 
@@ -194,13 +192,58 @@
           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
           <script>
             $(document).ready(function() {
-  $(".search-btn").click(function() {
-    $("#loadingOverlay").fadeIn();
-    setTimeout(function() {
-      //$("#loadingOverlay").fadeOut();
-    }, 2000);
-  });
-});
+              $(".search-btn").click(function() {
+                $("#loadingOverlay").fadeIn();
+                setTimeout(function() {
+                  //$("#loadingOverlay").fadeOut();
+                }, 2000);
+              });
+              var language='';
+              var type='journal';
+              $(".news-type").change(function() {
+                type=$(this).val();
+                getSitesCategories();
+              });
+              $('.langues').change(function() {
+                var selectedOption = $(this).val();
+                language=selectedOption;
+                getSitesCategories();
+              });
+
+
+              function getSitesCategories(){
+                $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN': $('#csrf-token').val()
+                  }
+                });
+                $.ajax({
+                type:'POST',
+                url:"{{ route('get-sites-categories') }}",
+                data:{language:language,type:type},
+                success:function(result){
+                  sites=result.sites;
+                  var sitesListHtml='<li><input type="checkbox" id="all-sites" name="all-sites" value="all-sites"><label for="all-sites" id="all-sites-label"><b>Tous</b></label></li>';
+                  for(var i=0 ; i<sites.length;i++){
+                      sitesListHtml+='<li><input class="sites" type="checkbox" id="'+sites[i].News_name+'" name="sites[]" value="'+sites[i].News_name+'"><label for="'+sites[i].News_name+'">'+sites[i].News_name+'</label></li>';
+                  }
+                  $(".options2").html(sitesListHtml);
+                  categories=result.categories;
+                  var categoriesListHtml='<li><input type="checkbox" id="all-categories" name="all-categories" value="all-categories"><label for="all-categories" id="all-categories-label"><b>Tous</b></label></li>';
+                  for(var i=0 ; i<categories.length;i++){
+                      categoriesListHtml+='<li><input class="categories" type="checkbox" id="'+categories[i].category_name+'" name="categories[]" value="'+categories[i].category_name+'"><label for="'+categories[i].category_name+'">'+categories[i].category_name+'</label></li>';
+                  }
+                  $(".options1").html(categoriesListHtml);
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    console.log(error);
+                }
+
+              });
+              }
+
+            });
 
           </script>
 

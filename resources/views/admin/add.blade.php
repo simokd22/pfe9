@@ -75,10 +75,9 @@
 
  <div class="input-group">
    <select style="color: gray" name="id_langue" id="id_langue" class="form-select" aria-label="Disabled select example"  required>
-     <option value="id">Select Id</option>
-     <option value="1">1-Arabe</option>
-     <option value="2">2-Francais</option>
-     <option value="3">3-Anglais</option>
+    @foreach (App\Models\Langue::all() as $langue)
+    <option value="{{ $langue->id }}">{{ $langue->langue }}</option>
+    @endforeach
    </select>
 </div>
    <div class="row">

@@ -21,12 +21,12 @@ class SearchController extends Controller
         $sites=Newsinfo::all();
         return view('user.search', compact('languages','categories','sites'));
         }
-        public function sites()
+/*        public function sites()
         {
 
           $sites=Newsinfo::all();
           return response()->json($sites);
-        }
+        }  */
         public function langue()
         {
 
@@ -83,7 +83,30 @@ class SearchController extends Controller
         //$article=Controller::getArticle($data[$id]);
         return view('user.article',['data'=>$data,'news'=>$news,'id'=>$id]);
     }
-    public function getSites(Request $request)
+
+    public function getSitesCategories(Request $request)
+{
+    $langue_id='';
+    $selectedLanguage = $request->input('language');
+    if($selectedLanguage!=''){
+      $langue_id=Langue::where('langue','=',$selectedLanguage)->pluck('id');
+    }
+   
+    $selectedType=$request->input('type');
+    // Retrieve the sites for the selected language from the database
+    $sites = Newsinfo::where('News_type',$selectedType)
+                     -> when($langue_id, function ($query) use ($langue_id) {
+                      return $query->where('id_langue', $langue_id);
+                      })
+                     ->get();
+    $categories=Category::where('id_langue',$langue_id)->get();
+    return response()->json([
+      'sites' => $sites,
+      'categories' => $categories,
+    ]);
+}
+
+public function getSites(Request $request)
 {
     $selectedLanguage = $request->query('language');
 

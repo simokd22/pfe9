@@ -29,7 +29,7 @@
                 <a  href="{{route('Userinfo.index')}}" >Utilisateurs</a>
             </div>
             <div class="link">
-                <a  href= >Sections</a>
+                <a  href="{{route('Categories.index')}}" >Categorie</a>
             </div>
             <div class="link">
                 <a  href="{{route('news.index')}}">Jornaux et Magazines</a>
