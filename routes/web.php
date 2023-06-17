@@ -36,7 +36,9 @@ Route::middleware([
     Route::post('/admin/search', [SearchController::class ,'search'])->name('admin.search-post');
     Route::get('/admin/SearchResults', [SearchController::class ,'results'])->name('admin.SearchResults');
     Route::get('/admin/article/{news}/{id}', [SearchController::class,'show'])->name('admin.article');
-
+    Route::get('admin/profile', function () {
+        return view('profile.show');
+    })->name('profile_admin');
     Route::post('news/guessScrapElements',[SearchController::class ,'guessScrapElements'])->name('guessScrapingElements');
 });
 
@@ -54,7 +56,7 @@ Route::middleware([
     Route::get('/user/article/{news}/{id}', [SearchController::class,'show'])->name('user.article');
      Route::get('user/profile', function () {
         return view('profile.show');
-    })->name('profile');
+    })->name('profile_user');
 
     Route::get('user/about', function () {
         return view('user.about');

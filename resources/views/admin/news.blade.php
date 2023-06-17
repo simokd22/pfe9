@@ -10,7 +10,7 @@
   
 
 <header>
-    <p>Section nouvelle</p> 
+    <p>Section Journaux et Magazines</p> 
 </header>
    <nav>
    

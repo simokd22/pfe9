@@ -16,12 +16,6 @@
             <div class="profile">
                 <a href={{ route('profile') }} class="profile-btn"><i class="fa fa-user"></i></a>
              </div>
-            <!-- <div class="about">
-                    <a href={{route('about')}} class="about">about</i></a>
-            </div>
-            <div class="terms">
-                <a href={{route('terms')}} class="term-service">Terms</i></a>
-            </div>-->
 
         </div>
 
