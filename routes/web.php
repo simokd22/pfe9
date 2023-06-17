@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Userinfo;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LangueController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsinfoController;
@@ -32,6 +33,7 @@ Route::middleware([
     Route::resource('Userinfo' , Userinfo::class)->names('Userinfo');
     Route::resource('news' , NewsinfoController::class)->names('news');
     Route::resource('Categories' , CategoryController::class)->names('Categories');
+    Route::resource('langues' , LangueController::class)->names('langues');
     Route::get('/admin/search', [SearchController::class ,'index'])->name('admin.search');
     Route::post('/admin/search', [SearchController::class ,'search'])->name('admin.search-post');
     Route::get('/admin/SearchResults', [SearchController::class ,'results'])->name('admin.SearchResults');
@@ -39,7 +41,7 @@ Route::middleware([
     Route::get('admin/profile', function () {
         return view('profile.show');
     })->name('profile_admin');
-    Route::post('news/guessScrapElements',[SearchController::class ,'guessScrapElements'])->name('guessScrapingElements');
+    //Route::post('news/guessScrapElements',[SearchController::class ,'guessScrapElements'])->name('guessScrapingElements');
 });
 
 //user
@@ -50,7 +52,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/user/search', [SearchController::class ,'index'])->name('user.search');
     Route::post('/user/search', [SearchController::class ,'search'])->name('user.search-post');
-    Route::get('/user/get-sites', [SearchController::class, 'getSites'])->name('user.get-sites');
+    //Route::get('/user/get-sites', [SearchController::class, 'getSites'])->name('user.get-sites');
     Route::get('/user/SearchResults', [SearchController::class ,'results'])->name('user.SearchResults');
     Route::get('/user/article/{news}/{id}', [SearchController::class,'show'])->name('user.article');
      Route::get('user/profile', function () {

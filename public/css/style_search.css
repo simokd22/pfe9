@@ -611,7 +611,9 @@ input[type="checkbox"] {
   animation: dotAnimation 1.5s infinite;
   margin-bottom: 25px;
 }
-
+#main-div{
+margin-left: 120px;
+}
 @keyframes dotAnimation {
   0% {
     opacity: 0.2;

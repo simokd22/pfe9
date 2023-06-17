@@ -10,7 +10,7 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <div class="menu">
+    <div class="menu" style="background-color: {{Auth::user()->role_id=='1' ? 'white' : 'whitesmoke'}};">
         <!--logo icon-->
 <div class="logo_icon">
     <a  class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo">
@@ -19,7 +19,7 @@
   <!--logo icon-->
         <div class="links">
             <div class="logo_icon">
-                <a href={{ route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo"></a>
+                <a href={{Auth::user()->role_id=='1'? route('admin.search'): route('user.search') }} class="logo_icon"><img src="{{ asset('logo/blue_symbol.png') }}" alt="My Logo"></a>
               </div>
               @if (Auth::user()->role_id=='1')
               <div class="link">
@@ -29,10 +29,13 @@
                 <a  href="{{route('Userinfo.index')}}" >Utilisateurs</a>
             </div>
             <div class="link">
+                <a  href="{{route('news.index')}}">Jornaux et Magazines</a>
+            </div>
+            <div class="link">
                 <a  href="{{route('Categories.index')}}" >Categorie</a>
             </div>
             <div class="link">
-                <a  href="{{route('news.index')}}">Jornaux et Magazines</a>
+                <a  href="{{route('langues.index')}}" >langues</a>
             </div>
             @endif
             <div class="profile">

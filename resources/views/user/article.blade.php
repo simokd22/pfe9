@@ -32,7 +32,7 @@
 
     </article>
  </div >
-     <h2 class="other-articles">مقالات ذات صلة: </h2>
+     {{-- <h2 class="other-articles">مقالات ذات صلة: </h2>
      <div class="blog-container">
         @php
         $index = $id + 1;
@@ -62,7 +62,7 @@
                 @endphp
             @endif
         @endfor
-    </div>
+    </div> --}}
     <footer>
         <p>copyright 2023-2024</p>
       </footer>

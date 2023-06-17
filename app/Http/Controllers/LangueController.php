@@ -12,7 +12,8 @@ class LangueController extends Controller
      */
     public function index()
     {
-        //
+        $data = Langue::all();
+        return view('admin.langue', compact('data'));
     }
 
     /**
@@ -20,7 +21,7 @@ class LangueController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.add_langue');
     }
 
     /**
@@ -28,7 +29,10 @@ class LangueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $StoreLangue= new Langue;
+        $StoreLangue->langue=$request->input('langue');
+        $StoreLangue->save();
+        return redirect()->route('langues.index');
     }
 
     /**
@@ -42,24 +46,31 @@ class LangueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Langue $langue)
+    public function edit($id)
     {
-        //
+        return view('admin.edit_langue',[
+            'datafind'=>Langue::findOrFail($id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Langue $langue)
+    public function update(Request $request,$id)
     {
-        //
+        $UpdateLangue= Langue::findOrFail($id);
+        $UpdateLangue->langue=$request->input('langue');
+        $UpdateLangue->save();
+        return redirect()->route('langues.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Langue $langue)
+    public function destroy($id)
     {
-        //
+        $DeleteLangue=Langue::findOrFail($id);
+        $DeleteLangue->delete();
+        return redirect()->route('langues.index');
     }
 }
