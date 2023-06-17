@@ -349,12 +349,7 @@
              
          }
 
-        .logo {
-          position: absolute;
-          top: 0;
-          left: 50%;
-          transform: translateX(-50%);
-        }
+        
         
         
 
@@ -533,13 +528,20 @@ input[type="checkbox"] {
 /*logo*/
 
 
-.logo_icon img {
+.logo_icon2 img {
 
   display: block;
     margin: 0 auto;
     height: auto;
     margin-bottom: 30px;
     width: 200px;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 /*logo*/
 
